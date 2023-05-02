@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://nikitakharya09.github.io/nikita-kharya/issues"
   },
-  "homepage": "https://nikitakharya09.github.io",
+  "homepage": "https://nikitakharya09.github.io/nikita-kharya",
   "dependencies": {
     "file-loader": "^6.2.0",
     "react": "^18.2.0",
