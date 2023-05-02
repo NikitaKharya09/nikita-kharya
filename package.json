@@ -8,7 +8,7 @@
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b main -d build"
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://nikitakharya09.github.io/nikita-kharya/issues"
   },
-  "homepage": "https://nikitakharya09.github.io/nikita-kharya",
+  "homepage": "https://nikitakharya09.github.io",
   "dependencies": {
     "file-loader": "^6.2.0",
     "react": "^18.2.0",
