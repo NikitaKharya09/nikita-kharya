@@ -159,3 +159,17 @@
     }
 }
 
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+  
+    .tilesWrap .listItem {
+      height: 70vh;
+    }
+    
+    .tilesWrap .listItem li {
+      padding: 0.8rem;
+    }
+}
+
