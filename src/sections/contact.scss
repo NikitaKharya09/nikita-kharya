@@ -12,7 +12,7 @@
   font-family: Courier New, sans-serif;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 992px) {
   .containerContact {
     width: 90vw;
   }
@@ -162,14 +162,14 @@
   left: 3rem;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 992px) {
   .puns {
     width: 30%;
     left: 30%;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 992px) {
   .punsTitle {
     left: 5rem;
   }
