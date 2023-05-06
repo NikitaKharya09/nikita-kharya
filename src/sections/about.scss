@@ -27,7 +27,6 @@
     flex-direction: row;
     margin-top: 8rem;
   }
-  
 }
 
 .ring {
@@ -35,23 +34,18 @@
   float: right;
   right: 5%;
   flex: 30%;
-  
 }
 
-.aboutText { 
-   margin: 15%;
-   font-size: 100%;
-  }
-
-
-
+.aboutText {
+  margin: 15%;
+  font-size: 1.5rem;
+}
 
 .circle {
   width: 60%;
   height: 55%;
   z-index: 1;
   flex: 60%;
-
 
   .parallaxInner {
     position: absolute;
@@ -124,7 +118,33 @@ canvas {
   border-radius: 50px;
 }
 
-@media screen and (max-width: 992px) {
+// @media screen and (max-width: 992px) {
+//   .root {
+//     height: 60vh;
+//   }
+
+//   .ring {
+//     margin-top: 7%;
+//   }
+
+//   .circle {
+//     height: 65%;
+//   }
+//   .circle .parallaxInner,
+//   .circleInner,
+//   .circle:before,
+//   .circle:after {
+//     border-radius: 10%;
+//   }
+
+//   .aboutText {
+//     margin: 10%;
+//     font-size: 1rem;
+//   }
+// }
+
+/* Portrait */
+@media only screen and (min-device-width: 320px) and (max-device-width: 600px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
   .root {
     height: 60vh;
   }
@@ -136,11 +156,32 @@ canvas {
   .circle {
     height: 65%;
   }
-  .circle .parallaxInner, .circleInner, .circle:before, .circle:after {
+  .circle .parallaxInner,
+  .circleInner,
+  .circle:before,
+  .circle:after {
     border-radius: 10%;
   }
 
   .aboutText {
     margin: 10%;
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-device-width: 320px) {
+  .circle {
+    height: 65%;
+  }
+  .circle .parallaxInner,
+  .circleInner,
+  .circle:before,
+  .circle:after {
+    border-radius: 10%;
+  }
+
+  .aboutText {
+    margin: 10%;
+    font-size: 0.8rem;
   }
 }

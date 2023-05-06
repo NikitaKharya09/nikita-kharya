@@ -146,3 +146,16 @@
     margin-top: 2rem;
   }
 }
+
+/* Landscape */
+@media only screen and (orientation: landscape) {
+
+    .tilesWrap .listItem {
+      height: 100vh;
+    }
+    
+    .tilesWrap .listItem li {
+      padding: 0.5rem;
+    }
+}
+
