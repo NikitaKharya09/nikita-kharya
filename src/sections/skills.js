@@ -5,7 +5,7 @@ export const Skills = () => {
   return (
     <React.Fragment>
       <h1 className="titleSkills">Skills</h1>
-      <ul class="tilesWrap">
+      <ul className="tilesWrap">
         <li className="listItem">
           <h3>Easy Peasy!!</h3>
           <p>

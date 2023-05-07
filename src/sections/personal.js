@@ -15,7 +15,7 @@ export const Personal = () => {
 
   return (
     <React.Fragment>
-      <div class="page">
+      <div className="page">
       <Parallax >
         <div className="headerStyle">
           <h1 style={{textAlign: 'center', marginTop: 30}}> Few of my personal interests </h1>
