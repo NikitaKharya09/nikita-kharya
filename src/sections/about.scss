@@ -19,7 +19,8 @@
   gap: 10%;
   margin-top: 5rem;
   flex-direction: column;
-  width: 100%;
+  // width: 100%;
+  width: 80rem;
   height: 30rem;
 }
 
@@ -43,8 +44,8 @@
 }
 
 .circle {
-  width: 60%;
-  height: 55%;
+  width: 25rem;
+  height: 30rem;
   z-index: 1;
   flex: 60%;
 
@@ -52,8 +53,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 25rem;
+    height: 30rem;
     border: 3px solid #3d3547;
     border-radius: 50%;
     background: linear-gradient(0deg, #642b73, #272727);
@@ -75,8 +76,8 @@
     rgb(139, 111, 216, 0.8)
   );
   background-size: 400%;
-  width: 100%;
-  height: 100%;
+  width: 25rem;
+  height: 30rem;
   // width: calc(100% + 14px);
   // height: calc(100% + 14px);
   z-index: -1;
@@ -104,8 +105,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 25rem;
+  height: 30rem;
   border: 3px solid #3d3547;
   border-radius: 50%;
 }
@@ -225,6 +226,20 @@ canvas {
   }
 }
 
+@media only screen and (min-device-width: 400px) and (-webkit-min-device-pixel-ratio: 3) {
+  .circle, .circle .parallaxInner,
+  .circleInner,
+  .circle:before,
+  .circle:after {
+    width: 19rem;
+    height: 20rem;
+  }
+
+  .ring {
+    margin-top: 15%;
+  }
+}
+
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 1024px) {
   .circle {
     height: 18rem;
@@ -244,11 +259,13 @@ canvas {
 
 @media only screen and (min-width: 900px) and (-webkit-min-device-pixel-ratio: 2) {
   
-  .circle .parallaxInner,
+  .circle, .circle .parallaxInner,
   .circleInner,
   .circle:before,
   .circle:after {
     border-radius: 50%;
+    width: 50rem;
+    height: 28rem;
   }
 
   .aboutText {
@@ -256,3 +273,15 @@ canvas {
     font-size: 1.5rem;
   }
 }
+
+@media screen and (max-width: 992px) and (orientation: landscape) {
+  .circle, .circle .parallaxInner,
+  .circleInner,
+  .circle:before,
+  .circle:after {
+    width: 23rem;
+  }
+}
+
+
+
