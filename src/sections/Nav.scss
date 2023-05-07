@@ -9,7 +9,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100vw;
-//   max-width: 1200px;
+  //   max-width: 1200px;
   margin: 0 auto;
   padding: 1.5rem;
   box-sizing: border-box;
@@ -55,8 +55,8 @@ nav {
 }
 
 .menu-icon.show span:nth-child(4) {
-    transform: rotate(-135deg) translate(15px, 10px);
-  }
+  transform: rotate(-135deg) translate(15px, 10px);
+}
 
 .menu-items {
   display: none;
@@ -79,7 +79,7 @@ nav {
 }
 
 .menu-icon .hide {
-    display: none;
+  display: none;
 }
 
 .menu-items li {
@@ -106,6 +106,12 @@ nav {
   }
 
   .small-screen {
-      display: flex;
+    display: flex;
+  }
+}
+
+@media only screen and (min-device-width: 660px) and (-webkit-max-device-pixel-ratio: 2.5) and (orientation: landscape) {
+  .small-screen {
+    width: 100%;
   }
 }

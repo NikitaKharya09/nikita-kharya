@@ -161,6 +161,8 @@ canvas {
   .circle:before,
   .circle:after {
     border-radius: 10%;
+    height: 18rem;
+    width: 20rem
   }
 
   .aboutText {
@@ -184,7 +186,7 @@ canvas {
 }
 
 /* Portrait */
-@media only screen and (min-device-width: 400px) and (max-device-width: 600px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+@media only screen and (min-device-width: 300px) and (max-device-width: 600px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
   .root {
     height: 60vh;
   }
@@ -201,6 +203,8 @@ canvas {
   .circle:before,
   .circle:after {
     border-radius: 10%;
+    height: 18rem;
+    width: 20rem
   }
 
   .aboutText {
@@ -209,7 +213,7 @@ canvas {
   }
 }
 
-@media only screen and (max-device-width: 400px) {
+@media only screen and (max-device-width: 300px) {
   .circle {
     height: 65%;
   }
@@ -226,39 +230,49 @@ canvas {
   }
 }
 
-@media only screen and (min-device-width: 400px) and (-webkit-min-device-pixel-ratio: 3) {
-  .circle, .circle .parallaxInner,
-  .circleInner,
-  .circle:before,
-  .circle:after {
-    width: 17rem;
-    height: 17rem;
-  }
+@media only screen and (min-device-width: 300px) and (-webkit-min-device-pixel-ratio: 3) {
+  // .circle .parallaxInner,
+  // .circle  .circleInner,
+  // .circle:before,
+  // .circle:after {
+  //   width: 17rem;
+  //   height: 17rem;
+  // }
 
   .ring {
     margin-top: 15%;
   }
 }
 
-@media only screen and (min-device-width: 400px) and (-webkit-min-device-pixel-ratio: 2) and (-webkit-max-device-pixel-ratio: 2.9) {
-  .circle, .circle .parallaxInner,
-  .circleInner,
-  .circle:before,
-  .circle:after {
-    width: 19rem;
-    height: 18rem;
-  }
+@media only screen and (min-device-width: 300px) and (-webkit-min-device-pixel-ratio: 2) and (-webkit-max-device-pixel-ratio: 2.9) {
+  // .circle, .circle .parallaxInner,
+  // .circleInner,
+  // .circle:before,
+  // .circle:after {
+  //   width: 19rem;
+  //   height: 18rem;
+  // }
 }
 
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 1024px) {
-  // .circle {
-  //   height: 18rem;
-  // }
+  .root {
+    height: 60vh;
+  }
+
+  .ring {
+    margin-top: 0;
+  }
+
+  .circle {
+    height: 18rem;
+  }
   .circle .parallaxInner,
   .circleInner,
   .circle:before,
   .circle:after {
     border-radius: 10%;
+    height: 28rem;
+    width: 25rem
   }
 
   .aboutText {
@@ -285,13 +299,13 @@ canvas {
 }
 
 @media screen and (max-width: 992px) and (orientation: landscape) {
-  .circle, .circle .parallaxInner,
-  .circleInner,
-  .circle:before,
-  .circle:after {
-    width: 22rem;
-    height: 30rem;
-  }
+  // .circle, .circle .parallaxInner,
+  // .circleInner,
+  // .circle:before,
+  // .circle:after {
+  //   width: 22rem;
+  //   height: 30rem;
+  // }
 }
 
 
