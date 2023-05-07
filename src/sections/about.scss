@@ -241,3 +241,18 @@ canvas {
     font-size: 1.5rem;
   }
 }
+
+@media only screen and (min-width: 900px) and (-webkit-min-device-pixel-ratio: 2) {
+  
+  .circle .parallaxInner,
+  .circleInner,
+  .circle:before,
+  .circle:after {
+    border-radius: 50%;
+  }
+
+  .aboutText {
+    margin: 15%;
+    font-size: 1.5rem;
+  }
+}
