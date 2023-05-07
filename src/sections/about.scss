@@ -20,6 +20,7 @@
   margin-top: 5rem;
   flex-direction: column;
   width: 100%;
+  height: 30rem;
 }
 
 @media screen and (max-width: 600px) {
@@ -74,8 +75,10 @@
     rgb(139, 111, 216, 0.8)
   );
   background-size: 400%;
-  width: calc(100% + 14px);
-  height: calc(100% + 14px);
+  width: 100%;
+  height: 100%;
+  // width: calc(100% + 14px);
+  // height: calc(100% + 14px);
   z-index: -1;
   border-radius: 50%;
   animation: steam 30s linear infinite;
@@ -169,18 +172,18 @@ canvas {
   }
 }
 
-/* Landscape */
-@media only screen and (orientation: landscape) {
-  .circle {
-    height: 65%;
-  }
-  .circle .parallaxInner,
-  .circleInner,
-  .circle:before,
-  .circle:after {
-    border-radius: 10%;
-  }
-}
+// /* Landscape */
+// @media only screen and (orientation: landscape) {
+//   .circle {
+//     height: 65%;
+//   }
+//   .circle .parallaxInner,
+//   .circleInner,
+//   .circle:before,
+//   .circle:after {
+//     border-radius: 10%;
+//   }
+// }
 
 @media only screen and (max-device-width: 320px) {
   .circle {

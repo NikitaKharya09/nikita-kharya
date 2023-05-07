@@ -147,29 +147,18 @@
   }
 }
 
-/* Landscape */
-@media only screen and (orientation: landscape) {
-
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) 
+  and (orientation: landscape) {
+  
     .tilesWrap .listItem {
       height: 100vh;
     }
     
     .tilesWrap .listItem li {
       padding: 0.5rem;
-    }
-}
-
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
-  and (-webkit-min-device-pixel-ratio: 1) {
-  
-    .tilesWrap .listItem {
-      height: 70vh;
-    }
-    
-    .tilesWrap .listItem li {
-      padding: 0.8rem;
     }
 }
 
