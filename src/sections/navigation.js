@@ -14,7 +14,7 @@ export const Nav = () => {
       <nav className="large-screen">
           <ul>
             <li style={{ marginRight: "20rem" }}>
-              <a href="#abouts">Nikita Kharya</a>
+              <a href="#abouts" className="aboutClass">Nikita Kharya</a>
             </li>
             <li style={{ marginRight: "8rem" }}>
               <a href="#experiences">Experience</a>

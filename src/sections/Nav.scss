@@ -100,6 +100,12 @@ nav {
   flex-direction: row;
 }
 
+.aboutClass {
+  display: flex;
+  width: max-content;
+  min-width: max-content;
+}
+
 @media screen and (max-width: 800px) {
   .large-screen {
     display: none;
