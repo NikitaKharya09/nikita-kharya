@@ -1,8 +1,43 @@
 /*!
-	Copyright (c) 2018 Jed Watson.
-	Licensed under the MIT License (MIT), see
-	http://jedwatson.github.io/classnames
+ * Timm
+ *
+ * Immutability helpers with fast reads and acceptable writes.
+ *
+ * @copyright Guillermo Grau Panea 2016
+ * @license MIT
+ */
+
+/*!
+ * Webflow._ (aka) Underscore.js 1.6.0 (custom build)
+ * _.each
+ * _.map
+ * _.find
+ * _.filter
+ * _.any
+ * _.contains
+ * _.delay
+ * _.defer
+ * _.throttle (webflow)
+ * _.debounce
+ * _.keys
+ * _.has
+ * _.now
+ *
+ * http://underscorejs.org
+ * (c) 2009-2013 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ * Underscore may be freely distributed under the MIT license.
+ * @license MIT
+ */
+
+/*!
+ * Webflow: Front-end site library
+ * @license MIT
+ * Inline scripts may access the api using an async handler:
+ *   var Webflow = Webflow || [];
+ *   Webflow.push(readyFunction);
 */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /**
  * @license React
