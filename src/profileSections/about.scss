@@ -2,7 +2,8 @@ body {
   box-sizing: content-box;
   // color: rgb(139, 111, 216);
   background-color: #bccbc9;
-  --line-color: rgb(139, 111, 216);
+  --line-color: #bccbc9;;
+  color: #bccbc9;
   font-family: "CabinetGrotesk-Variable", Helvetica, sans-serif;
 }
 
@@ -120,6 +121,7 @@ body {
   height: 50%;
   p {
     margin: 0 10rem;
+    
   }
 }
 
@@ -129,6 +131,7 @@ body {
   text-align: center;
   font-size: 2.5rem;
   color: white;
+  display: block;
 }
 
 .home-header img {
@@ -261,7 +264,7 @@ width: 75%;
   object-fit: cover;
   position: fixed;
   // left: 0;
-  top: 0;
+  top: 100px;
   margin-top: 100px;
   width: 40%;
   // height: 1000px;
@@ -310,5 +313,201 @@ width: 75%;
   // height: 100vh;
   // background: black;
   }
+
+  .vm-content { 
+    visibility: hidden;    
+    margin-top: 30rem;
+   }
+
+   .we-img {
+     margin-top: 5rem;
+   }
+
+
+.small-screen {
+  display: none;
+}
+
+.only-small-screen {
+  display: none;
+}
+
+.only-big-screen {
+  display: flex;
+  justify-content: center;
+}
+
+.color1 h2 , .color2 h2 {
+  font-size: 5rem;
+   color: #316764;
+}
+
+.personal-list {
+  display: flex;
+  height: 100vh;
+}
+
+#experiences {
+  margin-top: 5rem;
+  background-color: #AAB8B6
+  
+}
+
+/* Example media query for screens with width up to 768px */
+@media (max-width: 1200px) {
+  .container-new {
+    /* Adjust the container width or padding for smaller screens */
+    padding: 1rem;
+  }
+  
+  /* Add styles for specific elements that need adjustments for smaller screens */
+  #abouts {
+    height: auto !important;
+  }
+  .home-header .header-image-container {
+    height: 20%;
+  }
+  .home-header .header-image-container p {
+    display: none;
+  }
+
+  .only-small-screen {
+    display: flex;
+    justify-content: center;
+  }
+
+  .only-big-screen {
+    display: none;
+  }
+
+  .we-img {
+    margin-top: 0;
+  }
+
+  .home-header {
+    margin-top: 35%;
+  }
+
+  .color1 h2 , .color2 h2 {
+    font-size: 2rem;
+  }
+
+  .small-screen {
+    display: block;
+    position: absolute;
+    top: 0;
+    color: white;
+  }
+
+  .small-screen .intro {
+
+    margin-top: 25%;
+  }
+  
+  .scroll-image {
+    /* Adjust the scroll-image div layout for smaller screens */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .we-title-main {
+    font-size: 2rem;
+  }
+
+  .we-content .element-title {
+    font-size:  1.8rem;
+  }
+
+  .responsive-img {
+    display: flex;
+    justify-content: center;
+  }
+
+  .we-content {
+    padding: 15%;
+  }
+
+  .we-content-text, .personal-content {
+    font-size: 16px;
+  }
+
+  .personal-list {
+    display: grid;
+  }
+
+  .img-container {
+    width: 100%;
+    height: 400px;
+  }
+
+
+  .img1 , .img2 {
+    width: 85%;
+   
+  }
+
+  .color1, .color2 {
+    width: 100%;
+  }
+
+  #experiences {
+    margin-top: 0;
+    
+  }
+
+  .vm-content {
+    margin-top: 0rem;
+  }
+  
+  /* ... Adjust other styles as needed for smaller screens ... */
+}
+
+/* Example media query for screens with width between 768px and 992px */
+// @media (min-width: 768px) and (max-width: 992px) {
+//   /* Add specific styles for screens between 768px and 992px */
+//   .small-screen {
+//     font-size: 16px;
+//     line-height: 1.4;
+//     /* Adjust styles for this screen size range */
+//   }
+
+//   .home-header .header-image-container p {
+//     display: none;
+//   }
+  
+//   /* Add specific styles for elements in this screen size range */
+// }
+
+// /* Example media query for screens with width between 992px and 1200px */
+// @media (min-width: 992px) and (max-width: 1200px) {
+//   /* Add specific styles for screens between 992px and 1200px */
+//   .small-screen {
+//     font-size: 18px;
+//     /* Adjust styles for this screen size range */
+//   }
+
+//   .home-header .header-image-container p {
+//     display: none;
+//   }
+  
+//   /* Add specific styles for elements in this screen size range */
+// }
+
+/* Example media query for screens with width greater than 1200px */
+@media (min-width: 1200px) {
+  /* Add specific styles for screens larger than 1200px */
+  .small-screen {
+    font-size: 20px;
+    /* Adjust styles for screens larger than 1200px */
+  }
+  
+  
+  /* Add specific styles for elements in this screen size range */
+}
+
+/* Add more media queries for other screen sizes as needed */
+
    
  

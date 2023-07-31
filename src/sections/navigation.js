@@ -30,7 +30,7 @@ export const Nav = () => {
             </li>
           </ul>
         </nav>
-        <nav className="small-screen">
+        <nav className="small-screen-nav">
           <div className="logo">
             <a href="#abouts">Nikita Kharya</a>
           </div>

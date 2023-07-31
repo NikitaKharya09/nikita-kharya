@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { SocialIcon } from "react-social-icons";
-import { Nav } from '../sections/navigation';
+import { Nav } from "../sections/navigation";
 
 import main2 from "../../assets/images/main-2.jpg";
 import vmw from "../../assets/images/vmw.jpg";
@@ -58,15 +58,15 @@ const About = () => {
 
       const y = window.scrollY;
       const label = Math.min(Math.floor(y / 30) + 1, 20);
-    //   const imageToUse = `position${label}`;
-    //   const currentImg = document.getElementById(imageToUse);
-    //   if (currentImg) currentImg.style.visibility = "visible";
+      //   const imageToUse = `position${label}`;
+      //   const currentImg = document.getElementById(imageToUse);
+      //   if (currentImg) currentImg.style.visibility = "visible";
 
-    //   images.forEach((im) => {
-    //     if (im !== imageToUse) {
-    //       document.getElementById(im).style.visibility = "hidden";
-    //     }
-    //   });
+      //   images.forEach((im) => {
+      //     if (im !== imageToUse) {
+      //       document.getElementById(im).style.visibility = "hidden";
+      //     }
+      //   });
 
       if (label > 6) {
         document.getElementById("position7").style.visibility = "visible";
@@ -177,9 +177,9 @@ const About = () => {
 
   return (
     <div className="container-new">
-        <Nav />
+      <Nav />
       <section style={{ height: "80rem" }} id="abouts">
-        <div className="home-header" >
+        <div className="home-header">
           <div className="header-image-container">
             <p className="intro">
               I am a creative front-end developer offering 10 plus years of
@@ -191,6 +191,16 @@ const About = () => {
             </p>
             <img src={main2} alt="MySetup" style={{ marginTop: "10%" }} />
           </div>
+        </div>
+        <div className="small-screen">
+          <p className="intro">
+            I am a creative front-end developer offering 10 plus years of
+            experience in designing and delivering high-impact web solutions for
+            Fortune 500 organizations. I strongly believe that even a single
+            well-placed element on the screen can convey a powerful user
+            experience. Let me introduce myself with the help of this single
+            image as an example.
+          </p>
         </div>
       </section>
       <div className="scroll-image">
@@ -252,7 +262,9 @@ const About = () => {
           }}
         />
       </div>
-      <section style={{ marginTop: "5rem", backgroundColor: "#AAB8B6" }} id="experiences">
+      <section
+        id="experiences"
+      >
         <div className="work-experience">
           <div class="we-title-main">Work Experience</div>
           <div class="text-container">
@@ -274,7 +286,7 @@ const About = () => {
             id="vmware"
             style={{ marginTop: -150 }}
           >
-            <div className="col-md-5 col-sm-12">
+            <div className="col-md-5 col-sm-12 responsive-img">
               <br />
               <img
                 id="position6"
@@ -305,8 +317,7 @@ const About = () => {
             </div>
             <div
               id="we-content"
-              style={{ visibility: "hidden", marginTop: "30rem" }}
-              className="col-md-7 col-sm-12 we-content"
+              className="col-md-7 col-sm-12 we-content vm-content"
             >
               <h3 className="element-title" style={{ display: "block" }}>
                 Member Of Technical Staff - III
@@ -338,7 +349,19 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="we-image-container row" style={{ marginTop: "5rem" }}>
+          <div className="we-image-container row we-img">
+            <div
+              className="col-md-5 col-sm-12 only-small-screen"
+              style={{ textAlign: "end" }}
+            >
+              <br />
+              <img
+                src={db1}
+                alt="DB"
+                width="70%"
+                style={{ outline: "solid 2px black", height: "100%" }}
+              />
+            </div>
             <div
               className="col-md-7 col-sm-12 we-content"
               id="db"
@@ -372,7 +395,10 @@ const About = () => {
                 </ul>
               </p>
             </div>
-            <div className="col-md-5 col-sm-12" style={{ textAlign: "end" }}>
+            <div
+              className="col-md-5 col-sm-12 only-big-screen"
+              style={{ textAlign: "end" }}
+            >
               <br />
               <img
                 src={db1}
@@ -382,8 +408,8 @@ const About = () => {
               />
             </div>
           </div>
-          <div className="we-image-container row" style={{ marginTop: "5rem" }}>
-            <div className="col-md-5 col-sm-12">
+          <div className="we-image-container row" >
+            <div className="col-md-5 col-sm-12 responsive-img">
               <br />
               <img
                 src={acc}
@@ -393,8 +419,7 @@ const About = () => {
               />
             </div>
             <div
-              className="col-md-7 col-sm-12 we-content"
-              style={{ marginTop: "5rem" }}
+              className="col-md-7 col-sm-12 we-content we-img"
               id="acc"
             >
               <h3 className="element-title" style={{ display: "block" }}>
@@ -416,10 +441,22 @@ const About = () => {
               </p>
             </div>
           </div>
-          <div className="we-image-container row" style={{ marginTop: "5rem" }}>
+          <div className="we-image-container row">
+          <div
+              className="col-md-5 col-sm-12 only-small-screen"
+              style={{ textAlign: "end" }}
+            >
+              <br />
+              <img
+                src={cts}
+                alt="Cognizant"
+                width="70%"
+                style={{ outline: "solid 2px black" }}
+              />
+            </div>
             <div
-              className="col-md-7 col-sm-12 we-content"
-              style={{ marginTop: "5rem", paddingLeft: "5rem" }}
+              className="col-md-7 col-sm-12 we-content we-img"
+              style={{paddingLeft: "5rem" }}
               id="cts"
             >
               <h3 className="element-title" style={{ display: "block" }}>
@@ -438,7 +475,10 @@ const About = () => {
                 </ul>
               </p>
             </div>
-            <div className="col-md-5 col-sm-12" style={{ textAlign: "end" }}>
+            <div
+              className="col-md-5 col-sm-12 only-big-screen"
+              style={{ textAlign: "end" }}
+            >
               <br />
               <img
                 src={cts}
@@ -456,14 +496,13 @@ const About = () => {
         <img src={skills} alt="Skills" width="100%"></img>
       </section>
 
-     
       <section
         style={{
           marginTop: "10rem",
           backgroundColor: "#AAB8B6",
           padding: "2rem",
           zIndex: 3,
-          position: 'relative'
+          position: "relative",
         }}
         className="personal row"
         id="personals"
@@ -475,61 +514,61 @@ const About = () => {
           {" "}
           Personal
         </h2>
-        <div style={{ display: "flex", height: '100vh' }}>
-        <div className="img-container">
-          <img
-            class="img1"
-            src={personalTravel}
-            alt="Travel"
-            style={{ borderRadius: "5rem" }}
-          ></img>
-        </div>
-        <div class="color1">
-          <h2 style={{fontSize: '5rem', color: '#316764' }}> TRAVELLING</h2>
-          <p className="personal-content">
-            I have had the opportunity to explore 15 countries across four
-            different continents, including multiple visits to some of them. The
-            continents I have visited includes:
-            <ul>
+        <div className="personal-list">
+          <div className="img-container">
+            <img
+              class="img1"
+              src={personalTravel}
+              alt="Travel"
+              style={{ borderRadius: "5rem" }}
+            ></img>
+          </div>
+          <div class="color1">
+            <h2> TRAVELLING</h2>
+            <p className="personal-content">
+              I have had the opportunity to explore 15 countries across four
+              different continents, including multiple visits to some of them.
+              The continents I have visited includes:
+              <ul>
                 <li>Asia </li>
                 <li>Europe </li>
                 <li>North America </li>
                 <li>Australia </li>
-                    </ul> 
-          </p>
+              </ul>
+            </p>
+          </div>
         </div>
-      </div>
-      <div style={{ display: "flex", height: '100vh' }}>
-        <div className="img-container">
-          <img
-            class="img2"
-            src={personalPaint}
-            alt="Paint"
-            style={{ borderRadius: "5rem" }}
-          ></img>
-        </div>
-        <div class="color2">
-          <h2 style={{fontSize: '5rem', color: '#316764'}}>PAINTING</h2>
-          <p className="personal-content">
-            Engaging in painting is one of the most valuable ways for me to
-            spend my time. You can find all the paintings created by me on my
-            Insta handle
-            <div>
-            <SocialIcon
-                url="https://www.instagram.com/kharyanikita/"
-                style={{width: 25, height: 25 }}
-              />
-              <a
-                href="https://www.instagram.com/kharyanikita/"
-                target="_blank"
-                aria-label="Instagram profile"
-              >
-                @kharyanikita
-              </a>
+        <div className="personal-list">
+          <div className="img-container">
+            <img
+              class="img2"
+              src={personalPaint}
+              alt="Paint"
+              style={{ borderRadius: "5rem" }}
+            ></img>
+          </div>
+          <div class="color2">
+            <h2 >PAINTING</h2>
+            <p className="personal-content">
+              Engaging in painting is one of the most valuable ways for me to
+              spend my time. You can find all the paintings created by me on my
+              Insta handle
+              <div style={{display: 'inline-block'}}>
+                <SocialIcon
+                  url="https://www.instagram.com/kharyanikita/"
+                  style={{ width: 25, height: 25 }}
+                />
+                <a
+                  href="https://www.instagram.com/kharyanikita/"
+                  target="_blank"
+                  aria-label="Instagram profile"
+                >
+                  @kharyanikita
+                </a>
               </div>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
         {/* <div
           className="col-sm-12 col-md-4 personalImg"
           style={{ display: "flex", justifyContent: "center", zIndex: "10" }}
@@ -571,14 +610,12 @@ const About = () => {
           </p>
         </div> */}
       </section>
-      <section style={{ marginTop: "5rem" }} id="contacts">>
-        <h2 className="we-title-main">Contact</h2>
-        
-
+      <section style={{ marginTop: "5rem" }} id="contacts">
+        ><h2 className="we-title-main">Contact</h2>
         <img src={contact_painting} alt="Contact" width="100%"></img>
       </section>
-      <section style={{ marginTop: "5rem" }} >
-      <a
+      <section style={{ marginTop: "5rem" }}>
+        <a
           href="https://www.linkedin.com/in/nikita-kharya-14a83670/"
           target="_blank"
           style={{ position: "absolute", top: 5 }}
