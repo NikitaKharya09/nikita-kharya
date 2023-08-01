@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { SocialIcon } from "react-social-icons";
 import { Nav } from "../sections/navigation";
 
-import main2 from "../../assets/images/main-2.jpg";
+import main3 from "../../assets/images/main3.jpg";
 import vmw from "../../assets/images/vmw.jpg";
 import db1 from "../../assets/images/db1.jpg";
 import acc from "../../assets/images/acc.jpg";
@@ -189,7 +189,7 @@ const About = () => {
               user experience. Let me introduce myself with the help of this
               single image as an example.
             </p>
-            <img src={main2} alt="MySetup" style={{ marginTop: "10%" }} />
+            <img src={main3} alt="MySetup" style={{ marginTop: "10%" }} />
           </div>
         </div>
         <div className="small-screen">
@@ -266,7 +266,7 @@ const About = () => {
         id="experiences"
       >
         <div className="work-experience">
-          <div class="we-title-main">Work Experience</div>
+          <div class="we-title-main"><strong>Work Experience</strong></div>
           <div class="text-container">
             <div class="we-title" id="we-title-1">
               2022
@@ -492,7 +492,7 @@ const About = () => {
         </div>
       </section>
       <section style={{ marginTop: "10rem" }} id="skill">
-        <h2 className="we-title-main">SKILLS</h2>
+        <h2 className="we-title-main"><strong>SKILLS</strong></h2>
         <img src={skills} alt="Skills" width="100%"></img>
       </section>
 
@@ -510,9 +510,10 @@ const About = () => {
         <h2
           className="we-title-main"
           style={{ paddingTop: 0, paddingBottom: "2rem" }}
-        >
+        ><strong>
           {" "}
           Personal
+          </strong>
         </h2>
         <div className="personal-list">
           <div className="img-container">
@@ -611,7 +612,7 @@ const About = () => {
         </div> */}
       </section>
       <section style={{ marginTop: "5rem" }} id="contacts">
-        ><h2 className="we-title-main">Contact</h2>
+        ><h2 className="we-title-main"><strong>Contact</strong></h2>
         <img src={contact_painting} alt="Contact" width="100%"></img>
       </section>
       <section style={{ marginTop: "5rem" }}>
