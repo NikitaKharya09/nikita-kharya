@@ -169,7 +169,7 @@ const getIntelligentResponse = (personality, message) => {
   }
 };
 
-const MainPage = () => {
+function MainPage() {
   const [activeTab, setActiveTab] = useState('architect');
   const [messages, setMessages] = useState({
     architect: [],
