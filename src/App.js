@@ -10,7 +10,7 @@ import React from 'react';
 // import './App.scss';
 // import { Nav } from './sections/navigation';
 
-import MainPage from "./MainPage";
+import { MainPage } from "./MainPage";
 
 const App = () => {
   return <MainPage />
