@@ -7,7 +7,7 @@ import React from 'react';
 // import { Parallax } from "react-scroll-parallax";
 // import { Experience } from "./sections/experience";
 
-// import './App.scss';
+import './App.scss';
 // import { Nav } from './sections/navigation';
 
 import MainPage from "./MainPage";
