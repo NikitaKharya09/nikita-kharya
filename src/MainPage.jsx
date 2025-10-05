@@ -169,7 +169,7 @@ const getIntelligentResponse = (personality, message) => {
   }
 };
 
-function MainPage() {
+const MainPage = () => {
   const [activeTab, setActiveTab] = useState('architect');
   const [messages, setMessages] = useState({
     architect: [],
@@ -244,7 +244,7 @@ function MainPage() {
   const currentMessages = messages[activeTab] || [];
   const currentQuestions = suggestedQuestions[activeTab] || [];
 
-  return (
+  return {
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white overflow-hidden relative">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -602,7 +602,7 @@ function MainPage() {
         .scrollbar-track-transparent::-webkit-scrollbar-track { background-color: transparent; }
       `}</style>
     </div>
-  );
+      };
 }
 
 export default MainPage;
