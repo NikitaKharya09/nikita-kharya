@@ -36,19 +36,19 @@ const portfolioData = {
   paintings: [
     {
       title: "Struggles",
-      imageUrl: painting1,
+      imageUrl: painting4,
     },
     {
-      title: "Digital Landscapes",
+      title: "Breathe",
       imageUrl: painting2,
     },
     {
-      title: "Code & Canvas",
+      title: "Vision",
       imageUrl: painting3,
     },
     {
-      title: "Neural Networks",
-      imageUrl: painting4,
+      title: "Peace",
+      imageUrl: painting1,
     }
   ]
 };
