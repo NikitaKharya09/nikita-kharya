@@ -48,14 +48,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, Code2, Lightbulb, Zap, TrendingUp, Cpu, Mail, Linkedin, Github, Download, ExternalLink, Palette, BookOpen, MapPin } from 'lucide-react';
 
-import painting1 from "../../assets/images/painting1.jpg";
-import painting2 from "../../assets/images/painting2.jpg";
-import painting3 from "../../assets/images/painting3.jpg";
-import painting4 from "../../assets/images/painting4.jpg";
-import painting5 from "../../assets/images/painting5.jpg";
-import painting6 from "../../assets/images/painting6.jpg";
-import painting7 from "../../assets/images/painting7.jpg";
-import painting8 from "../../assets/images/painting8.jpg";
+import painting1 from "../assets/images/painting1.jpg";
+import painting2 from "../assets/images/painting2.jpg";
+import painting3 from "../assets/images/painting3.jpg";
+import painting4 from "../assets/images/painting4.jpg";
+import painting5 from "../assets/images/painting5.jpg";
+import painting6 from "../assets/images/painting6.jpg";
+import painting7 from "../assets/images/painting7.jpg";
+import painting8 from "../assets/images/painting8.jpg";
 
 // Nikita Kharya's Portfolio Data
 const portfolioData = {
