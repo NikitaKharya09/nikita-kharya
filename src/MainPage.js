@@ -529,12 +529,12 @@ function MainPage() {
                   </div>
                   <span className="text-sm">LinkedIn Profile</span>
                 </a>
-                <a href={portfolioData.contact.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group/item">
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${currentPersonality.gradient} group-hover/item:scale-110 transition-transform`}>
-                    <Github className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-sm">GitHub</span>
-                </a>
+                // <a href={portfolioData.contact.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 text-gray-300 hover:text-white transition-colors group/item">
+                //   <div className={`p-3 rounded-xl bg-gradient-to-br ${currentPersonality.gradient} group-hover/item:scale-110 transition-transform`}>
+                //     <Github className="w-5 h-5 text-white" />
+                //   </div>
+                //   <span className="text-sm">GitHub</span>
+                // </a>
               </div>
             </div>
           </div>
@@ -558,7 +558,7 @@ function MainPage() {
         {/* Footer */}
         <div className="text-center">
           <p className="text-sm text-gray-500">
-            Built with React • Powered by AI Principles • No Backend Required
+            Built with React • Powered by AI Principles
           </p>
         </div>
       </div>
