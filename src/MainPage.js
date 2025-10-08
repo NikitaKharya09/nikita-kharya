@@ -25,7 +25,7 @@ const portfolioData = {
   resumeUrl: "/path-to-your-resume.pdf",
   blogs: [
     {
-      title: "An Engineer’s Guide to AI-Augmented Development: Wins, Pitfalls, and What Actually Works",
+      title: "An Engineer's Guide to AI-Augmented Development: Wins, Pitfalls, and What Actually Works",
       description: "How we can leverage frontier models to define the new era for development in a restricted environment",
       date: "Sep 2025",
       readTime: "6 min read",
@@ -101,17 +101,30 @@ const getIntelligentResponse = (personality, message) => {
         "Greetings. As The Architect, I design platforms that serve millions with robust, scalable foundations. Currently VP at Morgan Stanley. What technical aspects interest you?"
       ],
       projects: [
-        "The Enterprise Oversight Platform is architecturally significant. We consolidated three separate applications into a unified codebase, utilizing React with TypeScript, GraphQL for data fetching, and a modular architecture for enhanced maintainability. The consolidation eliminated massive code duplication and delivered 40%+ time savings.",
-        "The CloudHealth transformation at VMware was a complete rewrite - legacy UI to modern React. We implemented code splitting, lazy loading, and optimized bundle sizes. Result: 35% faster user workflows, measurably better performance metrics."
+        "The Enterprise Oversight Solution at Morgan Stanley is my most complex architectural achievement. Built from scratch, I collaborated across multiple business domains and technical teams to eliminate compliance gaps and operational blind spots. This established a scalable foundation now serving as the firm-wide standard oversight solution. React, TypeScript, GraphQL - architected for massive scale.",
+        "The One UI Platform for CRG consolidated three disparate applications - onboarding, restrictions, instructions, and radius maintenance - into a single integrated experience. This wasn't just code consolidation; it required deep domain modeling to unify different business workflows into coherent UX. Substantially reduced context switching and improved operational efficiency across the organization.",
+        "The Cocoa Platform transformation was a strategic pivot. I evolved it from a basic tool into a comprehensive account management solution by consolidating Radius accounts and enabling direct management of Contact Maintenance, Investor Relationship Management, Holdings, Fee & Billing, and Investable Universe. This accelerated onboarding timelines and eliminated critical business bottlenecks.",
+        "The CloudHealth transformation at VMware was a complete legacy-to-modern rewrite. We migrated the entire UI to the latest React version, implementing code splitting, lazy loading, and bundle optimization. The result: simplified cloud spending analysis and reporting for Enterprise customers, with measurably better performance metrics."
       ],
       experience: [
-        "At Morgan Stanley as VP, I architect firm-wide frontend solutions serving critical financial systems. Recently consolidated 3 disparate applications into a unified platform - eliminated massive code duplication, 40%+ time savings. Proactively identified and mitigated technology risks like Chrome cookie deprecation and React CRA discontinuation before they impacted production.",
-        "My VMware experience (2022-2023) focused on transforming legacy CloudHealth UI into a next-gen React application. Built UI Components as a Service (UIaaS) - versioned, tested, consumed across multiple multi-cloud apps. Achieved 35% reduction in user time through data visualization improvements. GraphQL + React architecture scaled beautifully.",
-        "At Deutsche Bank (2019-2022) as Assistant VP, I was a founding member and technical lead for transaction monitoring UI - automated compliance checks across all transactions. Architected the entire system, led code reviews, and mentored team members. Configuration-based approach produced modular components reusable across bank projects. 20% reduction in UI defects through systematic quality initiatives.",
-        "Career progression shows consistent technical leadership growth: Started at Cognizant (2013-2017), building healthcare applications with HTML5, CSS3, AngularJS. Moved to Accenture (2017-2019), where I upgraded AngularJS to Angular 5 with zero defects - managed complex migrations. Each role built technical depth and architectural thinking."
+        "At Morgan Stanley as VP, I architect enterprise-wide solutions serving critical financial systems. The Enterprise Oversight Solution was built from scratch - collaborating across domains to create the firm-wide standard. The One UI Platform consolidated 3 apps into unified experience. The Cocoa transformation enabled comprehensive account management. Each project required deep architectural thinking and cross-functional leadership.",
+        "My VMware tenure (2022-2023) focused on next-generation cloud management. Revamped the entire CloudHealth UI to latest React, enabling Enterprise customers to better manage multi-cloud spending. Built UIaaS (UI Components as a Service) - versioned, tested components consumed across multiple applications for consistent user experience. Proposed data visualization POC forecasted to reduce user time by 35%.",
+        "At Deutsche Bank (2019-2022) as Assistant VP, I managed the transaction monitoring application UI from inception. This enabled automated compliance checks across all transactions - faster processing, better regulatory compliance, reduced manual error risk. Devised configuration-based standardized UI approach, producing modular components utilized across multiple bank projects. Mentored 7 junior developers, providing technical guidance and career coaching.",
+        "Accenture (2017-2019): Supervised migration of legacy applications to latest Angular version while consistently improving UX through creative design, client collaboration, and cross-team coordination. Result: 20% increase in user engagement through better experience design.",
+        "Cognizant (2013-2017): Single-handedly executed full front-end development of healthcare web application. Complete UI creation with HTML5, CSS3, and AngularJS. This foundational experience taught me end-to-end ownership and attention to detail in enterprise applications."
+      ],
+      skills: [
+        "My technical stack spans the modern frontend ecosystem: JavaScript/TypeScript as foundation, React with Redux and MobX for state management, React Native for mobile, Angular for enterprise apps. HTML5 and CSS/SASS for styling, GraphQL and REST for APIs, CI/CD for deployment automation. I choose technologies based on problem requirements, not trends.",
+        "I'm proficient across the full spectrum: React, Redux, MobX, TypeScript, React Native, Angular, HTML5, CSS/SASS, GraphQL, REST APIs, Agile methodologies, and CI/CD pipelines. My strength is knowing which tool solves which problem - architectural thinking over technology fandom."
+      ],
+      education: [
+        "I hold a Bachelor of Technology in Computer Science and Engineering from Rajiv Gandhi Prodyogiki Vishwavidhyalaya (2012). The CS fundamentals - algorithms, data structures, systems thinking - remain the foundation of everything I architect today."
+      ],
+      mentorship: [
+        "At Deutsche Bank, I mentored 7 junior front-end developers, providing technical guidance, code review coaching, and career development support. Mentorship isn't just about teaching syntax - it's about instilling architectural thinking, quality mindset, and professional growth. Watching them advance in their careers has been incredibly rewarding."
       ],
       default: [
-        "I can provide a detailed technical analysis on that topic. With experience across financial services, cloud platforms, and healthcare, I've architected solutions for various domains. All decisions are data-driven and optimized for scale. What specific technical area interests you?",
+        "I can provide a detailed technical analysis on that topic. With experience across financial services (Morgan Stanley, Deutsche Bank), cloud platforms (VMware), consulting (Accenture), and healthcare (Cognizant), I've architected solutions for diverse domains. All decisions are data-driven and optimized for scale. What specific technical area interests you?",
         "That's an interesting technical question. My approach combines engineering best practices with pragmatic business thinking. What aspect should we explore further?"
       ]
     },
@@ -121,14 +134,23 @@ const getIntelligentResponse = (personality, message) => {
         "Hello! ✨ As The Artist, I focus on the visual and experiential. From design systems to canvas art, I'm passionate about creating things that are both functional and beautiful!"
       ],
       projects: [
-        "The Enterprise Oversight Platform is a fantastic example of design at scale! We unified 3 disparate applications into one cohesive experience. The challenge was creating a unified design language that could serve multiple business domains while maintaining consistency. The result? A 40% reduction in time spent and a dramatically improved user experience!",
-        "The UIaaS project at VMware was incredibly rewarding from a design perspective! We created a component library that serves multiple multi-cloud applications. Every component was designed with flexibility and reusability in mind - proper design tokens, consistent spacing systems, and a visual language that scales!"
+        "The One UI Platform for CRG is design excellence at enterprise scale! Consolidating three disparate applications - onboarding, restrictions, instructions, radius maintenance - into one cohesive experience required creating a unified design language that serves multiple business domains. The challenge was making complex workflows feel simple and reducing context switching. Beautiful design that actually works! ✨",
+        "The UIaaS project at VMware was incredibly rewarding! We created UI Components as a Service - a library serving multiple multi-cloud applications. Every component was designed with flexibility in mind: proper design tokens, consistent spacing systems, accessibility baked in, and a visual language that scales. This is design systems done right!",
+        "The Cocoa Platform transformation showcases design's strategic impact! We evolved it into a comprehensive account management solution - Contact Maintenance, Investor Relationship Management, Holdings, Fee & Billing, Investable Universe. The UX challenge was unifying these diverse domains into intuitive workflows that accelerated onboarding and eliminated bottlenecks.",
+        "The CloudHealth data visualization POC is a perfect example of design-driven innovation! Identifying the need for improved visualizations and proposing a solution forecasted to reduce user time by 35%. Good design isn't just aesthetics - it's about making complex cloud spending data instantly comprehensible through smart visual hierarchy and interaction patterns."
       ],
       experience: [
-        "At Morgan Stanley, I lead design strategy for enterprise-wide solutions! The Contact Maintenance Solution accelerated onboarding by 60% - not through flashy features, but through thoughtful UX that removes friction. We mapped every user journey, eliminated unnecessary steps, and created interfaces that feel intuitive. That's the power of good design - invisible yet impactful! ✨",
-        "The VMware CloudHealth redesign was such a rewarding challenge! We took a legacy interface and transformed it into a modern, beautiful experience. The data visualization improvements weren't just prettier - they were purposefully designed to surface insights 35% faster. Color coding that actually makes sense, hierarchy that guides the eye, interactions that feel natural.",
-        "At Deutsche Bank, I was founding design lead for the transaction monitoring UI. The interesting challenge? Creating standardized UI interfaces using a configuration-based approach. We built a design system from scratch that could flex across different compliance needs while maintaining visual consistency. Modular components, reusable patterns, a cohesive visual language serving multiple projects!",
-        "My design journey evolved beautifully: Started at Cognizant, creating healthcare UIs where accessibility wasn't optional - it was essential. At Accenture, I led the AngularJS to Angular 5 migration while improving UX - 28% increase in user engagement through better design. Each role deepened my understanding of design systems at enterprise scale."
+        "At Morgan Stanley, I lead design strategy for enterprise solutions! The Cocoa Platform UX accelerated onboarding through thoughtful design that removes friction. The Enterprise Oversight Solution required creating intuitive interfaces for complex compliance workflows. The One UI Platform unified three apps with consistent design language. Design impact measured in business outcomes - that's what I deliver! ✨",
+        "The VMware CloudHealth redesign (2022-2023) was transformative! We took a legacy interface and created a modern, beautiful experience with the latest React. The data visualization improvements weren't just prettier - they were purposefully designed to surface cloud management insights faster. Built UIaaS for consistent experience across multi-cloud apps. Color, hierarchy, interaction - everything intentional!",
+        "At Deutsche Bank (2019-2022), I was founding design lead for transaction monitoring UI enabling automated compliance checks. The fascinating challenge? Creating standardized UI interfaces using configuration-based approach. Built a design system from scratch that flexed across different compliance needs while maintaining visual consistency. Modular components, reusable patterns, cohesive visual language serving multiple bank projects!",
+        "Accenture (2017-2019): Led AngularJS to Angular migration while consistently improving UX through creative design ideation and client collaboration. Result: 20% increase in user engagement through better experience design. Design and development working together!",
+        "Cognizant (2013-2017): Single-handedly crafted the complete UI for a healthcare web application. HTML5, CSS3, AngularJS - where accessibility wasn't optional, it was essential. This taught me that beautiful design must also be inclusive and functional."
+      ],
+      skills: [
+        "My design toolkit combines technical implementation with visual thinking: React for building, TypeScript for type-safe components, HTML5/CSS/SASS for pixel-perfect styling, design systems for consistency, accessibility standards for inclusion. I bridge the gap between design vision and technical reality!"
+      ],
+      mentorship: [
+        "Mentoring 7 junior developers at Deutsche Bank was about teaching design thinking, not just code patterns. How to critique interfaces, understand user needs, build reusable components, and think systematically about UX. Watching them grow from implementers to design-minded engineers was incredible!"
       ],
       default: [
         "That's a great question! My design philosophy centers on creating systems that scale - both technically and organizationally. Whether it's component libraries, design tokens, or UX patterns, everything is built to serve enterprise needs while delighting users. What specific aspect interests you?",
@@ -138,33 +160,125 @@ const getIntelligentResponse = (personality, message) => {
     visionary: {
       greeting: [
         "Hey! 🚀 I'm The Visionary - I see what's coming next. AI-augmented workflows, self-optimizing systems, breakthrough thinking - that's my domain. I'm building the future of frontend development. What excites you?",
-        "Hello! As The Visionary, I focus on what's possible tomorrow. From AI integration to paradigm shifts in how we build software, I explore the frontier. What future possibilities interest you?"
+        "Hello! As The Visionary, I focus on what's possible tomorrow. From AI-accelerated development to paradigm shifts in how we build software, I explore the frontier. What future possibilities interest you?"
       ],
       projects: [
-        "The AI-assisted workflows in our Contact Maintenance Solution are just the beginning! We're leveraging AI to accelerate deployment cycles and automate repetitive tasks. The real opportunity is in intelligent component generation - imagine AI that understands your design system and suggests optimal compositions. That's what I'm building! 🤖",
-        "I'm particularly excited about self-optimizing frontend architectures. Systems that monitor their own performance, identify bottlenecks, and automatically optimize themselves. We're experimenting with AI models that analyze user behavior patterns and adapt the UI in real-time!"
+        "The AI-accelerated development framework at Morgan Stanley is genuinely revolutionary! I pioneered structured LLM prompts and workflow automation that compressed traditional 3-week development cycles to just 2 days - that's 10x faster delivery while maintaining quality standards. This positions our organization as an AI-development leader and fundamentally changes how we think about software velocity! 🤖",
+        "The React to React Native migration project using state-of-the-art Generative AI models showcases the power of AI tooling. I'm not just using AI assistants - I'm building systematic frameworks for AI-augmented development that scale across teams!",
+        "The Enterprise Oversight Solution demonstrates strategic tech vision. Built from scratch, collaborating across domains to eliminate compliance gaps. This wasn't just executing requirements - it was envisioning what firm-wide oversight should be and making it reality.",
+        "Mobile Fashion Application with React Native shows my personal exploration of cross-platform innovation. Always experimenting with new paradigms, building personal projects to stay ahead of the curve!"
       ],
       experience: [
-        "At Morgan Stanley, I'm pioneering AI integration in frontend development! The Contact Maintenance Solution uses AI-assisted workflows to accelerate onboarding by 60%. But more importantly, I'm building developer productivity tools that leverage AI - imagine systems that understand your codebase context and make intelligent suggestions. I've also positioned our UI team as strategic technology intelligence - identifying future risks and opportunities before they impact us!",
-        "The most forward-thinking work was at VMware with the AI Component Explorer concept. We used TensorFlow.js to analyze component usage patterns and suggest optimal combinations. This wasn't autocomplete - it was intelligent assistance that learned from the codebase! The CloudHealth transformation also pioneered next-gen data visualization that adapts to user needs. Innovation isn't just about new tech - it's about solving real problems in novel ways.",
-        "At Deutsche Bank, innovation meant rethinking how we build UIs. The configuration-based approach for transaction monitoring was radical at the time - standardized interfaces that could be composed programmatically. We created modular components that could be recombined for different compliance scenarios. This was early low-code thinking before it was mainstream! The 20% defect reduction came from systematic automation and quality tooling.",
-        "My innovation journey spans 12 years: Started at Cognizant, building healthcare apps where I pushed for modern frameworks. At Accenture, led AngularJS to Angular 5 migration - zero defects through automated testing innovation. Each role, I've asked: what's the next paradigm shift? Now it's AI-native development, and I'm not just using AI tools - I'm building the future where code writes and optimizes itself! 🚀"
+        "At Morgan Stanley, I'm pioneering the future of development! The AI-accelerated framework I built compresses 3-week cycles to 2 days using structured LLM prompts - 10x faster, same quality. This isn't incremental improvement; it's paradigm shift! The Cocoa Platform transformation and Enterprise Oversight Solution required visionary thinking - seeing opportunities others missed, positioning UI teams as strategic technology intelligence.",
+        "VMware (2022-2023): Proactively identified the need for better data visualization before anyone asked. Proposed POC for CloudHealth FlexOrgs forecasted to reduce user time by 35%. Built UIaaS thinking ahead about component reusability across future applications. Innovation means anticipating needs, not just responding to them!",
+        "At Deutsche Bank (2019-2022), the configuration-based UI approach was ahead of its time - early low-code thinking before it was mainstream! Building standardized, modular components that could be programmatically composed for different compliance scenarios. Mentored 7 developers not just in current tech, but in forward-thinking approaches. Always asking: what's next?",
+        "Accenture (2017-2019): Leading AngularJS to Angular migration wasn't just version upgrade - it was strategic modernization. 20% user engagement increase through progressive UX improvements. Each migration taught me how to navigate paradigm shifts!",
+        "Cognizant (2013-2017): Single-handedly built healthcare web app, pushing for modern frameworks (AngularJS) when others were stuck in jQuery. Innovation journey spans 12 years - from pushing for better tools to building AI-native development! 🚀"
+      ],
+      skills: [
+        "My skill set is forward-focused: React, TypeScript, React Native for modern development, GraphQL for efficient data fetching, CI/CD for automation, Agile for iterative innovation. But skills are just tools - the real superpower is seeing where technology is heading and positioning ahead of the curve!",
+        "JavaScript, React, Redux, MobX, TypeScript, React Native, Angular, GraphQL, REST - I know the tools. But more importantly, I know which emerging patterns will matter in 2-3 years and how to prepare teams for inevitable transitions."
+      ],
+      ai: [
+        "AI-augmented development is my current frontier! At Morgan Stanley, I pioneered a framework using structured LLM prompts and workflow automation - traditional 3-week cycles compressed to 2 days, 10x faster delivery. The key is systematic prompt engineering and workflow integration, not just ad-hoc AI tool usage. I'm building frameworks that enable entire teams to leverage AI effectively!",
+        "The React to React Native migration project using Generative AI models demonstrates next-gen development approaches. AI isn't replacing developers - it's amplifying our capabilities. I'm exploring how AI can understand codebases, suggest optimal architectures, and accelerate development systematically."
+      ],
+      personal: [
+        "My personal projects keep me on the cutting edge! Mobile Fashion Application with React Native explores cross-platform possibilities. React to React Native migration using state-of-the-art AI models tests how far we can push AI-augmented development. I build to learn, experiment to innovate!"
       ],
       default: [
-        "That's exactly the kind of forward-thinking question I love! The intersection of AI and frontend development is exploding with possibilities. We're at an inflection point where the tools and paradigms are fundamentally changing. What specific aspect interests you most?",
+        "That's exactly the kind of forward-thinking question I love! The intersection of AI and frontend development is exploding with possibilities. We're at an inflection point where tools and paradigms are fundamentally changing. What specific aspect interests you most?",
         "Great question! Innovation in frontend isn't just about new libraries - it's about reimagining how we build software. What possibilities excite you?"
       ]
     }
   };
 
   const personalityResponses = responses[personality];
-  if (msg.includes('hi') || msg.includes('hello') || msg.includes('hey')) {
+  
+  // Greeting
+  if (msg.includes('hi') || msg.includes('hello') || msg.includes('hey') || msg.includes('greet')) {
     return personalityResponses.greeting[Math.floor(Math.random() * personalityResponses.greeting.length)];
-  } else if (msg.includes('experience') || msg.includes('work') || msg.includes('career') || msg.includes('job') || msg.includes('role') || msg.includes('company') || msg.includes('morgan') || msg.includes('vmware') || msg.includes('deutsche') || msg.includes('accenture') || msg.includes('cognizant')) {
+  } 
+  // Experience & Work
+  else if (msg.includes('experience') || msg.includes('work') || msg.includes('career') || msg.includes('job') || 
+           msg.includes('role') || msg.includes('company') || msg.includes('background') || msg.includes('journey')) {
     return personalityResponses.experience[Math.floor(Math.random() * personalityResponses.experience.length)];
-  } else if (msg.includes('project') || msg.includes('built') || msg.includes('created')) {
+  }
+  // Company-specific queries
+  else if (msg.includes('morgan') || msg.includes('stanley') || msg.includes('current role') || msg.includes('vp') || msg.includes('vice president')) {
+    return personalityResponses.experience[0];
+  }
+  else if (msg.includes('vmware') || msg.includes('cloudhealth') || msg.includes('cloud health')) {
+    return personalityResponses.experience[1];
+  }
+  else if (msg.includes('deutsche') || msg.includes('db') || msg.includes('bank') || msg.includes('deutsche bank')) {
+    return personalityResponses.experience[2];
+  }
+  else if (msg.includes('accenture')) {
+    return personalityResponses.experience[3];
+  }
+  else if (msg.includes('cognizant') || msg.includes('cts')) {
+    return personalityResponses.experience[4];
+  }
+  // Projects
+  else if (msg.includes('project') || msg.includes('built') || msg.includes('created') || msg.includes('developed')) {
     return personalityResponses.projects[Math.floor(Math.random() * personalityResponses.projects.length)];
-  } else {
+  }
+  // Specific project queries
+  else if (msg.includes('oversight') || msg.includes('enterprise solution')) {
+    return personalityResponses.projects[0];
+  }
+  else if (msg.includes('cocoa') || msg.includes('account management') || msg.includes('onboarding')) {
+    return personalityResponses.projects[2] || personalityResponses.projects[0];
+  }
+  else if (msg.includes('one ui') || msg.includes('crg') || msg.includes('consolidat')) {
+    return personalityResponses.projects[0];
+  }
+  else if (msg.includes('uiaas') || msg.includes('component') || msg.includes('design system')) {
+    return personalityResponses.projects[1];
+  }
+  // AI-related queries
+  else if (msg.includes('ai') || msg.includes('artificial intelligence') || msg.includes('llm') || 
+           msg.includes('gpt') || msg.includes('machine learning') || msg.includes('automation')) {
+    return personalityResponses.ai?.[Math.floor(Math.random() * personalityResponses.ai.length)] || 
+           personalityResponses.projects[0];
+  }
+  // Skills
+  else if (msg.includes('skill') || msg.includes('technolog') || msg.includes('stack') || 
+           msg.includes('react') || msg.includes('typescript') || msg.includes('angular') || 
+           msg.includes('javascript') || msg.includes('graphql')) {
+    return personalityResponses.skills?.[Math.floor(Math.random() * personalityResponses.skills.length)] || 
+           personalityResponses.default[0];
+  }
+  // Education
+  else if (msg.includes('education') || msg.includes('degree') || msg.includes('university') || 
+           msg.includes('college') || msg.includes('study') || msg.includes('studied')) {
+    return personalityResponses.education?.[0] || 
+           "I hold a Bachelor of Technology in Computer Science and Engineering from Rajiv Gandhi Prodyogiki Vishwavidhyalaya (2012). The CS fundamentals remain the foundation of everything I build today.";
+  }
+  // Mentorship & Leadership
+  else if (msg.includes('mentor') || msg.includes('teach') || msg.includes('lead') || 
+           msg.includes('team') || msg.includes('manage') || msg.includes('coach')) {
+    return personalityResponses.mentorship?.[0] || personalityResponses.experience[2];
+  }
+  // Personal projects
+  else if (msg.includes('personal') || msg.includes('side project') || msg.includes('hobby project') || 
+           msg.includes('mobile') || msg.includes('react native') || msg.includes('fashion app')) {
+    return personalityResponses.personal?.[0] || 
+           "I explore cutting-edge tech through personal projects! Built a Mobile Fashion Application with React Native and a React to React Native migration project using state-of-the-art Generative AI models. I build to learn and experiment to innovate!";
+  }
+  // Performance & Optimization
+  else if (msg.includes('performance') || msg.includes('optimi') || msg.includes('speed') || 
+           msg.includes('fast') || msg.includes('efficiency')) {
+    return "Performance is non-negotiable in enterprise applications. Whether it's code splitting, lazy loading, bundle optimization, or architectural decisions - I obsess over making systems fast and efficient. The CloudHealth improvements and Enterprise Oversight solution both demonstrate measurable performance gains through systematic optimization.";
+  }
+  // Agile & Process
+  else if (msg.includes('agile') || msg.includes('process') || msg.includes('methodology') || 
+           msg.includes('workflow') || msg.includes('ci/cd') || msg.includes('deployment')) {
+    return "I work in Agile environments with CI/CD pipelines for rapid, reliable deployment. My AI-accelerated framework at Morgan Stanley exemplifies modern development workflow - systematic automation, quality gates, and continuous delivery. Process serves speed and quality, not bureaucracy.";
+  }
+  // Default
+  else {
     return personalityResponses.default[Math.floor(Math.random() * personalityResponses.default.length)];
   }
 };
@@ -182,9 +296,30 @@ function MainPage() {
   const messagesEndRef = useRef(null);
 
   const suggestedQuestions = {
-    architect: ["Tell me about your experience", "System design approach?", "Performance optimization?"],
-    artist: ["What's your creative journey?", "UX impact metrics?", "Tell me about your art"],
-    visionary: ["Your innovation experience?", "AI in frontend?", "Future vision?"]
+    architect: [
+      "Tell me about your experience",
+      "What's the Enterprise Oversight Solution?",
+      "How do you approach system design?",
+      "Tell me about the One UI Platform",
+      "What technologies do you use?",
+      "Your work at Deutsche Bank?"
+    ],
+    artist: [
+      "What's your creative journey?",
+      "How do you approach UX design?",
+      "Tell me about your paintings",
+      "What's UIaaS?",
+      "Design systems philosophy?",
+      "How did you improve CloudHealth UX?"
+    ],
+    visionary: [
+      "Tell me about AI-accelerated development",
+      "What's your innovation approach?",
+      "AI in frontend development?",
+      "Personal projects?",
+      "Future of development?",
+      "How did you achieve 10x faster delivery?"
+    ]
   };
 
   const scrollToBottom = () => {
@@ -596,7 +731,7 @@ function MainPage() {
         .scrollbar-track-transparent::-webkit-scrollbar-track { background-color: transparent; }
       `}</style>
     </div>
-      );
+  );
 }
 
 export default MainPage;
