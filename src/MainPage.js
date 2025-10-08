@@ -198,8 +198,15 @@ const getIntelligentResponse = (personality, message) => {
   // Greeting
   if (msg.includes('hi') || msg.includes('hello') || msg.includes('hey') || msg.includes('greet')) {
     return personalityResponses.greeting[Math.floor(Math.random() * personalityResponses.greeting.length)];
-  } 
-  // Experience & Work
+  }
+  // Comprehensive Experience Overview - when asking about overall experience
+  else if ((msg.includes('tell me about your experience') || msg.includes('tell me about experience') || 
+            msg.includes('your experience') || msg.includes('work history') || msg.includes('career history')) && 
+           !msg.includes('morgan') && !msg.includes('vmware') && !msg.includes('deutsche') && 
+           !msg.includes('accenture') && !msg.includes('cognizant')) {
+    return `Here's my complete career journey spanning 12+ years:\n\n**Morgan Stanley** - Vice President (Oct 2023 - Present)\nLeading enterprise-wide frontend solutions and pioneering AI-accelerated development.\n\n**VMware** - Member of Technical Staff 3 (May 2022 - Jul 2023)\nRevamped CloudHealth UI and built UIaaS for multi-cloud applications.\n\n**Deutsche Bank** - Assistant Vice President (Feb 2019 - May 2022)\nManaged transaction monitoring UI and mentored 7 developers.\n\n**Accenture** - Senior Software Engineer (Aug 2017 - Feb 2019)\nLed Angular migrations and improved user engagement by 20%.\n\n**Cognizant Technology Solutions** - Associate (Jun 2013 - Jun 2017)\nBuilt healthcare web applications with AngularJS.\n\nEach role built upon the last, growing from hands-on development to architectural leadership and innovation!`;
+  }
+  // Experience & Work - general queries
   else if (msg.includes('experience') || msg.includes('work') || msg.includes('career') || msg.includes('job') || 
            msg.includes('role') || msg.includes('company') || msg.includes('background') || msg.includes('journey')) {
     return personalityResponses.experience[Math.floor(Math.random() * personalityResponses.experience.length)];
