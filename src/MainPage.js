@@ -69,11 +69,10 @@ function MainPage() {
         years: "2013-2017",
         company: "Cognizant",
         role: "Associate",
-        story: "This is where I learned that code is only half the battle. Building healthcare applications solo taught me that user needs trump technical elegance.",
-        pattern: "End-to-end ownership breeds excellence",
-        tech: ["HTML5", "CSS3", "AngularJS"],
+        story: "Built healthcare applications end-to-end with complete ownership.\n\n• Sole developer for 3 production applications\n• Learned user-centric design through real-world feedback\n• Discovered that elegant code means nothing if users struggle\n\nKey Insight: User needs trump technical perfection—every time.",
+        tech: ["JavaScript", "HTML5", "CSS3", "AngularJS"],
         icon: Code,
-        metrics: { apps: 3, users: "5K+" }
+        metrics: { apps: 3, domain: "Healthcare" }
       },
       {
         id: 2,
@@ -81,11 +80,10 @@ function MainPage() {
         years: "2017-2019",
         company: "Accenture",
         role: "Senior Software Engineer",
-        story: "Leading AngularJS to Angular migration with zero defects taught me systematic thinking. Great engineers plan for change, not perfection.",
-        pattern: "Migration strategy > migration speed",
-        tech: ["Angular", "UX Design"],
+        story: "Led enterprise migration projects across telecom and banking domains.\n\n• Zero-defect AngularJS → Angular migration\n• Multi-client delivery in high-stakes environments\n• Developed systematic approach to technical transformation\n\nKey Insight: Great migrations require planning for change, not chasing perfection.",
+        tech: ["Angular", "TypeScript", "UX Design", "Agile"],
         icon: GitBranch,
-        metrics: { defects: 0, team: 5 }
+        metrics: { defects: 0, clients: "Multi" }
       },
       {
         id: 3,
@@ -93,57 +91,65 @@ function MainPage() {
         years: "2019-2022",
         company: "Deutsche Bank",
         role: "Assistant Vice President",
-        story: "Config-driven architecture where JSON schemas generate UIs. Mentoring 7 developers showed me: the best code is code others can extend.",
-        pattern: "Configuration beats customization at scale",
-        tech: ["Angular", "TypeScript"],
+        story: "Architected config-driven systems for transaction monitoring and compliance.\n\n• Built framework where JSON schemas generate entire UIs\n• Led and mentored team of 6 engineers\n• Reduced manual compliance review risk through automation\n\nKey Insight: Configuration beats customization at scale—make systems extensible, not just functional.",
+        tech: ["React", "TypeScript", "Config-Driven UI", "Compliance Tech"],
         icon: Database,
-        metrics: { mentored: 7, systems: 4 }
+        metrics: { team: 6, apps: "Multiple" }
       },
       {
         id: 4,
         phase: "Cloud Systems — The Component Thinker",
         years: "2022-2023",
         company: "VMware",
-        role: "MTS 3",
-        story: "UIaaS emerged from watching teams rebuild components. Reusability is a design decision, not a happy accident.",
-        pattern: "Component libraries are products",
-        tech: ["React", "TypeScript", "UIaaS"],
+        role: "Member of Technical Staff 3",
+        story: "Modernized CloudHealth UI and pioneered reusable component architecture.\n\n• React migration for multi-cloud analysis workflows\n• Built UI-as-a-Service library serving 8+ teams\n• POC demonstrated 35% reduction in analysis time\n\nKey Insight: Component libraries are products, not side projects—invest accordingly.",
+        tech: ["React", "TypeScript", "UIaaS", "Multi-Cloud", "D3.js"],
         icon: Layers,
-        metrics: { components: "200+", reuse: "80%" }
+        metrics: { speedup: "35%", teams: "8+" }
       },
       {
         id: 5,
-        phase: "VP Evolution — The Design Strategist",
+        phase: "VP Evolution — The AI-Augmented Architect",
         years: "2023-Present",
         company: "Morgan Stanley",
-        role: "Vice President",
-        story: "Leading 4 apps and 7 engineers. One UI Platform saving 33+ hours daily. AI-accelerated framework: 3 weeks → 2 days. AI-aware architecture.",
-        pattern: "AI amplifies architecture",
-        tech: ["React", "AI/LLM", "GraphQL"],
+        role: "Vice President, UI Engineering & Architecture",
+        story: "Leading enterprise transformation through AI-augmented development and unified platforms.\n\n• One UI Platform: 3 apps → 1 workflow = 33+ hours saved daily\n• AI Framework: Compressed 3-week cycles into 2 days (10x speedup)\n• Compliance platform now firm-wide standard\n• Managing 8 engineers across multiple high-impact projects\n\nKey Insight: AI amplifies great architecture—it doesn't replace it.",
+        tech: ["React", "TypeScript", "GraphQL", "AI/LLM Integration", "Micro-Frontends"],
         icon: Zap,
         current: true,
-        metrics: { timeSaved: "33h/day", speedup: "10x" }
+        metrics: { team: 8, saved: "33h/day", speedup: "10x" }
       },
       {
         id: 6,
-        phase: "UI+AI Research — The Future Builder",
+        phase: "Research — The Future Builder",
         years: "2024",
-        company: "Research",
-        role: "Published Author",
-        story: "iGraph visualization makes AI transparent. The future isn't AI that's smarter—it's AI we can understand and verify.",
-        pattern: "Best interfaces make complexity simple",
-        tech: ["AI Transparency", "iGraph"],
+        company: "Independent Research",
+        role: "Published Author & Innovator",
+        story: "Published research transforming how humans interact with AI systems.\n\n• Paper: 'When AI Reasoning Meets Interface Design'\n• Introduced iGraph visualization for AI transparency\n• Deployed in production at Morgan Stanley for compliance verification\n\nKey Insight: The future isn't smarter AI—it's AI we can understand and verify.",
+        tech: ["AI Transparency", "iGraph", "Reasoning Visualization", "Human-AI Verification"],
         icon: BookOpen,
         research: true,
-        metrics: { citations: "Growing", impact: "High" }
+        metrics: { impact: "Firm-wide", focus: "AI+UI" }
       }
     ],
 
-    principles: [
-      { name: "Adaptive Cognitive Density", description: "Interfaces that adjust information density based on user expertise" },
-      { name: "AI-Assisted Navigation Loops", description: "Navigation that learns patterns and suggests optimal paths" },
-      { name: "Predictive UI Simplification", description: "Interfaces that hide complexity until needed, predicted by AI" },
-      { name: "Confidence Gradient Visual System", description: "Visual cues showing AI confidence levels in real-time" }
+    expertise: [
+      { 
+        category: "Frontend & UI Engineering",
+        skills: "React • TypeScript • Redux • Angular • Material UI • HTML5/CSS3 • Web Components • WCAG Accessibility • Responsive Design"
+      },
+      { 
+        category: "Architecture & Systems",
+        skills: "Micro-Frontends • GraphQL • REST APIs • Config-Driven Architecture • Component Libraries • BFF Patterns • CI/CD • Docker"
+      },
+      { 
+        category: "AI + UI Innovation",
+        skills: "LLM-Driven Flows • AI-Assisted Development • Reasoning Visualization • Prompt Engineering • Human-AI Verification • Interactive D3.js"
+      },
+      { 
+        category: "Leadership & Delivery",
+        skills: "Team Management • Technical Mentorship • Cross-Domain Collaboration • Agile/Scrum • Product Strategy • Stakeholder Management"
+      }
     ],
 
     blogs: [
@@ -168,13 +174,13 @@ function MainPage() {
       welcome: "**Canvas & Code Node**\n\nWhere art meets technology. I discuss my design frameworks, painting practice, and visual philosophy.\n\nAsk me:\n• What's your design philosophy?\n• Tell me about your paintings\n• How do art and code connect?"
     },
     experience: {
-      welcome: "**Experience Node**\n\n12+ years across healthcare, finance, consulting, cloud platforms.\n\nAsk me:\n• Tell me about Morgan Stanley\n• What did you build at VMware?\n• How did industries shape you?"
+      welcome: "**Experience & Skills Node**\n\n12+ years across healthcare, telecom, banking, cloud, and fintech.\n\nAsk me:\n• Tell me about Morgan Stanley\n• What did you build at VMware?\n• Your Deutsche Bank work?\n• Accenture migration projects?\n• Where did you start?"
     },
     research: {
-      welcome: "**Research Node**\n\nPublished: 'When AI Reasoning Meets Interface Design'\n\nAsk me:\n• Explain your research\n• What is iGraph?\n• Why does AI transparency matter?"
+      welcome: "**Research Node**\n\nPublished: 'When AI Reasoning Meets Interface Design'\n\nIntroducing the iGraph system for AI transparency.\n\nAsk me:\n• Explain your research\n• What is iGraph?\n• How is it used in production?\n• Why does AI transparency matter?"
     },
     innovation: {
-      welcome: "**Innovation Node**\n\nExploring the future of UI+AI.\n\nAsk me:\n• What will interfaces look like in 5 years?\n• Tell me about your experiments\n• How will AI change design?"
+      welcome: "**Innovation Node**\n\nExploring the future of UI+AI interactions.\n\nAsk me:\n• What will interfaces look like in 5 years?\n• Tell me about your experiments\n• What are you working on?\n• What's your technical stack?"
     }
   };
 
@@ -194,35 +200,50 @@ function MainPage() {
 
     if (context === 'experience') {
       if (q.includes('morgan')) {
-        return "**Morgan Stanley (2023-Present)**\n\nVP leading 4 apps, 7 engineers.\n\n**One UI Platform:**\n• 3 apps → 1 unified experience\n• 25min → 15min per account\n• 33+ hours saved daily\n• React 18, TypeScript, GraphQL\n\n**AI Framework:**\n• 3 weeks → 2 days (10x faster)\n• Structured prompts + automation\n\nAI doesn't replace architecture—it amplifies it.";
+        return "**Morgan Stanley (2023-Present)**\n\nVP leading 8 engineers across FTE and contractor resources.\n\n**One UI Platform:**\n• 3 apps → 1 unified workflow\n• 25min → 15min per account\n• 33+ hours saved daily (~200 accounts)\n• React 18, TypeScript, GraphQL\n\n**AI Framework:**\n• Pioneered AI-accelerated development\n• 3 weeks → 2 days (10x faster)\n• Structured LLM prompts + workflows\n\n**Compliance Platform:**\n• Now firm-wide standard\n• Eliminated compliance gaps\n\nTransformed onboarding platform into complete account-management solution in 1 year.";
       }
       if (q.includes('vmware') || q.includes('cloud')) {
-        return "**VMware (2022-2023)**\n\n**CloudHealth UI:**\n• Legacy → modern React rewrite\n• 35% faster workflows\n• Code splitting, optimization\n\n**UIaaS:**\n• 200+ components serving 8 apps\n• Versioned, tested, documented\n• 80% reuse rate\n\nPattern: Component libraries are products, not side projects.";
+        return "**VMware (2022-2023)**\n\n**CloudHealth UI:**\n• React migration for multi-cloud analysis\n• Improved usability + workflows\n\n**UIaaS:**\n• UI-as-a-Service component library\n• Unified experience across 8+ teams\n• Visualization POC: 35% faster analysis\n\nPattern: Component libraries are products, not side projects.";
+      }
+      if (q.includes('deutsche') || q.includes('bank')) {
+        return "**Deutsche Bank (2019-2022)**\n\nAssistant Vice President\n\n**Transaction Monitoring Platform:**\n• Automated compliance workflows\n• Reduced manual review risk\n\n**Config-Driven Framework:**\n• JSON schemas generate UIs\n• Reused across multiple banking apps\n• Led & mentored team of 6 engineers\n\nPattern: Configuration beats customization at scale.";
+      }
+      if (q.includes('accenture')) {
+        return "**Accenture (2017-2019)**\n\nSenior Software Engineer\n\n• Led AngularJS → Angular migration\n• Zero defects across enterprise clients\n• Telecom & banking domains\n\nLearned: Migration strategy > migration speed. Plan for change, not perfection.";
+      }
+      if (q.includes('cognizant') || q.includes('start')) {
+        return "**Cognizant (2013-2017)**\n\nAssociate\n\n• Built healthcare applications end-to-end\n• Solo development, full ownership\n• Multiple production apps\n\nThis is where I learned: User needs trump technical elegance. Code is only half the battle.";
       }
       return nodeContexts.experience.welcome;
     }
 
     if (context === 'research') {
-      if (q.includes('paper') || q.includes('research')) {
-        return "**My Research: 'When AI Reasoning Meets Interface Design'**\n\nProblem: AI explanations are text walls. Users can't verify.\n\nSolution: iGraph visualization\n• Facts → Steps → Calculations → Results\n• Interactive node graphs\n• Errors visually obvious\n\nI turned 'trust me' AI into 'let me show you' AI.\n\nThis is how we trust AI in finance, healthcare, compliance.";
+      if (q.includes('paper') || q.includes('research') || q.includes('publication')) {
+        return "**My Research: 'When AI Reasoning Meets Interface Design'**\n\nProblem: AI explanations are text walls. Users can't verify reasoning or catch errors.\n\nSolution: iGraph visualization system\n• Facts → Steps → Calculations → Results\n• Interactive node graphs\n• Errors visually obvious\n• Real-time verification\n\n**Production Use:**\nDeployed at Morgan Stanley for compliance verification. When AI flags transactions, users see exact reasoning paths.\n\nI turned 'trust me' AI into 'let me show you' AI.";
       }
       if (q.includes('igraph')) {
-        return "**iGraph Visualization**\n\nMakes AI reasoning transparent.\n\n• Tagged reasoning (facts, steps, calculations)\n• Graph generation (nodes + edges)\n• Interactive UI (trace paths, find gaps)\n\nReal use: Morgan Stanley compliance systems. When AI flags transactions, users see exact reasoning.\n\nTransparency isn't optional—it's trustworthy AI.";
+        return "**iGraph Visualization System**\n\nStructured reasoning visualization for AI transparency.\n\n**Core Concept:**\n• Tag AI reasoning (facts, steps, calculations)\n• Generate interactive graphs (nodes + edges)\n• Enable path tracing and gap detection\n\n**Real Impact:**\nMorgan Stanley compliance systems use this. When AI flags suspicious transactions, analysts see the complete reasoning chain—no black box.\n\nTransparency isn't optional. It's how we build trustworthy AI.";
+      }
+      if (q.includes('apply') || q.includes('production') || q.includes('use')) {
+        return "**iGraph in Production**\n\nCurrently deployed at Morgan Stanley for compliance verification workflows.\n\n**Use Case:**\nTransaction monitoring + automated compliance\n\n**Why It Matters:**\n• Analysts verify AI decisions visually\n• Error detection is faster\n• Regulatory compliance improved\n• Cognitive load reduced\n\nThis isn't academic—it's solving real problems in high-stakes finance.";
       }
       return nodeContexts.research.welcome;
     }
 
     if (context === 'innovation') {
       if (q.includes('future') || q.includes('5 years')) {
-        return "**Interfaces in 5 Years:**\n\n1. Adaptive Complexity - Auto-adjusts to expertise\n2. Conversational Everything - Forms die, NL wins\n3. Predictive Surfaces - UI appears before you search\n4. Explainable AI - Every decision has reasoning graph\n5. Zero-State - Apps build themselves from patterns\n\nWhat disappears:\n• Static menus\n• Forms\n• Fixed dashboards\n\nFuture = intelligent simplification, not more features.";
+        return "**Interfaces in 5 Years:**\n\n1. Adaptive Complexity - Auto-adjusts to user expertise\n2. Conversational Everything - Forms die, natural language wins\n3. Predictive Surfaces - UI appears before you search\n4. Explainable AI - Every decision has reasoning graph\n5. Zero-State Design - Apps build themselves from patterns\n6. Generative UI Systems - AI creates interfaces on demand\n\nWhat disappears:\n• Static menus\n• Traditional forms\n• Fixed dashboards\n• Manual configuration\n\nFuture = intelligent simplification, not more features.";
       }
-      if (q.includes('experiment')) {
-        return "**My Experiments:**\n\n**Self-Arranging UI Grid**\nDashboard reorganizes based on usage\n\n**Intent-Driven Dashboard**\nPredicts goals, reconfigures interface\n\n**Conversational Flows**\nNatural language replaces forms\n\n**AI-Adjusted Density**\nDetects cognitive load, adapts complexity\n\nThese aren't academic—they're directional prototypes for production.";
+      if (q.includes('experiment') || q.includes('working')) {
+        return "**My Current Experiments:**\n\n**AI-Accelerated Development:**\nStructured LLM prompts compressing weeks into days\n\n**Generative UI Systems:**\nInterfaces that adapt and generate based on context\n\n**Self-Arranging Dashboards:**\nUI reorganizes based on usage patterns\n\n**Intent-Driven Interfaces:**\nPredicts user goals, reconfigures accordingly\n\n**Human-AI Verification:**\niGraph-style reasoning visualization\n\nThese aren't academic—they're directional prototypes heading to production.";
+      }
+      if (q.includes('skill') || q.includes('tech')) {
+        return "**Technical Arsenal:**\n\n**Frontend:**\nReact • TypeScript • Redux • MobX • Angular • React Native • Material UI\n\n**Architecture:**\nMicro-Frontends • GraphQL • REST • WebSockets • BFF Architecture\n\n**AI + UI:**\nLLM-driven Flows • Prompt Engineering • AI-Assisted Development • Reasoning Visualization • D3.js\n\n**Tooling:**\nWebpack • Vite • CI/CD • Docker\n\n**Specialization:**\nAccessibility (WCAG) • Responsive Design • Config-Driven Architecture";
       }
       return nodeContexts.innovation.welcome;
     }
 
-    return "I'm Nikita's AI assistant—trained on 12+ years of UI/UX experience.\n\nAsk about:\n• Canvas & Code (art + design philosophy)\n• Projects (One UI, AI Framework)\n• Research on AI transparency\n• Future of interfaces";
+    return "I'm Nikita's AI assistant—trained on 12+ years of UI/UX experience across finance, cloud, healthcare, and telecom.\n\nAsk about:\n• Experience & Skills (Morgan Stanley, VMware, Deutsche Bank, Accenture, Cognizant)\n• Research (iGraph, AI transparency)\n• Innovation (Future of UI, AI-accelerated development)\n• Canvas & Code (Art + design philosophy)";
   };
 
   const FloatingParticles = ({ isActive }) => {
@@ -872,20 +893,12 @@ function MainPage() {
                     <h3 className="text-3xl font-light mb-2 text-cyan-400">{phase.phase}</h3>
                     <p className="text-lg text-gray-300 mb-6">{phase.company} • {phase.role}</p>
 
-                    <div className={`p-6 rounded-xl border ${isHovered ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-cyan-400/20 bg-cyan-400/5'} mb-6 transition-all`}>
+                    <div className={`p-6 rounded-xl border ${isHovered ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-cyan-400/20 bg-cyan-400/5'} mb-4 transition-all`}>
                       <div className="flex items-center gap-2 mb-3">
                         <Sparkles className="w-4 h-4 text-cyan-400" />
-                        <span className="text-xs text-cyan-400">The Reflection</span>
+                        <span className="text-xs text-cyan-400 font-medium">Key Impact</span>
                       </div>
                       <p className="text-gray-300 text-sm leading-relaxed">{phase.story}</p>
-                    </div>
-
-                    <div className={`p-4 rounded-lg bg-gray-900 mb-4 transition-all ${isHovered ? 'bg-gray-800' : ''}`}>
-                      <p className="text-xs text-gray-500 mb-1">Pattern:</p>
-                      <div className="flex items-center gap-2">
-                        <ChevronRight className="w-3 h-3 text-cyan-400" />
-                        <p className="text-sm text-cyan-400">{phase.pattern}</p>
-                      </div>
                     </div>
 
                     <div className="flex flex-wrap gap-2">
@@ -907,32 +920,33 @@ function MainPage() {
         </div>
       </section>
 
-      {/* Principles */}
+      {/* Technical Expertise */}
       <section 
-        ref={el => sectionRefs.current['principles'] = el}
-        data-section="principles"
+        ref={el => sectionRefs.current['expertise'] = el}
+        data-section="expertise"
         className="relative py-20 px-8 bg-transparent"
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-6xl mx-auto">
-          <div className={`text-center mb-16 ${visibleSections.has('principles') ? 'animate-fadeInUp' : 'opacity-0'}`}>
+          <div className={`text-center mb-16 ${visibleSections.has('expertise') ? 'animate-fadeInUp' : 'opacity-0'}`}>
             <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              Principles of Intelligent Interfaces
+              Technical Expertise
             </h2>
+            <p className="text-xl text-gray-400 font-light">12+ years of hands-on experience</p>
           </div>
 
           <div className="grid grid-cols-2 gap-6">
-            {portfolioData.principles.map((p, i) => (
+            {portfolioData.expertise.map((item, i) => (
               <div 
                 key={i} 
-                className={`group p-8 border border-gray-800 rounded-2xl bg-gray-900/50 hover:border-cyan-400/50 transition-all hover:transform hover:-translate-y-1 ${visibleSections.has('principles') ? 'animate-fadeInUp' : 'opacity-0'}`}
+                className={`group p-8 border border-gray-800 rounded-2xl bg-gray-900/50 hover:border-cyan-400/50 transition-all hover:transform hover:-translate-y-1 ${visibleSections.has('expertise') ? 'animate-fadeInUp' : 'opacity-0'}`}
                 style={{ animationDelay: `${i * 0.1}s` }}
                 onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
                 onMouseLeave={() => setMagnetTarget(null)}
               >
-                <h3 className="text-2xl font-light mb-4 text-cyan-400 group-hover:animate-glow">{p.name}</h3>
-                <p className="text-gray-300 text-sm">{p.description}</p>
+                <h3 className="text-2xl font-light mb-4 text-cyan-400 group-hover:animate-glow">{item.category}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{item.skills}</p>
               </div>
             ))}
           </div>
@@ -1085,14 +1099,16 @@ function MainPage() {
               <Linkedin className="w-4 h-4 text-cyan-400 group-hover:animate-pulse" />
               <span className="text-cyan-400">LinkedIn</span>
             </a>
-            <button 
+            <a 
+              href="/Nikita_Kharya_Resume.txt"
+              download="Nikita_Kharya_Resume.txt"
               className="px-6 py-3 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 border border-cyan-400/50 rounded-full hover:from-cyan-400/30 hover:to-purple-400/30 transition-all flex items-center gap-2 group"
               onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
               onMouseLeave={() => setMagnetTarget(null)}
             >
               <Download className="w-4 h-4 text-cyan-400 group-hover:animate-pulse" />
               <span className="text-cyan-400">Resume</span>
-            </button>
+            </a>
           </div>
         </div>
       </section>
