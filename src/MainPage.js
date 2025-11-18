@@ -3,6 +3,9 @@ import { Brain, Send, Sparkles, Network, Mail, Linkedin, Download, MapPin, Award
 
 function MainPage() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [cursorScale, setCursorScale] = useState(1);
+  const [magnetTarget, setMagnetTarget] = useState(null);
   const [showAI, setShowAI] = useState(false);
   const [selectedNode, setSelectedNode] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -11,8 +14,14 @@ function MainPage() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [hoveredTimeline, setHoveredTimeline] = useState(null);
   const [activeNode, setActiveNode] = useState(null);
+  const [visibleSections, setVisibleSections] = useState(new Set());
   const messagesEndRef = useRef(null);
   const canvasRef = useRef(null);
+  const shaderCanvasRef = useRef(null);
+  const sectionRefs = useRef({});
+  const scrollVelocity = useRef(0);
+  const currentScroll = useRef(0);
+  const targetScroll = useRef(0);
 
   // Portfolio Data
   const portfolioData = {
@@ -24,32 +33,32 @@ function MainPage() {
     
     neuralNodes: [
       { 
-        id: 'principles', 
-        label: 'Canvas & Code', 
-        icon: Compass,
-        color: 'cyan',
-        description: 'Art & design philosophy'
-      },
-      { 
         id: 'experience', 
-        label: 'Experience', 
-        icon: Layers,
-        color: 'blue',
+        label: 'Experience & Skills', 
+        icon: Briefcase,
+        color: 'cyan',
         description: '12+ years across industries'
       },
       { 
         id: 'research', 
         label: 'Research', 
         icon: BookOpen,
-        color: 'purple',
+        color: 'blue',
         description: 'AI transparency & visualization'
       },
       { 
         id: 'innovation', 
         label: 'Innovation', 
         icon: Rocket,
-        color: 'pink',
+        color: 'purple',
         description: 'Future UI experiments'
+      },
+      { 
+        id: 'principles', 
+        label: 'Canvas & Code', 
+        icon: Compass,
+        color: 'pink',
+        description: 'Art & design philosophy'
       }
     ],
 
@@ -169,7 +178,7 @@ function MainPage() {
     }
   };
 
-  // AI responses (keeping existing)
+  // AI responses
   const getAIResponse = (query, context) => {
     const q = query.toLowerCase();
 
@@ -216,7 +225,6 @@ function MainPage() {
     return "I'm Nikita's AI assistant—trained on 12+ years of UI/UX experience.\n\nAsk about:\n• Canvas & Code (art + design philosophy)\n• Projects (One UI, AI Framework)\n• Research on AI transparency\n• Future of interfaces";
   };
 
-  // Floating particles for timeline
   const FloatingParticles = ({ isActive }) => {
     return (
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -235,18 +243,64 @@ function MainPage() {
     );
   };
 
-  // Mouse tracking
+  // Smooth inertia scrolling
+  useEffect(() => {
+    const handleWheel = (e) => {
+      if (showAI) return; // Disable when modal is open
+      e.preventDefault();
+      targetScroll.current += e.deltaY;
+      targetScroll.current = Math.max(0, Math.min(targetScroll.current, document.body.scrollHeight - window.innerHeight));
+    };
+
+    const smoothScroll = () => {
+      scrollVelocity.current = (targetScroll.current - currentScroll.current) * 0.08;
+      currentScroll.current += scrollVelocity.current;
+      window.scrollTo(0, currentScroll.current);
+      requestAnimationFrame(smoothScroll);
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    const animId = requestAnimationFrame(smoothScroll);
+
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      cancelAnimationFrame(animId);
+    };
+  }, [showAI]);
+
+  // Magnetic cursor
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      const x = (e.clientX - centerX) / (window.innerWidth / 2);
-      const y = (e.clientY - centerY) / (window.innerHeight / 2);
-      setMousePos({ x, y });
+      setMousePos({ x: e.clientX, y: e.clientY });
+
+      let finalX = e.clientX;
+      let finalY = e.clientY;
+
+      if (magnetTarget) {
+        const rect = magnetTarget.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const distance = Math.sqrt(
+          Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
+        );
+
+        if (distance < 120) {
+          const pullStrength = Math.max(0, 1 - distance / 120);
+          finalX = e.clientX + (centerX - e.clientX) * pullStrength * 0.5;
+          finalY = e.clientY + (centerY - e.clientY) * pullStrength * 0.5;
+          setCursorScale(1.5);
+        } else {
+          setCursorScale(1);
+        }
+      }
+
+      setCursorPos({ x: finalX, y: finalY });
     };
+
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
+  }, [magnetTarget]);
 
   // Scroll progress
   useEffect(() => {
@@ -259,7 +313,27 @@ function MainPage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Neural mesh
+  // Intersection Observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleSections(prev => new Set([...prev, entry.target.dataset.section]));
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    Object.values(sectionRefs.current).forEach(ref => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Simple particles for hero only
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -271,73 +345,132 @@ function MainPage() {
     let animationId;
     let particles = [];
 
-    // Initialize particles
-    for (let i = 0; i < 50; i++) {
+    // Minimal particles
+    for (let i = 0; i < 30; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 2 + 1
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        size: Math.random() * 1.5 + 0.5,
       });
     }
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Update and draw particles
-      particles.forEach(p => {
+      particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
         
         if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
         if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
         
-        const dist = Math.sqrt(Math.pow(mousePos.x - p.x, 2) + Math.pow(mousePos.y - p.y, 2));
-        const influence = Math.max(0, 1 - dist / 200);
-        
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size + influence * 2, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(77, 255, 255, ${0.1 + influence * 0.5})`;
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(77, 255, 255, 0.3)';
         ctx.fill();
       });
-
-      // Draw grid
-      const gridSize = 80;
-      const cols = Math.ceil(canvas.width / gridSize);
-      const rows = Math.ceil(canvas.height / gridSize);
-
-      for (let i = 0; i <= cols; i++) {
-        for (let j = 0; j <= rows; j++) {
-          const x = i * gridSize;
-          const y = j * gridSize;
-          
-          const dist = Math.sqrt(Math.pow(mousePos.x - x, 2) + Math.pow(mousePos.y - y, 2));
-          const influence = Math.max(0, 1 - dist / 200);
-          
-          if (influence > 0) {
-            ctx.beginPath();
-            ctx.arc(x, y, 2 + influence * 4, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(77, 255, 255, ${0.3 + influence * 0.7})`;
-            ctx.fill();
-          }
-
-          if (i < cols) {
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x + gridSize, y);
-            ctx.strokeStyle = `rgba(77, 255, 255, ${0.05 + influence * 0.1})`;
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          }
-        }
-      }
 
       animationId = requestAnimationFrame(draw);
     };
 
     draw();
     return () => cancelAnimationFrame(animationId);
+  }, []);
+
+  // Fluid shader background (like example)
+  useEffect(() => {
+    const canvas = shaderCanvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let time = 0;
+    let animationId;
+
+    const draw = () => {
+      time += 0.005;
+
+      // Multiple flowing gradients
+      const gradient1 = ctx.createRadialGradient(
+        canvas.width * 0.3 + Math.sin(time) * 200,
+        canvas.height * 0.3 + Math.cos(time * 0.8) * 200,
+        0,
+        canvas.width * 0.3,
+        canvas.height * 0.3,
+        canvas.width * 0.7
+      );
+      gradient1.addColorStop(0, 'rgba(34, 211, 238, 0.15)');
+      gradient1.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+      const gradient2 = ctx.createRadialGradient(
+        canvas.width * 0.7 + Math.cos(time * 1.2) * 250,
+        canvas.height * 0.6 + Math.sin(time * 0.6) * 250,
+        0,
+        canvas.width * 0.7,
+        canvas.height * 0.6,
+        canvas.width * 0.8
+      );
+      gradient2.addColorStop(0, 'rgba(168, 85, 247, 0.15)');
+      gradient2.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+      // Cursor-reactive gradient
+      const cursorGradient = ctx.createRadialGradient(
+        mousePos.x,
+        mousePos.y,
+        0,
+        mousePos.x,
+        mousePos.y,
+        300
+      );
+      cursorGradient.addColorStop(0, 'rgba(34, 211, 238, 0.2)');
+      cursorGradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+      // Clear with fade effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.02)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Draw gradients
+      ctx.fillStyle = gradient1;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = gradient2;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = cursorGradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Flowing lines (shader-like effect)
+      for (let i = 0; i < 5; i++) {
+        const y = (Math.sin(time + i) * 0.5 + 0.5) * canvas.height;
+        const waveOffset = Math.sin(time * 2 + i) * 50;
+        
+        ctx.beginPath();
+        for (let x = 0; x < canvas.width; x += 5) {
+          const offsetY = Math.sin(x * 0.01 + time + i) * 30;
+          ctx.lineTo(x, y + offsetY + waveOffset);
+        }
+        ctx.strokeStyle = `rgba(34, 211, 238, ${0.05 + i * 0.01})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      animationId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', handleResize);
+    };
   }, [mousePos]);
 
   const handleSend = () => {
@@ -361,47 +494,128 @@ function MainPage() {
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
       <style jsx>{`
+        * {
+          cursor: none !important;
+        }
+        
+        body {
+          overscroll-behavior: none;
+        }
+        
         @keyframes float {
           0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
           50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
         }
+        
         @keyframes pulse-ring {
           0% { transform: scale(1); opacity: 1; }
           100% { transform: scale(1.5); opacity: 0; }
         }
+        
         @keyframes glow {
           0%, 100% { filter: brightness(1); }
           50% { filter: brightness(1.5); }
         }
+        
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(60px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes fadeInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-60px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.8);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        
         .animate-float { animation: float 3s ease-in-out infinite; }
         .animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
         .animate-glow { animation: glow 2s ease-in-out infinite; }
+        .animate-fadeInUp { animation: fadeInUp 0.8s ease-out forwards; }
+        .animate-fadeInLeft { animation: fadeInLeft 0.8s ease-out forwards; }
+        .animate-scaleIn { animation: scaleIn 0.6s ease-out forwards; }
+        
+        .stagger-1 { animation-delay: 0.1s; opacity: 0; }
+        .stagger-2 { animation-delay: 0.2s; opacity: 0; }
+        .stagger-3 { animation-delay: 0.3s; opacity: 0; }
       `}</style>
 
+      {/* Magnetic Cursor */}
+      <div
+        className="fixed pointer-events-none z-[100]"
+        style={{
+          left: `${cursorPos.x}px`,
+          top: `${cursorPos.y}px`,
+          transform: `translate(-50%, -50%) scale(${cursorScale})`,
+          transition: 'transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        }}
+      >
+        <div className="w-10 h-10 border-2 border-cyan-400 rounded-full opacity-50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-cyan-400 rounded-full" />
+        <div className="absolute inset-0 w-10 h-10 bg-cyan-400 rounded-full blur-xl opacity-30 animate-pulse" />
+      </div>
+
+      {/* Shader Background - Visible across all sections */}
+      <canvas
+        ref={shaderCanvasRef}
+        className="fixed inset-0 pointer-events-none"
+        style={{ mixBlendMode: 'screen', zIndex: 0, opacity: 0.8 }}
+      />
+
+      {/* Main Content Wrapper */}
+      <div className="relative" style={{ zIndex: 1 }}>
+
       {/* Progress */}
-      <div className="fixed top-0 left-0 w-full h-0.5 bg-gray-900 z-50">
-        <div className="h-full bg-gradient-to-r from-cyan-400 to-purple-400 transition-all" style={{ width: `${scrollProgress}%` }} />
+      <div className="fixed top-0 left-0 w-full h-1 bg-gray-900 z-50">
+        <div 
+          className="h-full bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 transition-all shadow-lg shadow-cyan-400/50" 
+          style={{ width: `${scrollProgress}%` }} 
+        />
       </div>
 
       {/* Hero */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-        <canvas ref={canvasRef} className="absolute inset-0" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black" />
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-transparent">
+        <canvas ref={canvasRef} className="absolute inset-0 opacity-20" style={{ zIndex: 2 }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" style={{ zIndex: 3 }} />
 
-        <div className="relative z-10 text-center px-8 max-w-4xl">
-          <h1 className="text-7xl font-light mb-6">
+        <div className="relative z-10 text-center px-8 max-w-4xl" style={{ position: 'relative', zIndex: 10 }}>
+          <h1 className="text-7xl font-light mb-6 animate-fadeInUp">
             <span className="bg-gradient-to-r from-white via-cyan-300 to-purple-300 bg-clip-text text-transparent">
               Nikita Kharya
             </span>
           </h1>
           
-          <h2 className="text-4xl font-light mb-6 text-gray-300">
+          <h2 className="text-4xl font-light mb-6 text-gray-300 animate-fadeInUp stagger-1">
             {portfolioData.tagline}
           </h2>
           
-          <p className="text-xl text-cyan-300/70 font-light mb-12">{portfolioData.subtitle}</p>
+          <p className="text-xl text-cyan-300/70 font-light mb-12 animate-fadeInUp stagger-2">
+            {portfolioData.subtitle}
+          </p>
 
-          <div className="flex items-center justify-center gap-12 text-sm text-gray-400">
+          <div className="flex items-center justify-center gap-12 text-sm text-gray-400 animate-fadeInUp stagger-3">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
               <span>{portfolioData.company}</span>
@@ -418,10 +632,16 @@ function MainPage() {
         </div>
       </section>
 
-      {/* Get to Know Me - 3D Parallax */}
-      <section className="relative py-32 px-8 bg-black">
+      {/* Get to Know Me */}
+      <section 
+        ref={el => sectionRefs.current['nodes'] = el}
+        data-section="nodes"
+        className="relative py-20 px-8 bg-transparent"
+      >
+        {/* Dimmer overlay for this section */}
+        <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
+          <div className={`text-center mb-12 ${visibleSections.has('nodes') ? 'animate-fadeInUp' : 'opacity-0'}`}>
             <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
               Get to Know Me
             </h2>
@@ -432,30 +652,28 @@ function MainPage() {
             className="relative h-[500px]"
             style={{ perspective: '2000px' }}
           >
-            {/* Background particles with parallax */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              {[...Array(15)].map((_, i) => (
+              {[...Array(20)].map((_, i) => (
                 <div
                   key={i}
-                  className="absolute w-1 h-1 bg-cyan-400/20 rounded-full"
+                  className={`absolute w-1 h-1 bg-cyan-400/30 rounded-full ${visibleSections.has('nodes') ? 'animate-float' : 'opacity-0'}`}
                   style={{
                     left: `${Math.random() * 100}%`,
                     top: `${Math.random() * 100}%`,
-                    transform: `translate(${mousePos.x * (i * 3)}px, ${mousePos.y * (i * 3)}px)`,
+                    animationDelay: `${i * 0.1}s`,
+                    transform: `translate(${mousePos.x * (i * 2)}px, ${mousePos.y * (i * 2)}px)`,
                     transition: 'transform 0.3s ease-out',
-                    willChange: 'transform'
                   }}
                 />
               ))}
             </div>
 
-            {/* Neural Nodes Grid */}
             <div className="grid grid-cols-4 gap-12 h-full items-center justify-center max-w-5xl mx-auto">
               {portfolioData.neuralNodes.map((node, index) => {
                 const Icon = node.icon;
                 const isHovered = activeNode === node.id;
+                const isVisible = visibleSections.has('nodes');
 
-                // Map colors to hex values
                 const colorMap = {
                   cyan: '#22d3ee',
                   blue: '#818cf8',
@@ -465,23 +683,21 @@ function MainPage() {
 
                 const hexColor = colorMap[node.color] || '#22d3ee';
 
-                // Parallax based on depth (index determines depth)
                 const depth = index + 1;
                 const parallaxStrength = 1 / depth;
                 const parallaxX = mousePos.x * 40 * parallaxStrength;
                 const parallaxY = mousePos.y * 40 * parallaxStrength;
 
-                // Rotation based on mouse position
                 const rotateX = -mousePos.y * 8;
                 const rotateY = mousePos.x * 8;
 
                 return (
                   <button
                     key={node.id}
-                    onMouseEnter={() => setActiveNode(node.id)}
-                    onMouseLeave={() => setActiveNode(null)}
+                    onMouseEnter={() => { setActiveNode(node.id); setMagnetTarget(null); }}
+                    onMouseLeave={() => { setActiveNode(null); }}
                     onClick={() => { setSelectedNode(node.id); setMessages([]); setShowAI(true); }}
-                    className="relative group flex flex-col items-center"
+                    className={`relative group flex flex-col items-center ${isVisible ? 'animate-scaleIn' : 'opacity-0'}`}
                     style={{
                       transform: `
                         translateX(${parallaxX}px)
@@ -489,26 +705,23 @@ function MainPage() {
                         translateZ(${isHovered ? 100 : 0}px)
                         rotateX(${rotateX}deg)
                         rotateY(${rotateY}deg)
-                        scale(${isHovered ? 1.1 : 1})
+                        scale(${isHovered ? 1.15 : 1})
                       `,
                       transformStyle: 'preserve-3d',
                       transition: isHovered 
                         ? 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)' 
                         : 'transform 0.15s ease-out',
                       zIndex: isHovered ? 50 : depth,
-                      cursor: 'pointer',
-                      willChange: 'transform'
+                      animationDelay: `${index * 0.1}s`
                     }}
                   >
-                    {/* Glow effect */}
                     {isHovered && (
                       <div 
-                        className="absolute inset-0 blur-3xl opacity-60 rounded-full"
+                        className="absolute inset-0 blur-3xl opacity-60 rounded-full animate-pulse"
                         style={{ background: hexColor }}
                       />
                     )}
 
-                    {/* Icon circle */}
                     <div
                       className={`
                         w-32 h-32 rounded-full flex items-center justify-center
@@ -536,7 +749,6 @@ function MainPage() {
                       />
                     </div>
 
-                    {/* Label */}
                     <h3 
                       className={`
                         text-center font-light transition-all duration-300
@@ -549,14 +761,12 @@ function MainPage() {
                       {node.label}
                     </h3>
 
-                    {/* Description on hover */}
                     {isHovered && (
-                      <p className="text-xs text-gray-500 text-center mt-2 max-w-[150px]">
+                      <p className="text-xs text-gray-500 text-center mt-2 max-w-[150px] animate-fadeInUp">
                         {node.description}
                       </p>
                     )}
 
-                    {/* Sparkles on hover */}
                     {isHovered && (
                       <>
                         <Sparkles 
@@ -570,7 +780,6 @@ function MainPage() {
                       </>
                     )}
 
-                    {/* Shadow */}
                     <div 
                       className="absolute inset-0 bg-black/60 blur-2xl rounded-full -z-10 transition-opacity duration-500"
                       style={{
@@ -583,7 +792,6 @@ function MainPage() {
               })}
             </div>
 
-            {/* Center reference point */}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
               <div className="w-2 h-2 rounded-full bg-cyan-400/20 animate-ping" />
               <div className="absolute inset-0 w-2 h-2 rounded-full bg-cyan-400/50" />
@@ -592,36 +800,41 @@ function MainPage() {
         </div>
       </section>
 
-      {/* Timeline - Enhanced */}
-      <section className="relative py-32 px-8 bg-gradient-to-b from-black via-gray-950 to-black">
+      {/* Timeline */}
+      <section 
+        ref={el => sectionRefs.current['timeline'] = el}
+        data-section="timeline"
+        className="relative py-20 px-8 bg-transparent"
+      >
+        {/* Dimmer overlay for this section */}
+        <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-20">
+          <div className={`text-center mb-16 ${visibleSections.has('timeline') ? 'animate-fadeInUp' : 'opacity-0'}`}>
             <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               The Evolution
             </h2>
           </div>
 
           <div className="relative">
-            {/* Animated timeline line */}
             <div className="absolute left-8 top-0 bottom-0 w-px">
-              <div className="h-full bg-gradient-to-b from-cyan-400 via-blue-400 to-purple-400 animate-pulse" />
+              <div className={`h-full bg-gradient-to-b from-cyan-400 via-blue-400 to-purple-400 ${visibleSections.has('timeline') ? 'animate-pulse' : ''}`} />
             </div>
 
             {[...portfolioData.timeline].reverse().map((phase, index) => {
               const Icon = phase.icon;
               const isHovered = hoveredTimeline === phase.id;
+              const isVisible = visibleSections.has('timeline');
               
               return (
                 <div 
                   key={phase.id} 
-                  className="relative mb-24 pl-24"
-                  onMouseEnter={() => setHoveredTimeline(phase.id)}
-                  onMouseLeave={() => setHoveredTimeline(null)}
+                  className={`relative mb-16 pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
+                  style={{ animationDelay: `${index * 0.15}s` }}
+                  onMouseEnter={() => { setHoveredTimeline(phase.id); setMagnetTarget(null); }}
+                  onMouseLeave={() => { setHoveredTimeline(null); }}
                 >
-                  {/* Floating particles on hover */}
                   <FloatingParticles isActive={isHovered} />
                   
-                  {/* Enhanced node */}
                   <div className={`absolute left-0 w-16 h-16 rounded-full border-2 ${phase.current ? 'border-cyan-400' : phase.research ? 'border-purple-400' : 'border-gray-600'} ${phase.current || phase.research ? 'animate-pulse' : ''} bg-black flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-125' : ''}`}>
                     <Icon className={`w-6 h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
                     {isHovered && (
@@ -629,7 +842,6 @@ function MainPage() {
                     )}
                   </div>
 
-                  {/* Progress line to next phase */}
                   {index < portfolioData.timeline.length - 1 && isHovered && (
                     <div className="absolute left-8 top-16 w-px h-24 overflow-hidden">
                       <div className="h-full bg-gradient-to-b from-cyan-400 to-transparent animate-pulse" />
@@ -637,7 +849,6 @@ function MainPage() {
                   )}
 
                   <div className={`border border-gray-800 rounded-2xl p-8 backdrop-blur-xl bg-gray-900/50 hover:border-cyan-400/50 transition-all duration-300 ${isHovered ? 'transform -translate-y-1 shadow-xl shadow-cyan-400/20' : ''}`}>
-                    {/* Header with metrics */}
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <span className="px-3 py-1 rounded-full text-xs border border-cyan-400/50 text-cyan-400 bg-cyan-400/10">
@@ -647,7 +858,6 @@ function MainPage() {
                         {phase.research && <span className="px-3 py-1 rounded-full text-xs bg-purple-400/20 text-purple-400">RESEARCH</span>}
                       </div>
                       
-                      {/* Metrics badges */}
                       {phase.metrics && (
                         <div className="flex gap-3 text-xs">
                           {Object.entries(phase.metrics).map(([key, value]) => (
@@ -662,7 +872,6 @@ function MainPage() {
                     <h3 className="text-3xl font-light mb-2 text-cyan-400">{phase.phase}</h3>
                     <p className="text-lg text-gray-300 mb-6">{phase.company} • {phase.role}</p>
 
-                    {/* The Reflections - renamed from Neural Reflection */}
                     <div className={`p-6 rounded-xl border ${isHovered ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-cyan-400/20 bg-cyan-400/5'} mb-6 transition-all`}>
                       <div className="flex items-center gap-2 mb-3">
                         <Sparkles className="w-4 h-4 text-cyan-400" />
@@ -679,7 +888,6 @@ function MainPage() {
                       </div>
                     </div>
 
-                    {/* Animated tech tags */}
                     <div className="flex flex-wrap gap-2">
                       {phase.tech.map((tech, i) => (
                         <span 
@@ -700,9 +908,15 @@ function MainPage() {
       </section>
 
       {/* Principles */}
-      <section className="relative py-32 px-8 bg-black">
+      <section 
+        ref={el => sectionRefs.current['principles'] = el}
+        data-section="principles"
+        className="relative py-20 px-8 bg-transparent"
+      >
+        {/* Dimmer overlay for this section */}
+        <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+          <div className={`text-center mb-16 ${visibleSections.has('principles') ? 'animate-fadeInUp' : 'opacity-0'}`}>
             <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
               Principles of Intelligent Interfaces
             </h2>
@@ -710,7 +924,13 @@ function MainPage() {
 
           <div className="grid grid-cols-2 gap-6">
             {portfolioData.principles.map((p, i) => (
-              <div key={i} className="group p-8 border border-gray-800 rounded-2xl bg-gray-900/50 hover:border-cyan-400/50 transition-all hover:transform hover:-translate-y-1">
+              <div 
+                key={i} 
+                className={`group p-8 border border-gray-800 rounded-2xl bg-gray-900/50 hover:border-cyan-400/50 transition-all hover:transform hover:-translate-y-1 ${visibleSections.has('principles') ? 'animate-fadeInUp' : 'opacity-0'}`}
+                style={{ animationDelay: `${i * 0.1}s` }}
+                onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+                onMouseLeave={() => setMagnetTarget(null)}
+              >
                 <h3 className="text-2xl font-light mb-4 text-cyan-400 group-hover:animate-glow">{p.name}</h3>
                 <p className="text-gray-300 text-sm">{p.description}</p>
               </div>
@@ -719,10 +939,16 @@ function MainPage() {
         </div>
       </section>
 
-      {/* Blog / Thought Leadership */}
-      <section className="relative py-32 px-8 bg-black">
+      {/* Blog */}
+      <section 
+        ref={el => sectionRefs.current['blog'] = el}
+        data-section="blog"
+        className="relative py-20 px-8 bg-transparent"
+      >
+        {/* Dimmer overlay for this section */}
+        <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+          <div className={`text-center mb-16 ${visibleSections.has('blog') ? 'animate-fadeInUp' : 'opacity-0'}`}>
             <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
               Thought Leadership
             </h2>
@@ -730,9 +956,14 @@ function MainPage() {
           </div>
 
           <div className="grid gap-8">
-            {portfolioData.blogs.map((blog) => (
-              <div key={blog.id} className="group relative">
-                {/* Featured badge */}
+            {portfolioData.blogs.map((blog, idx) => (
+              <div 
+                key={blog.id} 
+                className={`group relative ${visibleSections.has('blog') ? 'animate-scaleIn' : 'opacity-0'}`}
+                style={{ animationDelay: `${idx * 0.2}s` }}
+                onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+                onMouseLeave={() => setMagnetTarget(null)}
+              >
                 {blog.featured && (
                   <div className="absolute -top-3 left-8 z-10">
                     <span className="px-4 py-1 text-xs bg-gradient-to-r from-purple-400 to-cyan-400 rounded-full text-black font-medium">
@@ -742,7 +973,6 @@ function MainPage() {
                 )}
 
                 <div className="border border-gray-800 rounded-2xl bg-gray-900/50 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden group-hover:transform group-hover:-translate-y-1 group-hover:shadow-2xl group-hover:shadow-cyan-400/20">
-                  {/* Blog header with gradient accent */}
                   <div className="h-1 bg-gradient-to-r from-purple-400 via-cyan-400 to-blue-400" />
                   
                   <div className="p-8">
@@ -774,7 +1004,6 @@ function MainPage() {
                       {blog.subtitle}
                     </p>
 
-                    {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-8">
                       {blog.tags.map((tag, idx) => (
                         <span 
@@ -786,7 +1015,6 @@ function MainPage() {
                       ))}
                     </div>
 
-                    {/* Read more button */}
                     <a 
                       href={blog.link}
                       target="_blank"
@@ -802,8 +1030,11 @@ function MainPage() {
               </div>
             ))}
 
-            {/* Coming soon card for future blogs */}
-            <div className="border border-gray-800/50 rounded-2xl bg-gray-900/30 p-12 text-center">
+            <div 
+              className={`border border-gray-800/50 rounded-2xl bg-gray-900/30 p-12 text-center ${visibleSections.has('blog') ? 'animate-fadeInUp stagger-2' : 'opacity-0'}`}
+              onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+              onMouseLeave={() => setMagnetTarget(null)}
+            >
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full border border-gray-700 bg-gray-800/50 mb-6">
                 <Sparkles className="w-8 h-8 text-gray-600" />
               </div>
@@ -817,37 +1048,60 @@ function MainPage() {
       </section>
 
       {/* Contact */}
-      <section className="relative py-32 px-8 bg-black">
+      <section 
+        ref={el => sectionRefs.current['contact'] = el}
+        data-section="contact"
+        className="relative py-20 px-8 bg-transparent"
+      >
+        {/* Dimmer overlay for this section */}
+        <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-4xl mx-auto text-center">
-          <div className="w-px h-24 bg-gradient-to-b from-transparent to-cyan-400 mx-auto mb-8" />
-          <h2 className="text-4xl font-light mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
+          <div className={`w-px h-24 bg-gradient-to-b from-transparent to-cyan-400 mx-auto mb-8 ${visibleSections.has('contact') ? 'animate-fadeInUp' : 'opacity-0'}`} />
+          <h2 className={`text-4xl font-light mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent ${visibleSections.has('contact') ? 'animate-fadeInUp stagger-1' : 'opacity-0'}`}>
             Let's Build the Future
           </h2>
-          <p className="text-lg text-gray-300 font-light mb-12">
+          <p className={`text-lg text-gray-300 font-light mb-12 ${visibleSections.has('contact') ? 'animate-fadeInUp stagger-2' : 'opacity-0'}`}>
             I design systems, not screens. My work sits at the intersection of UI craft, technical architecture, and AI-driven intelligence.
           </p>
 
-          <div className="flex items-center justify-center gap-6">
-            <a href="mailto:nikitakharya09@gmail.com" className="px-6 py-3 border border-cyan-400/50 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all flex items-center gap-2 group">
+          <div className={`flex items-center justify-center gap-6 ${visibleSections.has('contact') ? 'animate-fadeInUp stagger-3' : 'opacity-0'}`}>
+            <a 
+              href="mailto:nikitakharya09@gmail.com" 
+              className="px-6 py-3 border border-cyan-400/50 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all flex items-center gap-2 group"
+              onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+              onMouseLeave={() => setMagnetTarget(null)}
+            >
               <Mail className="w-4 h-4 text-cyan-400 group-hover:animate-pulse" />
               <span className="text-cyan-400">Email</span>
             </a>
-            <a href="https://www.linkedin.com/in/nikita-kharya-14a83670/" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-cyan-400/50 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all flex items-center gap-2 group">
+            <a 
+              href="https://www.linkedin.com/in/nikita-kharya-14a83670/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-6 py-3 border border-cyan-400/50 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all flex items-center gap-2 group"
+              onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+              onMouseLeave={() => setMagnetTarget(null)}
+            >
               <Linkedin className="w-4 h-4 text-cyan-400 group-hover:animate-pulse" />
               <span className="text-cyan-400">LinkedIn</span>
             </a>
-            <button className="px-6 py-3 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 border border-cyan-400/50 rounded-full hover:from-cyan-400/30 hover:to-purple-400/30 transition-all flex items-center gap-2 group">
+            <button 
+              className="px-6 py-3 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 border border-cyan-400/50 rounded-full hover:from-cyan-400/30 hover:to-purple-400/30 transition-all flex items-center gap-2 group"
+              onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+              onMouseLeave={() => setMagnetTarget(null)}
+            >
               <Download className="w-4 h-4 text-cyan-400 group-hover:animate-pulse" />
               <span className="text-cyan-400">Resume</span>
             </button>
           </div>
         </div>
       </section>
+      </div>
 
-      {/* AI Chat - keeping same */}
+      {/* AI Chat */}
       {showAI && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-8 bg-black/90 backdrop-blur-xl">
-          <div className="w-full max-w-2xl h-[600px] border border-cyan-400/30 rounded-3xl bg-black/90 flex flex-col overflow-hidden shadow-2xl">
+          <div className="w-full max-w-2xl h-[600px] border border-cyan-400/30 rounded-3xl bg-black/90 flex flex-col overflow-hidden shadow-2xl animate-scaleIn">
             <div className="p-6 border-b border-cyan-400/20 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full border border-cyan-400/50 bg-cyan-400/10 flex items-center justify-center">
@@ -860,7 +1114,14 @@ function MainPage() {
                   </p>
                 </div>
               </div>
-              <button onClick={() => setShowAI(false)} className="text-gray-400 hover:text-white">✕</button>
+              <button 
+                onClick={() => setShowAI(false)} 
+                className="text-gray-400 hover:text-white transition-colors"
+                onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+                onMouseLeave={() => setMagnetTarget(null)}
+              >
+                ✕
+              </button>
             </div>
 
             <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-black">
@@ -912,11 +1173,15 @@ function MainPage() {
                   onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                   placeholder="Ask about design philosophy, projects, or the future..."
                   className="flex-1 px-5 py-3 bg-gray-900/50 border border-gray-800 rounded-xl focus:outline-none focus:border-cyan-400/50 text-white placeholder-gray-500 font-light text-sm"
+                  onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+                  onMouseLeave={() => setMagnetTarget(null)}
                 />
                 <button
                   onClick={handleSend}
                   disabled={!inputMessage.trim()}
                   className="px-5 py-3 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 border border-cyan-400/50 rounded-xl hover:from-cyan-400/30 disabled:opacity-30"
+                  onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+                  onMouseLeave={() => setMagnetTarget(null)}
                 >
                   <Send className="w-5 h-5 text-cyan-400" />
                 </button>
