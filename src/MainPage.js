@@ -29,7 +29,7 @@ function MainPage() {
     title: "VP Frontend Engineering",
     company: "Morgan Stanley",
     tagline: "Designing the Interfaces of an Intelligent Future",
-    subtitle: "UI + AI | VP of Frontend | Researcher | Systems Thinker",
+    subtitle: "UI + AI | VP of Frontend | AI Squad Catalyst | Researcher | Systems Thinker",
     
     neuralNodes: [
       { 
@@ -113,10 +113,11 @@ function MainPage() {
         years: "2023-Present",
         company: "Morgan Stanley",
         role: "Vice President, UI Engineering & Architecture",
-        story: "Leading enterprise transformation through AI-augmented development and unified platforms.\n\n• One UI Platform: 3 apps → 1 workflow = 33+ hours saved daily\n• AI Framework: Compressed 3-week cycles into 2 days (10x speedup)\n• Compliance platform now firm-wide standard\n• Managing 8 engineers across multiple high-impact projects\n\nKey Insight: AI amplifies great architecture—it doesn't replace it.",
-        tech: ["React", "TypeScript", "GraphQL", "AI/LLM Integration", "Micro-Frontends"],
+        story: "Leading enterprise transformation through AI-augmented development and unified platforms.\n\n• Selected as AI Squad Catalyst—peer leader guiding squad into agent-native GenAI development\n• One UI Platform: 3 apps → 1 workflow = 33+ hours saved daily\n• AI Framework: Compressed 3-week cycles into 2 days (10x speedup)\n• Compliance platform now firm-wide standard\n• Managing 8 engineers across multiple high-impact projects\n\nKey Insight: AI amplifies great architecture—it doesn't replace it.",
+        tech: ["React", "TypeScript", "GraphQL", "AI/LLM Integration", "Micro-Frontends", "Agent-Native Development"],
         icon: Zap,
         current: true,
+        catalyst: true,
         metrics: { team: 8, saved: "33h/day", speedup: "10x" }
       },
       {
@@ -174,13 +175,13 @@ function MainPage() {
       welcome: "**Canvas & Code Node**\n\nWhere art meets technology. I discuss my design frameworks, painting practice, and visual philosophy.\n\nAsk me:\n• What's your design philosophy?\n• Tell me about your paintings\n• How do art and code connect?"
     },
     experience: {
-      welcome: "**Experience & Skills Node**\n\n12+ years across healthcare, telecom, banking, cloud, and fintech.\n\nAsk me:\n• Tell me about Morgan Stanley\n• What did you build at VMware?\n• Your Deutsche Bank work?\n• Accenture migration projects?\n• Where did you start?"
+      welcome: "**Experience & Skills Node**\n\n12+ years across healthcare, telecom, banking, cloud, and fintech.\n\nSelected as AI Squad Catalyst at Morgan Stanley.\n\nAsk me:\n• What is AI Squad Catalyst?\n• Tell me about Morgan Stanley\n• What did you build at VMware?\n• Your Deutsche Bank work?\n• Accenture migration projects?\n• Where did you start?"
     },
     research: {
       welcome: "**Research Node**\n\nPublished: 'When AI Reasoning Meets Interface Design'\n\nIntroducing the iGraph system for AI transparency.\n\nAsk me:\n• Explain your research\n• What is iGraph?\n• How is it used in production?\n• Why does AI transparency matter?"
     },
     innovation: {
-      welcome: "**Innovation Node**\n\nExploring the future of UI+AI interactions.\n\nAsk me:\n• What will interfaces look like in 5 years?\n• Tell me about your experiments\n• What are you working on?\n• What's your technical stack?"
+      welcome: "**Innovation Node**\n\nExploring the future of UI+AI interactions.\n\nAI Squad Catalyst guiding team into agent-native development.\n\nAsk me:\n• What will interfaces look like in 5 years?\n• Tell me about your experiments\n• What are you working on?\n• What's your technical stack?\n• What is agent-native development?"
     }
   };
 
@@ -199,8 +200,11 @@ function MainPage() {
     }
 
     if (context === 'experience') {
+      if (q.includes('catalyst') || q.includes('squad')) {
+        return "**AI Squad Catalyst**\n\nSelected as peer leader at Morgan Stanley to guide squad into agent-native GenAI development.\n\n**What It Means:**\n• Peer leadership recognition\n• Guiding engineers into the next frontier\n• Agent-native development paradigm\n• Strategic AI integration across projects\n\n**Why It Matters:**\nThis isn't just using AI tools—it's fundamentally reimagining how we build software. Agent-native means AI isn't a feature, it's the foundation.\n\n**Impact:**\nCompressed multi-week development cycles into days through structured LLM workflows. Now scaling this across the entire squad.";
+      }
       if (q.includes('morgan')) {
-        return "**Morgan Stanley (2023-Present)**\n\nVP leading 8 engineers across FTE and contractor resources.\n\n**One UI Platform:**\n• 3 apps → 1 unified workflow\n• 25min → 15min per account\n• 33+ hours saved daily (~200 accounts)\n• React 18, TypeScript, GraphQL\n\n**AI Framework:**\n• Pioneered AI-accelerated development\n• 3 weeks → 2 days (10x faster)\n• Structured LLM prompts + workflows\n\n**Compliance Platform:**\n• Now firm-wide standard\n• Eliminated compliance gaps\n\nTransformed onboarding platform into complete account-management solution in 1 year.";
+        return "**Morgan Stanley (2023-Present)**\n\nVP leading 8 engineers across FTE and contractor resources.\n\n**AI Squad Catalyst:**\n• Selected as peer leader for agent-native GenAI development\n• Guiding squad into the next frontier of AI-augmented engineering\n\n**One UI Platform:**\n• 3 apps → 1 unified workflow\n• 25min → 15min per account\n• 33+ hours saved daily (~200 accounts)\n• React 18, TypeScript, GraphQL\n\n**AI Framework:**\n• Pioneered AI-accelerated development\n• 3 weeks → 2 days (10x faster)\n• Structured LLM prompts + workflows\n\n**Compliance Platform:**\n• Now firm-wide standard\n• Eliminated compliance gaps\n\nTransformed onboarding platform into complete account-management solution in 1 year.";
       }
       if (q.includes('vmware') || q.includes('cloud')) {
         return "**VMware (2022-2023)**\n\n**CloudHealth UI:**\n• React migration for multi-cloud analysis\n• Improved usability + workflows\n\n**UIaaS:**\n• UI-as-a-Service component library\n• Unified experience across 8+ teams\n• Visualization POC: 35% faster analysis\n\nPattern: Component libraries are products, not side projects.";
@@ -231,11 +235,14 @@ function MainPage() {
     }
 
     if (context === 'innovation') {
+      if (q.includes('agent') || q.includes('native')) {
+        return "**Agent-Native Development**\n\nThe next paradigm shift in software engineering.\n\n**Traditional:**\n• Humans write code\n• AI assists with autocomplete\n• AI is a tool\n\n**Agent-Native:**\n• AI agents are architectural components\n• Systems designed for AI reasoning\n• Humans guide, verify, orchestrate\n• AI isn't a feature—it's the foundation\n\n**What I'm Building:**\n• Structured LLM workflows that compress weeks → days\n• Verification interfaces (iGraph-style)\n• Self-organizing systems\n• Human-AI collaboration patterns\n\nAs AI Squad Catalyst, I'm guiding my entire squad into this paradigm.";
+      }
       if (q.includes('future') || q.includes('5 years')) {
         return "**Interfaces in 5 Years:**\n\n1. Adaptive Complexity - Auto-adjusts to user expertise\n2. Conversational Everything - Forms die, natural language wins\n3. Predictive Surfaces - UI appears before you search\n4. Explainable AI - Every decision has reasoning graph\n5. Zero-State Design - Apps build themselves from patterns\n6. Generative UI Systems - AI creates interfaces on demand\n\nWhat disappears:\n• Static menus\n• Traditional forms\n• Fixed dashboards\n• Manual configuration\n\nFuture = intelligent simplification, not more features.";
       }
       if (q.includes('experiment') || q.includes('working')) {
-        return "**My Current Experiments:**\n\n**AI-Accelerated Development:**\nStructured LLM prompts compressing weeks into days\n\n**Generative UI Systems:**\nInterfaces that adapt and generate based on context\n\n**Self-Arranging Dashboards:**\nUI reorganizes based on usage patterns\n\n**Intent-Driven Interfaces:**\nPredicts user goals, reconfigures accordingly\n\n**Human-AI Verification:**\niGraph-style reasoning visualization\n\nThese aren't academic—they're directional prototypes heading to production.";
+        return "**My Current Work:**\n\n**AI Squad Catalyst @ Morgan Stanley:**\nSelected peer leader guiding squad into agent-native GenAI development—the next frontier.\n\n**AI-Accelerated Development:**\nStructured LLM prompts compressing weeks into days\n\n**Generative UI Systems:**\nInterfaces that adapt and generate based on context\n\n**Agent-Native Architecture:**\nBuilding for the AI-first development paradigm\n\n**Human-AI Verification:**\niGraph-style reasoning visualization in production\n\n**Self-Organizing Interfaces:**\nUI that reorganizes based on usage patterns\n\nThese aren't academic—they're directional prototypes becoming production reality.";
       }
       if (q.includes('skill') || q.includes('tech')) {
         return "**Technical Arsenal:**\n\n**Frontend:**\nReact • TypeScript • Redux • MobX • Angular • React Native • Material UI\n\n**Architecture:**\nMicro-Frontends • GraphQL • REST • WebSockets • BFF Architecture\n\n**AI + UI:**\nLLM-driven Flows • Prompt Engineering • AI-Assisted Development • Reasoning Visualization • D3.js\n\n**Tooling:**\nWebpack • Vite • CI/CD • Docker\n\n**Specialization:**\nAccessibility (WCAG) • Responsive Design • Config-Driven Architecture";
@@ -243,7 +250,7 @@ function MainPage() {
       return nodeContexts.innovation.welcome;
     }
 
-    return "I'm Nikita's AI assistant—trained on 12+ years of UI/UX experience across finance, cloud, healthcare, and telecom.\n\nAsk about:\n• Experience & Skills (Morgan Stanley, VMware, Deutsche Bank, Accenture, Cognizant)\n• Research (iGraph, AI transparency)\n• Innovation (Future of UI, AI-accelerated development)\n• Canvas & Code (Art + design philosophy)";
+    return "I'm Nikita's AI assistant—trained on 12+ years of UI/UX experience across finance, cloud, healthcare, and telecom.\n\nNikita is an AI Squad Catalyst at Morgan Stanley—peer leader guiding teams into agent-native GenAI development.\n\nAsk about:\n• AI Squad Catalyst role\n• Experience & Skills (Morgan Stanley, VMware, Deutsche Bank, Accenture, Cognizant)\n• Research (iGraph, AI transparency)\n• Innovation (Future of UI, agent-native development)\n• Canvas & Code (Art + design philosophy)";
   };
 
   const FloatingParticles = ({ isActive }) => {
@@ -871,11 +878,16 @@ function MainPage() {
 
                   <div className={`border border-gray-800 rounded-2xl p-8 backdrop-blur-xl bg-gray-900/50 hover:border-cyan-400/50 transition-all duration-300 ${isHovered ? 'transform -translate-y-1 shadow-xl shadow-cyan-400/20' : ''}`}>
                     <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 flex-wrap">
                         <span className="px-3 py-1 rounded-full text-xs border border-cyan-400/50 text-cyan-400 bg-cyan-400/10">
                           {phase.years}
                         </span>
                         {phase.current && <span className="px-3 py-1 rounded-full text-xs bg-cyan-400/20 text-cyan-400 animate-pulse">CURRENT</span>}
+                        {phase.catalyst && (
+                          <span className="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-purple-400/20 to-cyan-400/20 border border-purple-400/50 text-purple-400 animate-pulse">
+                            AI SQUAD CATALYST
+                          </span>
+                        )}
                         {phase.research && <span className="px-3 py-1 rounded-full text-xs bg-purple-400/20 text-purple-400">RESEARCH</span>}
                       </div>
                       
