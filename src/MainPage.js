@@ -130,7 +130,7 @@ function MainPage() {
         tech: ["AI Transparency", "iGraph", "Reasoning Visualization", "Human-AI Verification"],
         icon: BookOpen,
         research: true,
-        metrics: { impact: "Firm-wide", focus: "AI+UI" }
+        metrics: { focus: "AI+UI" }
       }
     ],
 
@@ -175,7 +175,7 @@ function MainPage() {
       welcome: "**Canvas & Code Node**\n\nWhere art meets technology. I discuss my design frameworks, painting practice, and visual philosophy.\n\nAsk me:\n• What's your design philosophy?\n• Tell me about your paintings\n• How do art and code connect?"
     },
     experience: {
-      welcome: "**Experience & Skills Node**\n\n12+ years across healthcare, telecom, banking, cloud, and fintech.\n\nSelected as AI Squad Catalyst at Morgan Stanley.\n\nAsk me:\n• What is AI Squad Catalyst?\n• Tell me about Morgan Stanley\n• What did you build at VMware?\n• Your Deutsche Bank work?\n• Accenture migration projects?\n• Where did you start?"
+      welcome: "**Experience & Skills Node**\n\n12+ years across healthcare, telecom, banking, cloud, and fintech. Selected as AI Squad Catalyst at Morgan Stanley.\n\nAsk me:\n• What is AI Squad Catalyst?\n• Tell me about Morgan Stanley\n• What did you build at VMware?\n• Your Deutsche Bank work?\n• Accenture migration projects?\n• Where did you start?"
     },
     research: {
       welcome: "**Research Node**\n\nPublished: 'When AI Reasoning Meets Interface Design'\n\nIntroducing the iGraph system for AI transparency.\n\nAsk me:\n• Explain your research\n• What is iGraph?\n• How is it used in production?\n• Why does AI transparency matter?"
@@ -910,7 +910,7 @@ function MainPage() {
                         <Sparkles className="w-4 h-4 text-cyan-400" />
                         <span className="text-xs text-cyan-400 font-medium">Key Impact</span>
                       </div>
-                      <p className="text-gray-300 text-sm leading-relaxed">{phase.story}</p>
+                      <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">{phase.story}</p>
                     </div>
 
                     <div className="flex flex-wrap gap-2">
