@@ -499,12 +499,22 @@ function MainPage() {
     }
   };
 
-  // AI responses using Claude API with knowledge bases
+  // AI responses - using fallback system for production deployment
+  // Claude API only works in claude.ai artifacts, not in deployed apps due to CORS
   const getAIResponse = async (query, context) => {
+    // For deployed version, use fallback directly
+    // To enable API: Set up a backend proxy (see deployment guide)
+    const USE_API = false; // Set to true only if you have a backend proxy
+    
+    if (!USE_API) {
+      return getFallbackResponse(query, context);
+    }
+
+    // API integration code (only runs if USE_API is true)
     const knowledge = KNOWLEDGE_BASES[context];
     
     if (!knowledge) {
-      return "I don't have information about that topic. Please select one of the neural nodes to explore specific areas.";
+      return getFallbackResponse(query, context);
     }
 
     try {
@@ -551,44 +561,138 @@ Answer the user's question:`
       return data.content[0].text;
 
     } catch (error) {
-      console.error("Claude API error:", error);
-      
-      // Fallback to simple responses if API fails
+      console.warn("Claude API unavailable, using fallback responses:", error.message);
       return getFallbackResponse(query, context);
     }
   };
 
-  // Fallback responses if API fails
+  // Enhanced fallback responses for production deployment
   const getFallbackResponse = (query, context) => {
     const q = query.toLowerCase();
     
-    // Simple fallbacks for each context
     if (context === 'experience') {
-      if (q.includes('morgan') || q.includes('current')) {
-        return "**Morgan Stanley (2023-Present)**\n\nVP leading 8 engineers. AI Squad Catalyst guiding team into agent-native development.\n\n• One UI Platform: 33+ hours saved daily\n• AI Framework: 10x speedup (3 weeks → 2 days)\n• Firm-wide compliance standard\n\nTechnologies: React, TypeScript, GraphQL, AI/LLM Integration";
+      // AI Squad Catalyst
+      if (q.includes('catalyst') || q.includes('squad')) {
+        return "**AI Squad Catalyst**\n\nSelected as peer leader at Morgan Stanley to guide squad into agent-native GenAI development.\n\n**What It Means:**\n• Peer leadership recognition\n• Guiding engineers into the next frontier\n• Agent-native development paradigm\n• Strategic AI integration across projects\n\n**Impact:**\nCompressed multi-week development cycles into days through structured LLM workflows. Now scaling this across the entire squad.";
       }
+      
+      // Morgan Stanley
+      if (q.includes('morgan') || q.includes('current') || q.includes('now')) {
+        return "**Morgan Stanley (2023-Present)**\n\nVice President, UI Engineering & Architecture\n\n**AI Squad Catalyst:**\n• Selected peer leader for agent-native GenAI development\n• Guiding squad into next frontier of AI-augmented engineering\n\n**One UI Platform:**\n• 3 apps → 1 unified workflow\n• 25 min → 15 min per account\n• 33+ hours saved daily (~200 accounts)\n\n**AI Framework:**\n• 10x speedup: 3 weeks → 2 days\n• Structured LLM prompts + workflows\n\n**Compliance Platform:**\n• Firm-wide standard eliminating compliance gaps\n\n**Team:** Leading 8 engineers (FTE + contractors)\n\n**Technologies:** React, TypeScript, GraphQL, AI/LLM Integration, Micro-Frontends";
+      }
+      
+      // VMware
+      if (q.includes('vmware') || q.includes('cloud')) {
+        return "**VMware (2022-2023)**\n\nMember of Technical Staff 3\n\n**CloudHealth UI Modernization:**\n• React migration for multi-cloud analysis\n• Improved usability and workflows\n\n**UI-as-a-Service (UIaaS):**\n• Component library serving 8+ teams\n• 35% reduction in analysis time (POC)\n• Unified experience across platform\n\n**Technologies:** React, TypeScript, UIaaS, Multi-Cloud, D3.js\n\n**Key Learning:** Component libraries are products, not side projects.";
+      }
+      
+      // Deutsche Bank
+      if (q.includes('deutsche') || q.includes('bank') || q.includes('db')) {
+        return "**Deutsche Bank (2019-2022)**\n\nAssistant Vice President\n\n**Transaction Monitoring Platform:**\n• Led UI for automated compliance\n• Reduced manual review risk\n\n**Config-Driven Framework:**\n• JSON schemas generate entire UIs\n• Reused across multiple banking apps\n• Led team of 6 engineers\n\n**Technologies:** React, TypeScript, Config-Driven UI, Compliance Tech\n\n**Key Learning:** Configuration beats customization at scale.";
+      }
+      
+      // Accenture
+      if (q.includes('accenture')) {
+        return "**Accenture (2017-2019)**\n\nSenior Software Engineer\n\n• Led AngularJS → Angular migration\n• Zero defects across enterprise clients\n• Multi-client delivery (telecom & banking)\n\n**Technologies:** Angular, TypeScript, UX Design, Agile\n\n**Key Learning:** Migration strategy > migration speed. Plan for change, not perfection.";
+      }
+      
+      // Cognizant / Career Start
+      if (q.includes('cognizant') || q.includes('start') || q.includes('begin') || q.includes('first')) {
+        return "**Cognizant (2013-2017)**\n\nAssociate\n\n• Built 3 healthcare applications end-to-end\n• Solo developer with full ownership\n• Learned user-centric design through real feedback\n\n**Technologies:** JavaScript, HTML5, CSS3, AngularJS\n\n**Key Learning:** User needs trump technical elegance. Code is only half the battle.";
+      }
+      
+      // Technical Skills
+      if (q.includes('tech') || q.includes('skill') || q.includes('stack') || q.includes('know')) {
+        return "**Technical Expertise:**\n\n**Frontend:** React • TypeScript • Redux • MobX • Angular • React Native • Material UI • HTML5/CSS3\n\n**Architecture:** Micro-Frontends • GraphQL • REST APIs • Config-Driven Architecture • Component Libraries • CI/CD • Docker\n\n**AI + UI:** LLM-Driven Flows • AI-Assisted Development • Reasoning Visualization • Prompt Engineering • Human-AI Verification\n\n**Leadership:** Team Management • Technical Mentorship • Agile/Scrum • Product Strategy\n\n**Specializations:** WCAG Accessibility • Responsive Design • 12+ years experience";
+      }
+      
+      // Career Journey / Experience
+      if (q.includes('career') || q.includes('journey') || q.includes('experience') || q.includes('background')) {
+        return "**Career Journey (12+ Years):**\n\n**2023-Present:** VP at Morgan Stanley | AI Squad Catalyst\n**2022-2023:** MTS-3 at VMware | CloudHealth & UIaaS\n**2019-2022:** AVP at Deutsche Bank | Compliance & Config Systems\n**2017-2019:** Senior Engineer at Accenture | Zero-defect migrations\n**2013-2017:** Associate at Cognizant | Healthcare apps\n\n**Industries:** Healthcare → Telecom → Banking → Cloud → Fintech\n\n**Progression:** Associate → Senior → AVP → MTS-3 → VP\n\n**Focus:** Modern UI engineering + AI-forward strategies + Team leadership";
+      }
+      
+      // Team / Leadership
+      if (q.includes('team') || q.includes('lead') || q.includes('manage') || q.includes('mentor')) {
+        return "**Leadership Experience:**\n\n**Current (Morgan Stanley):**\n• Leading 8 engineers (FTE + contractors)\n• AI Squad Catalyst - peer leader role\n• Technical mentorship & delivery excellence\n\n**Previous:**\n• Deutsche Bank: Led team of 6 engineers\n• Mentored 15+ developers throughout career\n\n**Approach:**\n• Empower through architecture, not micromanagement\n• Technical mentorship focused\n• Cross-functional collaboration\n• Agile/Scrum methodology";
+      }
+      
+      // Achievements / Metrics
+      if (q.includes('achieve') || q.includes('impact') || q.includes('metric') || q.includes('success')) {
+        return "**Key Achievements:**\n\n**Time Saved:** 33+ hours daily (One UI Platform)\n**Development Speed:** 10x faster (3 weeks → 2 days)\n**Migration Quality:** Zero defects (Accenture migrations)\n**Performance:** 35% faster workflows (VMware UIaaS)\n**Team Impact:** 8+ teams served with component library\n\n**Recognition:**\n• Selected as AI Squad Catalyst\n• Built firm-wide compliance standard\n• Published researcher in AI+UI field";
+      }
+      
       return nodeContexts.experience.welcome;
     }
     
     if (context === 'research') {
-      if (q.includes('igraph') || q.includes('research')) {
-        return "**iGraph Visualization System**\n\nPublished research on AI transparency.\n\n• Makes AI reasoning visible and verifiable\n• Deployed at Morgan Stanley for compliance\n• Turns 'trust me' AI into 'let me show you' AI\n\nCore: Tag reasoning → Generate graphs → Enable verification";
+      // iGraph
+      if (q.includes('igraph')) {
+        return "**iGraph Visualization System**\n\nStructured reasoning visualization for AI transparency.\n\n**Core Concept:**\n• Tag AI reasoning (facts, steps, calculations)\n• Generate interactive graphs (nodes + edges)\n• Enable path tracing and gap detection\n• Make errors visually obvious\n\n**Production Use:**\nDeployed at Morgan Stanley for compliance verification. When AI flags suspicious transactions, analysts see the complete reasoning chain—no black box.\n\n**Impact:** Faster verification, reduced errors, improved regulatory compliance.\n\nTransparency isn't optional—it's how we build trustworthy AI.";
       }
+      
+      // Research / Publication
+      if (q.includes('research') || q.includes('paper') || q.includes('publication') || q.includes('publish')) {
+        return "**Research: 'When AI Reasoning Meets Interface Design'**\n\n**Problem:** AI explanations are text walls that users can't verify or check for errors.\n\n**Solution:** iGraph visualization system\n• Facts → Steps → Calculations → Results flow\n• Interactive node graphs\n• Real-time verification\n• Visual error detection\n\n**Production Deployment:**\nMorgan Stanley compliance verification workflows. When AI flags transactions, users see exact reasoning paths.\n\n**Philosophy:** I turned 'trust me' AI into 'let me show you' AI.\n\n**Impact:** Solving real problems in high-stakes finance, not just academic research.";
+      }
+      
+      // Production Use
+      if (q.includes('production') || q.includes('use') || q.includes('deploy') || q.includes('real')) {
+        return "**iGraph in Production**\n\nCurrently deployed at Morgan Stanley for compliance verification workflows.\n\n**Use Case:**\nTransaction monitoring + automated compliance\n\n**How It Works:**\n1. AI analyzes transactions\n2. AI flags potential issues\n3. iGraph visualizes complete reasoning\n4. Analysts verify each step\n5. Decision made with full transparency\n\n**Benefits:**\n• Analysts verify AI decisions visually\n• Error detection is faster\n• Regulatory compliance improved\n• Cognitive load reduced\n\nThis isn't academic—it's solving real problems in high-stakes finance.";
+      }
+      
+      // Transparency / Why
+      if (q.includes('transparen') || q.includes('why') || q.includes('matter') || q.includes('important')) {
+        return "**Why AI Transparency Matters:**\n\n**Trust:** Users can't trust what they can't verify\n\n**Compliance:** Regulatory requirements demand explainability\n\n**Error Detection:** Visual reasoning makes errors obvious\n\n**Verification:** Humans need to verify AI decisions, not blindly trust them\n\n**High-Stakes Decisions:** In finance, healthcare, legal—we need to see the reasoning\n\n**My Philosophy:**\nTransparency isn't optional—it's how we build trustworthy AI.\n\nThe future isn't AI that's smarter—it's AI we can understand and verify.";
+      }
+      
       return nodeContexts.research.welcome;
     }
     
     if (context === 'innovation') {
-      if (q.includes('future') || q.includes('agent')) {
-        return "**Future of Interfaces:**\n\n• Adaptive Complexity\n• Conversational Everything\n• Predictive Surfaces\n• AI Transparency\n• Agent-Native Development\n\nAI Squad Catalyst guiding squad into this paradigm at Morgan Stanley.";
+      // Agent-Native Development
+      if (q.includes('agent') || q.includes('native')) {
+        return "**Agent-Native Development**\n\nThe next paradigm shift in software engineering.\n\n**Traditional Approach:**\n• Humans write code\n• AI assists with autocomplete\n• AI is a tool\n\n**Agent-Native Approach:**\n• AI agents are architectural components\n• Systems designed for AI reasoning\n• Humans guide, verify, orchestrate\n• AI is the foundation, not a feature\n\n**What I'm Building:**\n• Structured LLM workflows (weeks → days)\n• Verification interfaces (iGraph-style)\n• Self-organizing systems\n• Human-AI collaboration patterns\n\nAs AI Squad Catalyst, I'm guiding my entire squad into this paradigm.";
       }
+      
+      // Future / 5 Years
+      if (q.includes('future') || q.includes('5 year') || q.includes('coming') || q.includes('next')) {
+        return "**Interfaces in 5 Years:**\n\n1. **Adaptive Complexity** - Auto-adjusts to user expertise\n2. **Conversational Everything** - Forms die, natural language wins\n3. **Predictive Surfaces** - UI appears before you search\n4. **Explainable AI** - Every decision has reasoning graph\n5. **Zero-State Design** - Apps build themselves from patterns\n6. **Generative UI** - AI creates interfaces on demand\n\n**What Disappears:**\n• Static menus\n• Traditional forms\n• Fixed dashboards\n• Manual configuration\n\n**Philosophy:** Future = intelligent simplification, not more features.";
+      }
+      
+      // Current Work / Experiments
+      if (q.includes('work') || q.includes('experiment') || q.includes('building') || q.includes('current')) {
+        return "**Current Work:**\n\n**AI Squad Catalyst @ Morgan Stanley:**\nPeer leader guiding squad into agent-native GenAI development—the next frontier.\n\n**AI-Accelerated Development:**\n• Structured LLM prompts\n• Compressed weeks → days\n• 10x speedup achieved\n\n**Generative UI Systems:**\nInterfaces that adapt and generate based on context\n\n**Agent-Native Architecture:**\nBuilding for AI-first development paradigm\n\n**Human-AI Verification:**\niGraph-style reasoning visualization in production\n\n**Self-Organizing Interfaces:**\nUI that reorganizes based on usage patterns\n\nThese aren't academic—they're directional prototypes becoming production reality.";
+      }
+      
+      // Vision / Philosophy
+      if (q.includes('vision') || q.includes('believe') || q.includes('philosophy')) {
+        return "**My Vision:**\n\nAI doesn't replace great engineers—it amplifies them.\n\n**Core Beliefs:**\n• AI should be the foundation, not a feature\n• Humans guide, verify, orchestrate\n• Transparency enables trust\n• Intelligence should simplify, not complicate\n• Future = adaptive, conversational, predictive\n\n**Goal:**\nBuilding the future of AI-augmented software development where:\n• Systems adapt to users\n• Interfaces predict needs\n• AI explains its reasoning\n• Complexity becomes simple\n\n**As AI Squad Catalyst:**\nGuiding entire teams into this paradigm at scale.";
+      }
+      
       return nodeContexts.innovation.welcome;
     }
     
     if (context === 'principles') {
-      return "**Design Philosophy:**\n\nInterfaces should amplify human intelligence, not replace it.\n\n• Code is craft, outcomes are purpose\n• Configuration beats customization\n• Best UI is invisible\n• Users focus on goals, not your interface";
+      // Design Philosophy
+      if (q.includes('philosophy') || q.includes('believe') || q.includes('principle')) {
+        return "**My Design Philosophy:**\n\nInterfaces should amplify human intelligence, not replace it.\n\n**Core Principles:**\n• Code is craft, but outcomes are purpose\n• AI should explain itself\n• Configuration beats customization at scale\n• Best UI is invisible\n• Users focus on goals, not your interface\n\n**Design Values:**\n• Simplicity - Hide complexity, don't eliminate it\n• Clarity - Make complex things simple\n• Purpose - Design for outcomes, not aesthetics\n• Transparency - Show reasoning, don't hide it\n\n**After 12+ years:** Users care about their goals, not your interface.";
+      }
+      
+      // Art & Code Connection
+      if (q.includes('art') || q.includes('paint') || q.includes('creative') || q.includes('connect')) {
+        return "**Art & Code Connection:**\n\nArt and code are both acts of creation through constraint.\n\n**Parallels:**\n• **Composition:** Both require seeing the whole while crafting parts\n• **Iteration:** Both improve through continuous refinement\n• **Constraint:** Limitations drive creativity\n• **Craft:** Excellence comes from practiced skill\n\n**Painting Practice:**\nTrains the eye for:\n• Visual balance and composition\n• Color harmony and relationships\n• Negative space and simplicity\n• Detail vs. abstraction\n• Emotional impact through visual language\n\n**Philosophy:**\nCode is as much an art as painting—both require vision, craft, and care.\n\nArt isn't separate from engineering—it's how I think about design.";
+      }
+      
+      // Design Frameworks
+      if (q.includes('framework') || q.includes('adaptive') || q.includes('density') || q.includes('cognitive')) {
+        return "**Design Frameworks:**\n\n**Adaptive Cognitive Density:**\nInterfaces that adjust complexity based on user expertise.\n• Beginners see simple\n• Experts see full power\n• No mode switching—it just knows\nExample: Beginner sees 'Send Payment', Expert sees 'Send | Schedule | Batch | API'\n\n**AI-Assisted Navigation:**\nNavigation that learns patterns and suggests optimal paths\n\n**Predictive UI Simplification:**\nHide complexity until needed, predicted by AI\n\n**Confidence Gradient System:**\nVisual cues showing AI confidence levels in real-time\n\n**Philosophy:** Make the complex simple through intelligent design.";
+      }
+      
+      return nodeContexts.principles.welcome;
     }
     
-    return "I'm here to answer questions about Nikita's work. Try asking about specific projects, technologies, or philosophies!";
+    // Default fallback
+    return "I'm Nikita's AI assistant—trained on 12+ years of UI/UX experience across finance, cloud, healthcare, and telecom.\n\nNikita is an AI Squad Catalyst at Morgan Stanley—peer leader guiding teams into agent-native GenAI development.\n\nAsk about:\n• AI Squad Catalyst role\n• Experience & Skills (Morgan Stanley, VMware, Deutsche Bank, Accenture, Cognizant)\n• Research (iGraph, AI transparency)\n• Innovation (Future of UI, agent-native development)\n• Canvas & Code (Art + design philosophy)";
   };
 
   const FloatingParticles = ({ isActive }) => {
