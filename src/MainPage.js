@@ -440,11 +440,11 @@ function MainPage() {
         years: "2024",
         company: "Independent Research",
         role: "Published Author & Innovator",
-        story: "Published research transforming how humans interact with AI systems.\n\n• Paper: 'When AI Reasoning Meets Interface Design'\n• Introduced iGraph visualization for AI transparency\n• Deployed in production at Morgan Stanley for compliance verification\n\nKey Insight: The future isn't smarter AI, it's AI we can understand and verify.",
+        story: "Published research transforming how humans interact with AI systems.\n\n• Paper: 'When AI Reasoning Meets Interface Design'\n• Introduced iGraph visualization for AI transparency\n• Deployed in production at Morgan Stanley for compliance verification\n\nKey Insight: The future isn't just smarter AI, it's AI we can understand and verify.",
         tech: ["AI Transparency", "iGraph", "Reasoning Visualization", "Human-AI Verification"],
         icon: BookOpen,
         research: true,
-        metrics: { application: "UI + AI" }
+        metrics: { "UI + AI" }
       }
     ],
 
