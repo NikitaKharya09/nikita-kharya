@@ -606,6 +606,99 @@ Answer the user's question:`
         return "**Technical Expertise:**\n\n**Frontend:** React • TypeScript • Redux • MobX • Angular • React Native • Material UI • HTML5/CSS3\n\n**Architecture:** Micro-Frontends • GraphQL • REST APIs • Config-Driven Architecture • Component Libraries • CI/CD • Docker\n\n**AI + UI:** LLM-Driven Flows • AI-Assisted Development • Reasoning Visualization • Prompt Engineering • Human-AI Verification\n\n**Leadership:** Team Management • Technical Mentorship • Agile/Scrum • Product Strategy\n\n**Specializations:** WCAG Accessibility • Responsive Design • 12+ years experience";
       }
       
+      // Frontend Specific
+      if (q.includes('frontend') || q.includes('front-end') || q.includes('front end') || q.includes('ui engineer')) {
+        return "**Frontend Engineering Expertise:**\n\n**12+ Years of Frontend Development**\n\n**Core Technologies:**\n• React (Expert - 6+ years)\n• TypeScript (Expert - 5+ years)\n• Angular/AngularJS (5+ years)\n• JavaScript/ES6+ (12+ years)\n• HTML5/CSS3/SASS (12+ years)\n\n**Frontend Architecture:**\n• Micro-Frontends design & implementation\n• Component library architecture (UIaaS at VMware)\n• Config-driven UI systems (Deutsche Bank)\n• Responsive & accessible design (WCAG)\n\n**Current Focus:**\n• AI-augmented frontend development\n• Generative UI systems\n• Agent-native development patterns\n\n**Philosophy:** Build scalable, maintainable systems—not just features.";
+      }
+      
+      // React Specific
+      if (q.includes('react') && !q.includes('native')) {
+        return "**React Expertise:**\n\n**Experience:** 6+ years with React (2019-Present)\n\n**Advanced React:**\n• React 18 with concurrent features\n• Custom hooks and composition patterns\n• State management (Redux, MobX, Context)\n• Performance optimization\n• Server-side rendering concepts\n\n**Production Projects:**\n• **Morgan Stanley:** One UI Platform (React 18 + TypeScript + GraphQL)\n• **VMware:** CloudHealth UI modernization (React migration)\n• **Deutsche Bank:** Transaction monitoring platform (React + TypeScript)\n\n**Architecture:**\n• Micro-frontend architecture with React\n• Reusable component library design\n• Config-driven React applications\n\n**Current:** Using React for AI-driven interfaces and generative UI systems.";
+      }
+      
+      // React Native
+      if (q.includes('react native') || q.includes('mobile') || q.includes('native')) {
+        return "**React Native & Mobile Experience:**\n\n**React Native Projects:**\n• Mobile Fashion App (cross-platform)\n• React → React Native GenAI Migration Pipeline\n\n**Mobile Development:**\n• Cross-platform development (iOS + Android)\n• Native module integration\n• Performance optimization for mobile\n• Responsive mobile UI design\n\n**Approach:**\n• Code reuse between web and mobile\n• Platform-specific optimizations\n• User-centric mobile design\n\n**Philosophy:** Mobile-first thinking with cross-platform efficiency.";
+      }
+      
+      // TypeScript Specific
+      if (q.includes('typescript') || q.includes('ts')) {
+        return "**TypeScript Expertise:**\n\n**Experience:** 5+ years (2019-Present)\n\n**All Recent Projects Use TypeScript:**\n• Morgan Stanley (2023-Present)\n• VMware (2022-2023)\n• Deutsche Bank (2019-2022)\n\n**Advanced TypeScript:**\n• Complex type systems and generics\n• Type-safe API integrations\n• Type inference and utility types\n• Strict mode configuration\n\n**Benefits I Deliver:**\n• Catch errors at compile time\n• Better IDE support and refactoring\n• Self-documenting code\n• Improved maintainability at scale\n\n**Philosophy:** TypeScript is essential for enterprise-grade frontends. Type safety = fewer production bugs.";
+      }
+      
+      // Angular Specific
+      if (q.includes('angular')) {
+        return "**Angular Expertise:**\n\n**Experience:** 5+ years (2015-2020)\n\n**Major Projects:**\n• **Accenture:** Led AngularJS → Angular migration with ZERO defects\n• **Cognizant:** Built healthcare apps with AngularJS\n• Multiple enterprise clients across telecom & banking\n\n**Angular Skills:**\n• AngularJS (1.x) legacy systems\n• Angular (2+) modern applications\n• RxJS and reactive programming\n• TypeScript integration\n• Component architecture\n\n**Migration Expertise:**\n• Systematic migration strategies\n• Zero-defect migration approach\n• Planning for change vs. chasing perfection\n\n**Current:** Now focused on React, but strong Angular foundation for enterprise apps.";
+      }
+      
+      // JavaScript Specific
+      if (q.includes('javascript') || q.includes('js')) {
+        return "**JavaScript Expertise:**\n\n**Experience:** 12+ years (2013-Present)\n\n**JavaScript Evolution:**\n• Started with vanilla JS and jQuery\n• Mastered ES6+ features\n• Modern async/await patterns\n• Functional programming concepts\n\n**Frameworks & Libraries:**\n• React (current primary)\n• Angular/AngularJS (5+ years)\n• TypeScript (preferred)\n• Redux, MobX (state management)\n\n**Advanced Concepts:**\n• Closures and scope management\n• Prototypal inheritance\n• Event loop and async operations\n• Memory management\n• Performance optimization\n\n**Current Focus:**\n• AI-augmented JavaScript development\n• LLM-driven code generation\n• Modern build tools (Webpack, Vite)\n\n**Philosophy:** JavaScript is the foundation—master it deeply before frameworks.";
+      }
+      
+      // GraphQL Specific
+      if (q.includes('graphql')) {
+        return "**GraphQL Experience:**\n\n**Current:** Using GraphQL at Morgan Stanley (2023-Present)\n\n**Implementation:**\n• GraphQL client integration with React\n• Query optimization and caching\n• Type-safe GraphQL with TypeScript\n• Real-time subscriptions\n\n**Projects:**\n• One UI Platform (React + GraphQL)\n• Data aggregation across multiple sources\n• Efficient data fetching strategies\n\n**Benefits:**\n• Precise data fetching (no over/under fetching)\n• Strong typing with schema\n• Single endpoint for multiple resources\n• Better frontend-backend collaboration\n\n**Philosophy:** GraphQL empowers frontend teams to fetch exactly what they need.";
+      }
+      
+      // Architecture Specific
+      if (q.includes('architect') || q.includes('design pattern') || q.includes('system design')) {
+        return "**Architecture & System Design:**\n\n**Current Title:** VP, UI Engineering & Architecture\n\n**Architectural Expertise:**\n\n**Micro-Frontends:**\n• Designed and implemented at scale\n• Module federation patterns\n• Independent deployments\n• Team autonomy with consistency\n\n**Config-Driven Architecture:**\n• JSON schemas generate UIs (Deutsche Bank)\n• Configuration beats customization at scale\n• Reusable across multiple apps\n\n**Component Libraries:**\n• UIaaS serving 8+ teams (VMware)\n• Design system architecture\n• Versioning and backwards compatibility\n\n**Design Patterns:**\n• BFF (Backend for Frontend)\n• Repository pattern for data\n• Factory patterns for UI generation\n• Observer patterns (pub/sub)\n\n**Philosophy:** Design systems, not screens. Architecture enables scale.";
+      }
+      
+      // State Management
+      if (q.includes('redux') || q.includes('mobx') || q.includes('state')) {
+        return "**State Management Expertise:**\n\n**Experience:**\n• Redux (5+ years)\n• MobX (3+ years)\n• React Context API\n• Local state patterns\n\n**Approach:**\n• Choose right tool for complexity level\n• Redux for large-scale apps with complex flows\n• MobX for simpler reactivity needs\n• Context for shared UI state\n• Local state when possible\n\n**Best Practices:**\n• Normalized state structure\n• Selective subscriptions for performance\n• Middleware for side effects\n• DevTools integration\n\n**Philosophy:** State management should simplify, not complicate. Use the lightest solution that works.";
+      }
+      
+      // Component Libraries / Design Systems
+      if (q.includes('component') || q.includes('design system') || q.includes('library')) {
+        return "**Component Library & Design System Experience:**\n\n**VMware - UIaaS:**\n• Built UI-as-a-Service component library\n• Served 8+ teams across organization\n• 200+ components\n• 80% reuse rate achieved\n\n**Approach:**\n• Component libraries are products, not side projects\n• Versioning and documentation critical\n• Design tokens for consistency\n• Accessibility built-in (WCAG)\n\n**Technologies:**\n• React component architecture\n• Material UI customization\n• Storybook for documentation\n• TypeScript for type safety\n\n**Philosophy:** Great component libraries enable teams to move fast without sacrificing quality or consistency.";
+      }
+      
+      // CSS/Styling
+      if (q.includes('css') || q.includes('sass') || q.includes('style') || q.includes('styling')) {
+        return "**CSS & Styling Expertise:**\n\n**Experience:** 12+ years of CSS mastery\n\n**Modern CSS:**\n• CSS3 features and animations\n• Flexbox and Grid layouts\n• CSS-in-JS (styled-components, emotion)\n• SASS/SCSS preprocessors\n• Responsive design patterns\n\n**Methodologies:**\n• BEM naming conventions\n• CSS Modules for scoping\n• Utility-first CSS (Tailwind concepts)\n• Design tokens and theming\n\n**Responsive Design:**\n• Mobile-first approach\n• Breakpoint strategies\n• Fluid typography and spacing\n• Cross-browser compatibility\n\n**Philosophy:** CSS is as important as JavaScript. Great UIs need both technical skill and design sense.";
+      }
+      
+      // Performance
+      if (q.includes('performance') || q.includes('optimize') || q.includes('speed') || q.includes('fast')) {
+        return "**Performance Optimization Expertise:**\n\n**Proven Results:**\n• 35% faster workflows at VMware (CloudHealth)\n• 10x development speedup at Morgan Stanley\n• 33+ hours saved daily through optimized workflows\n\n**Frontend Performance:**\n• Code splitting and lazy loading\n• Bundle size optimization (Webpack/Vite)\n• React performance patterns (memo, useMemo, useCallback)\n• Virtual scrolling for large lists\n• Image optimization and lazy loading\n\n**Metrics I Track:**\n• First Contentful Paint (FCP)\n• Time to Interactive (TTI)\n• Lighthouse scores\n• Bundle size analysis\n• Runtime performance profiling\n\n**Philosophy:** Performance is a feature, not an afterthought. Fast UIs = better user experience.";
+      }
+      
+      // Accessibility
+      if (q.includes('accessibility') || q.includes('a11y') || q.includes('wcag')) {
+        return "**Accessibility (WCAG) Expertise:**\n\n**Commitment:** Accessibility is built-in, not bolted-on.\n\n**WCAG Compliance:**\n• WCAG 2.1 AA standards\n• Semantic HTML structure\n• ARIA labels and roles\n• Keyboard navigation patterns\n• Screen reader compatibility\n\n**Implementation:**\n• Accessible component libraries\n• Color contrast ratios\n• Focus management\n• Alt text for images\n• Form accessibility\n\n**Tools:**\n• Automated testing (axe, Lighthouse)\n• Manual screen reader testing\n• Keyboard-only navigation testing\n\n**Philosophy:** Great UIs are usable by everyone. Accessibility isn't optional—it's essential for inclusive design.";
+      }
+      
+      // Build Tools
+      if (q.includes('webpack') || q.includes('vite') || q.includes('build') || q.includes('bundl')) {
+        return "**Build Tools & Tooling:**\n\n**Current Stack:**\n• Vite (modern, fast builds)\n• Webpack (enterprise configurations)\n• Babel (transpilation)\n\n**Build Optimization:**\n• Code splitting strategies\n• Tree shaking for smaller bundles\n• Asset optimization (images, fonts)\n• Development vs. production configs\n• Source maps for debugging\n\n**CI/CD Integration:**\n• Automated builds and deployments\n• Build performance monitoring\n• Deploy previews for PRs\n• Environment-specific configurations\n\n**Docker:**\n• Containerized frontend builds\n• Consistent dev environments\n• Multi-stage builds for optimization\n\n**Philosophy:** Great tooling enables great productivity. Invest in your build pipeline.";
+      }
+      
+      // Testing
+      if (q.includes('test') || q.includes('quality') || q.includes('qa')) {
+        return "**Testing & Quality Assurance:**\n\n**Zero-Defect Track Record:**\n• Accenture: Zero defects in Angular migration\n• Systematic testing approach\n• Quality-first mindset\n\n**Testing Approach:**\n• Component testing (Jest, React Testing Library)\n• Integration testing\n• End-to-end testing concepts\n• Visual regression testing\n• Accessibility testing\n\n**Quality Practices:**\n• Code reviews (giving and receiving)\n• TypeScript for compile-time safety\n• ESLint and Prettier for consistency\n• Pre-commit hooks\n• Automated CI/CD checks\n\n**Philosophy:** Quality isn't tested in—it's built in. Prevention > detection.";
+      }
+      
+      // API / REST / Backend Integration
+      if (q.includes('api') || q.includes('rest') || q.includes('backend') || q.includes('integration')) {
+        return "**API & Backend Integration:**\n\n**Experience:**\n• GraphQL (current - Morgan Stanley)\n• REST APIs (12+ years)\n• WebSockets (real-time data)\n\n**Integration Patterns:**\n• BFF (Backend for Frontend) architecture\n• API client libraries and SDKs\n• Error handling and retry logic\n• Request/response caching\n• Optimistic updates\n\n**Technologies:**\n• Axios, Fetch API\n• GraphQL clients (Apollo, Relay concepts)\n• Real-time data with WebSockets\n• API authentication (JWT, OAuth)\n\n**Best Practices:**\n• Type-safe API contracts\n• Error boundaries and fallbacks\n• Loading and error states\n• Request deduplication\n\n**Philosophy:** Great frontends need great API integration. Treat your API layer as a first-class citizen.";
+      }
+      
+      // Micro-frontends
+      if (q.includes('micro') || q.includes('microfrontend') || q.includes('micro-frontend')) {
+        return "**Micro-Frontend Architecture:**\n\n**Experience:** Designed and implemented at Morgan Stanley\n\n**Approach:**\n• Module Federation (Webpack 5)\n• Independent deployments\n• Team autonomy with consistency\n• Shared dependencies optimization\n\n**Benefits:**\n• Teams can deploy independently\n• Technology flexibility per module\n• Incremental upgrades possible\n• Better fault isolation\n\n**Challenges Solved:**\n• Shared state management\n• Routing between micro-apps\n• Consistent styling and UX\n• Build time optimization\n\n**Philosophy:** Micro-frontends enable organizational scale. Architecture should mirror team structure.";
+      }
+      
+      // Comparison Questions
+      if (q.includes('vs') || q.includes('versus') || q.includes('compare') || q.includes('difference')) {
+        if (q.includes('react') && q.includes('angular')) {
+          return "**React vs Angular:**\n\n**Both Expert Level:**\n• React: 6+ years (current)\n• Angular: 5+ years (2015-2020)\n\n**When I Choose React:**\n• More flexibility needed\n• Simpler learning curve for team\n• Better ecosystem for modern needs\n• Lighter weight applications\n\n**When I'd Choose Angular:**\n• Enterprise apps needing opinionated structure\n• Teams preferring full framework\n• Strong TypeScript integration from start\n\n**Current Focus:** React for flexibility and modern AI-driven UIs, but Angular foundation valuable for enterprise thinking.\n\n**Philosophy:** Right tool for the job. Both are excellent frameworks.";
+        }
+        return "**Technology Comparisons:**\n\nI've worked extensively with:\n• React vs Angular (both expert level)\n• Redux vs MobX (context-dependent)\n• REST vs GraphQL (GraphQL preferred for modern apps)\n• Webpack vs Vite (Vite for new projects)\n\nAsk me about a specific comparison!";
+      }
+      
       // Career Journey / Experience
       if (q.includes('career') || q.includes('journey') || q.includes('experience') || q.includes('background')) {
         return "**Career Journey (12+ Years):**\n\n**2023-Present:** VP at Morgan Stanley | AI Squad Catalyst\n**2022-2023:** MTS-3 at VMware | CloudHealth & UIaaS\n**2019-2022:** AVP at Deutsche Bank | Compliance & Config Systems\n**2017-2019:** Senior Engineer at Accenture | Zero-defect migrations\n**2013-2017:** Associate at Cognizant | Healthcare apps\n\n**Industries:** Healthcare → Telecom → Banking → Cloud → Fintech\n\n**Progression:** Associate → Senior → AVP → MTS-3 → VP\n\n**Focus:** Modern UI engineering + AI-forward strategies + Team leadership";
