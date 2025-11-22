@@ -69,7 +69,7 @@ function MainPage() {
         years: "2013-2017",
         company: "Cognizant",
         role: "Associate",
-        story: "Built healthcare applications end-to-end with complete ownership.\n\n• Sole developer for 3 production applications\n• Learned user-centric design through real-world feedback\n• Discovered that elegant code means nothing if users struggle\n\nKey Insight: User needs trump technical perfection—every time.",
+        story: "Built healthcare applications end-to-end with complete ownership.\n\n• Sole developer for 3 production applications\n• Learned user-centric design through real-world feedback\n• Discovered that elegant code means nothing if users struggle\n\n",
         tech: ["JavaScript", "HTML5", "CSS3", "AngularJS"],
         icon: Code,
         metrics: { apps: 3, domain: "Healthcare" }
@@ -80,7 +80,7 @@ function MainPage() {
         years: "2017-2019",
         company: "Accenture",
         role: "Senior Software Engineer",
-        story: "Led enterprise migration projects across telecom and banking domains.\n\n• Zero-defect AngularJS → Angular migration\n• Multi-client delivery in high-stakes environments\n• Developed systematic approach to technical transformation\n\nKey Insight: Great migrations require planning for change, not chasing perfection.",
+        story: "Led enterprise migration projects across telecom and banking domains.\n\n• Zero-defect AngularJS → Angular migration\n• Multi-client delivery in high-stakes environments\n• Developed systematic approach to technical transformation\n\n",
         tech: ["Angular", "TypeScript", "UX Design", "Agile"],
         icon: GitBranch,
         metrics: { defects: 0, clients: "Multi" }
@@ -91,7 +91,7 @@ function MainPage() {
         years: "2019-2022",
         company: "Deutsche Bank",
         role: "Assistant Vice President",
-        story: "Architected config-driven systems for transaction monitoring and compliance.\n\n• Built framework where JSON schemas generate entire UIs\n• Led and mentored team of 6 engineers\n• Reduced manual compliance review risk through automation\n\nKey Insight: Configuration beats customization at scale—make systems extensible, not just functional.",
+        story: "Architected config-driven systems for transaction monitoring and compliance.\n\n• Built framework where JSON schemas generate entire UIs\n• Led and mentored team of 6 engineers\n• Reduced manual compliance review risk through automation\n\n",
         tech: ["React", "TypeScript", "Config-Driven UI", "Compliance Tech"],
         icon: Database,
         metrics: { team: 6, apps: "Multiple" }
@@ -102,7 +102,7 @@ function MainPage() {
         years: "2022-2023",
         company: "VMware",
         role: "Member of Technical Staff 3",
-        story: "Modernized CloudHealth UI and pioneered reusable component architecture.\n\n• React migration for multi-cloud analysis workflows\n• Built UI-as-a-Service library serving 8+ teams\n• POC demonstrated 35% reduction in analysis time\n\nKey Insight: Component libraries are products, not side projects—invest accordingly.",
+        story: "Modernized CloudHealth UI and pioneered reusable component architecture.\n\n• React migration for multi-cloud analysis workflows\n• Built UI-as-a-Service library serving 8+ teams\n• POC demonstrated 35% reduction in analysis time\n\n",
         tech: ["React", "TypeScript", "UIaaS", "Multi-Cloud", "D3.js"],
         icon: Layers,
         metrics: { speedup: "35%", teams: "8+" }
@@ -113,7 +113,7 @@ function MainPage() {
         years: "2023-Present",
         company: "Morgan Stanley",
         role: "Vice President, UI Engineering & Architecture",
-        story: "Leading enterprise transformation through AI-augmented development and unified platforms.\n\n• Selected as AI Squad Catalyst—peer leader guiding squad into agent-native GenAI development\n• One UI Platform: 3 apps → 1 workflow = 33+ hours saved daily\n• AI Framework: Compressed 3-week cycles into 2 days (10x speedup)\n• Compliance platform now firm-wide standard\n• Managing 8 engineers across multiple high-impact projects\n\nKey Insight: AI amplifies great architecture—it doesn't replace it.",
+        story: "Leading enterprise transformation through AI-augmented development and unified platforms.\n\n• Selected as AI Squad Catalyst, guiding my squad into agent-native GenAI development\n• One UI Platform: 3 apps → 1 workflow = 33+ hours saved daily\n• AI Framework: Compressed 3-week cycles into 2 days (10x speedup)\n• Architected enterprise oversight solution eliminating compliance gaps, now the standard framework across multiple business domains\n• Managing 8 engineers across multiple high-impact projects\n\nKey Insight: AI amplifies great architecture; it doesn't replace it.",
         tech: ["React", "TypeScript", "GraphQL", "AI/LLM Integration", "Micro-Frontends", "Agent-Native Development"],
         icon: Zap,
         current: true,
@@ -126,7 +126,7 @@ function MainPage() {
         years: "2024",
         company: "Independent Research",
         role: "Published Author & Innovator",
-        story: "Published research transforming how humans interact with AI systems.\n\n• Paper: 'When AI Reasoning Meets Interface Design'\n• Introduced iGraph visualization for AI transparency\n• Deployed in production at Morgan Stanley for compliance verification\n\nKey Insight: The future isn't smarter AI—it's AI we can understand and verify.",
+        story: "Published research transforming how humans interact with AI systems.\n\n• Paper: 'When AI Reasoning Meets Interface Design'\n• Introduced iGraph visualization for AI transparency\n• Deployed in production at Morgan Stanley for compliance verification\n\nKey Insight: The future isn't just smarter AI, it's AI we can understand and verify.",
         tech: ["AI Transparency", "iGraph", "Reasoning Visualization", "Human-AI Verification"],
         icon: BookOpen,
         research: true,
