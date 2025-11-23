@@ -1133,11 +1133,6 @@ Answer the user's question:`
       `}</style>
 
       {/* Magnetic Cursor */}
-    
-        <div className="w-10 h-10 border-2 border-cyan-400 rounded-full opacity-50" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-cyan-400 rounded-full" />
-        <div className="absolute inset-0 w-10 h-10 bg-cyan-400 rounded-full blur-xl opacity-30 animate-pulse" />
-      </div>
 
       {/* Shader Background - Visible across all sections */}
       <canvas
