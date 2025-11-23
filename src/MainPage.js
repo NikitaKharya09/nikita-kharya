@@ -1712,7 +1712,7 @@ Answer the user's question:`
                     {/* Image */}
                     <div className="relative aspect-square overflow-hidden bg-gray-900">
                       <img 
-                        src={`/../assets/images/${painting.filename}`}
+                        src={`/painting/${painting.filename}`}
                         alt={painting.title}
                         className={`w-full h-full object-cover transition-all duration-700 ${isHovered ? 'scale-110' : 'scale-100'}`}
                       />
