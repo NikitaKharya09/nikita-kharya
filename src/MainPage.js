@@ -444,7 +444,7 @@ function MainPage() {
         tech: ["AI Transparency", "iGraph", "Reasoning Visualization", "Human-AI Verification"],
         icon: BookOpen,
         research: true,
-        metrics: { "UI + AI" }
+        metrics: { application: "UI + AI" }
       }
     ],
 
