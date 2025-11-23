@@ -329,6 +329,8 @@ function MainPage() {
   const [hoveredTimeline, setHoveredTimeline] = useState(null);
   const [activeNode, setActiveNode] = useState(null);
   const [visibleSections, setVisibleSections] = useState(new Set());
+  const [lightboxImage, setLightboxImage] = useState(null);
+  const [hoveredPainting, setHoveredPainting] = useState(null);
   const messagesEndRef = useRef(null);
   const canvasRef = useRef(null);
   const shaderCanvasRef = useRef(null);
@@ -480,13 +482,82 @@ function MainPage() {
         link: "https://medium.com/@nikitakharya09/an-engineers-guide-to-ai-augmented-development-wins-pitfalls-and-what-actually-works-9187057d8b17",
         featured: true
       }
+    ],
+    paintings: [
+      {
+        id: 1,
+        title: "Birds on Wire",
+        filename: "birds-on-wire.jpg",
+        description: "Whimsical trio of birds perched on a wire - playful expressions and vibrant colors demonstrate composition and character design",
+        medium: "Acrylic on Canvas",
+        theme: "Playful & Expressive"
+      },
+      {
+        id: 2,
+        title: "Snoopy Love",
+        filename: "snoopy-love.jpg",
+        description: "Miniature canvas featuring beloved character - attention to detail in small format",
+        medium: "Acrylic on Mini Canvas",
+        theme: "Character Study"
+      },
+      {
+        id: 3,
+        title: "Eye Reflection",
+        filename: "eye-reflection.jpg",
+        description: "Detailed study of human eye with blue reflections - focus on realism and light",
+        medium: "Acrylic on Canvas",
+        theme: "Realism & Detail"
+      },
+      {
+        id: 4,
+        title: "Water Joy",
+        filename: "water-joy.jpg",
+        description: "Dynamic swimmer captured mid-splash - movement, light, and energy",
+        medium: "Acrylic on Canvas",
+        theme: "Movement & Energy"
+      },
+      {
+        id: 5,
+        title: "Butterfly",
+        filename: "butterfly.jpg",
+        description: "Elegant butterfly on dark background - contrast and natural beauty",
+        medium: "Acrylic on Canvas",
+        theme: "Nature & Contrast"
+      },
+      {
+        id: 6,
+        title: "Spring Triptych",
+        filename: "spring-triptych.jpg",
+        description: "Three-panel masterpiece with birds and yellow blossoms against gradient sky - my most ambitious piece showcasing color theory and composition",
+        medium: "Acrylic on Canvas (3-Panel)",
+        theme: "Color Theory & Composition",
+        featured: true
+      },
+      {
+        id: 7,
+        title: "Cultural Portrait",
+        filename: "cultural-portrait.jpg",
+        description: "Traditional dress with bold colors and cultural significance",
+        medium: "Acrylic on Canvas",
+        theme: "Culture & Tradition"
+      },
+      {
+        id: 8,
+        title: "Abstract Face",
+        filename: "abstract-face.jpg",
+        description: "Modern geometric face with vibrant colors - experimentation with abstract expressionism",
+        medium: "Acrylic on Canvas",
+        theme: "Abstract & Modern"
+      }
     ]
+  };
+    
   };
 
   // Node contexts
   const nodeContexts = {
     principles: {
-      welcome: "**Canvas & Code Node**\n\nWhere art meets technology. I discuss my design frameworks, painting practice, and visual philosophy.\n\nAsk me:\n• What's your design philosophy?\n• Tell me about your paintings\n• How do art and code connect?"
+      welcome: "**Canvas & Code Node**\n\nWhere art meets technology. I maintain an active painting practice with 8+ works in my gallery.\n\nAsk me:\n• Show me your paintings\n• Tell me about your art\n• What's your design philosophy?\n• How do art and code connect?\n• Tell me about specific paintings"
     },
     experience: {
       welcome: "**Experience & Skills Node**\n\n12+ years across healthcare, telecom, banking, cloud, and fintech. Selected as AI Squad Catalyst at Morgan Stanley.\n\nAsk me:\n• What is AI Squad Catalyst?\n• Tell me about Morgan Stanley\n• What did you build at VMware?\n• Your Deutsche Bank work?\n• Accenture migration projects?\n• Where did you start?"
@@ -767,18 +838,18 @@ Answer the user's question:`
     
     if (context === 'principles') {
       // Design Philosophy
+      if (q.includes('paint') || q.includes('art') || q.includes('show') || q.includes('gallery') || q.includes('work')) {
+        return "**My Painting Practice:**\n\nI maintain an active painting practice that directly informs my UI design work.\n\n**Featured Work:**\n• **Spring Triptych** - 3-panel masterpiece showcasing color theory\n• **Water Joy** - Dynamic movement and energy\n• **Abstract Face** - Modern geometric experimentation\n• **Birds on Wire** - Playful character design\n• **Butterfly** - Nature and contrast\n• Plus more in my gallery!\n\n**What Painting Teaches:**\n• **Composition** → Visual hierarchy in UI\n• **Color Theory** → Brand palettes & emotion\n• **Negative Space** → Simplicity in code\n• **Light & Contrast** → Accessibility\n\n**Media:** Acrylic on canvas (various sizes)\n\n**Check the gallery** section to see all my paintings and how they connect to my engineering work!";
+      }
+      
+      // Design Philosophy
       if (q.includes('philosophy') || q.includes('believe') || q.includes('principle')) {
-        return "**My Design Philosophy:**\n\nInterfaces should amplify human intelligence, not replace it.\n\n**Core Principles:**\n• Code is craft, but outcomes are purpose\n• AI should explain itself\n• Configuration beats customization at scale\n• Best UI is invisible\n• Users focus on goals, not your interface\n\n**Design Values:**\n• Simplicity - Hide complexity, don't eliminate it\n• Clarity - Make complex things simple\n• Purpose - Design for outcomes, not aesthetics\n• Transparency - Show reasoning, don't hide it\n\n**After 12+ years:** Users care about their goals, not your interface.";
+        return "**My Design Philosophy:**\n\nInterfaces should amplify human intelligence, not replace it.\n\n**Core Principles:**\n• Code is craft, but outcomes are purpose\n• AI should explain itself\n• Configuration beats customization at scale\n• Best UI is invisible\n• Users focus on goals, not your interface\n\n**Design Values:**\n• Simplicity - Hide complexity, don't eliminate it\n• Clarity - Make complex things simple\n• Purpose - Design for outcomes, not aesthetics\n• Transparency - Show reasoning, don't hide it\n\n**After 12+ years:** Users care about their goals, not your interface.\n\n**Art Connection:** Check out my painting gallery to see how visual arts inform my design thinking!";
       }
       
       // Art & Code Connection
-      if (q.includes('art') || q.includes('paint') || q.includes('creative') || q.includes('connect')) {
-        return "**Art & Code Connection:**\n\nArt and code are both acts of creation through constraint.\n\n**Parallels:**\n• **Composition:** Both require seeing the whole while crafting parts\n• **Iteration:** Both improve through continuous refinement\n• **Constraint:** Limitations drive creativity\n• **Craft:** Excellence comes from practiced skill\n\n**Painting Practice:**\nTrains the eye for:\n• Visual balance and composition\n• Color harmony and relationships\n• Negative space and simplicity\n• Detail vs. abstraction\n• Emotional impact through visual language\n\n**Philosophy:**\nCode is as much an art as painting—both require vision, craft, and care.\n\nArt isn't separate from engineering—it's how I think about design.";
-      }
-      
-      // Design Frameworks
-      if (q.includes('framework') || q.includes('adaptive') || q.includes('density') || q.includes('cognitive')) {
-        return "**Design Frameworks:**\n\n**Adaptive Cognitive Density:**\nInterfaces that adjust complexity based on user expertise.\n• Beginners see simple\n• Experts see full power\n• No mode switching—it just knows\nExample: Beginner sees 'Send Payment', Expert sees 'Send | Schedule | Batch | API'\n\n**AI-Assisted Navigation:**\nNavigation that learns patterns and suggests optimal paths\n\n**Predictive UI Simplification:**\nHide complexity until needed, predicted by AI\n\n**Confidence Gradient System:**\nVisual cues showing AI confidence levels in real-time\n\n**Philosophy:** Make the complex simple through intelligent design.";
+      if (q.includes('creative') || q.includes('connect') || q.includes('design')) {
+        return "**Art & Code Connection:**\n\nArt and code are both acts of creation through constraint.\n\n**Parallels:**\n• **Composition:** Both require seeing the whole while crafting parts\n• **Iteration:** Both improve through continuous refinement\n• **Constraint:** Limitations drive creativity\n• **Craft:** Excellence comes from practiced skill\n\n**From Canvas to Code:**\n• **Spring Triptych** demonstrates color gradient mastery → UI color systems\n• **Eye Reflection** teaches light and detail → Micro-interactions\n• **Butterfly** explores contrast → Accessible color ratios\n• **Abstract Face** experiments with geometry → Component composition\n\n**Philosophy:**\nCode is as much an art as painting—both require vision, craft, and care.\n\nArt isn't separate from engineering—it's how I think about design.\n\n**See my gallery** to explore the full collection!";
       }
       
       return nodeContexts.principles.welcome;
@@ -1601,6 +1672,182 @@ Answer the user's question:`
           </div>
         </div>
       </section>
+
+    {/* Art Gallery - Canvas & Code */}
+      <section 
+        ref={el => sectionRefs.current['gallery'] = el}
+        data-section="gallery"
+        className="relative py-20 px-8 bg-transparent"
+      >
+        {/* Dimmer overlay for this section */}
+        <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
+        <div className="max-w-7xl mx-auto">
+          <div className={`text-center mb-16 ${visibleSections.has('gallery') ? 'animate-fadeInUp' : 'opacity-0'}`}>
+            <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              Canvas & Code: Where Art Meets Technology
+            </h2>
+            <p className="text-xl text-gray-400 font-light max-w-3xl mx-auto">
+              My painting practice trains the eye for composition, color harmony, and visual balance—skills that directly translate to exceptional UI design. Here's proof that art and engineering aren't separate worlds.
+            </p>
+          </div>
+
+          {/* Gallery Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {portfolioData.paintings.map((painting, index) => {
+              const isHovered = hoveredPainting === painting.id;
+              const isVisible = visibleSections.has('gallery');
+              
+              return (
+                <div
+                  key={painting.id}
+                  className={`group relative ${isVisible ? 'animate-fadeInUp' : 'opacity-0'} ${painting.featured ? 'md:col-span-2' : ''}`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  onMouseEnter={() => { setHoveredPainting(painting.id); setMagnetTarget(null); }}
+                  onMouseLeave={() => setHoveredPainting(null)}
+                  onClick={() => setLightboxImage(painting)}
+                >
+                  <div className={`
+                    relative overflow-hidden rounded-2xl border-2 cursor-pointer
+                    transition-all duration-500
+                    ${isHovered ? 'border-pink-400/50 transform -translate-y-2 shadow-2xl shadow-pink-400/20' : 'border-gray-800'}
+                  `}>
+                    {/* Image */}
+                    <div className="relative aspect-square overflow-hidden bg-gray-900">
+                      <img 
+                        src={`/paintings/${painting.filename}`}
+                        alt={painting.title}
+                        className={`w-full h-full object-cover transition-all duration-700 ${isHovered ? 'scale-110' : 'scale-100'}`}
+                      />
+                      
+                      {/* Overlay */}
+                      <div className={`
+                        absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent
+                        transition-opacity duration-500
+                        ${isHovered ? 'opacity-100' : 'opacity-0'}
+                      `}>
+                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                          <h3 className="text-2xl font-light text-white mb-2">{painting.title}</h3>
+                          <p className="text-sm text-cyan-400 mb-3">{painting.medium}</p>
+                          <p className="text-sm text-gray-300 leading-relaxed">{painting.description}</p>
+                          <div className="mt-4 flex items-center gap-2 text-xs text-pink-400">
+                            <Sparkles className="w-3 h-3" />
+                            <span>{painting.theme}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Featured Badge */}
+                      {painting.featured && (
+                        <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs bg-gradient-to-r from-pink-400 to-purple-400 text-black font-medium">
+                          FEATURED
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Quick Info (visible on mobile/non-hover) */}
+                    <div className="p-4 bg-gray-900/90 md:hidden">
+                      <h3 className="text-lg font-light text-white mb-1">{painting.title}</h3>
+                      <p className="text-xs text-cyan-400">{painting.medium}</p>
+                    </div>
+                  </div>
+
+                  {/* Floating glow effect on hover */}
+                  {isHovered && (
+                    <div 
+                      className="absolute inset-0 -z-10 blur-3xl opacity-60 rounded-2xl"
+                      style={{ background: 'linear-gradient(135deg, #f472b6, #a78bfa, #22d3ee)' }}
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Art Philosophy */}
+          <div className={`max-w-4xl mx-auto text-center ${visibleSections.has('gallery') ? 'animate-fadeInUp stagger-3' : 'opacity-0'}`}>
+            <div className="border border-pink-400/20 rounded-2xl bg-gradient-to-br from-pink-400/10 to-purple-400/10 p-8 backdrop-blur-sm">
+              <h3 className="text-2xl font-light mb-4 text-pink-400">The Connection</h3>
+              <p className="text-gray-300 leading-relaxed mb-4">
+                <strong className="text-white">Composition in painting</strong> = Visual hierarchy in UI • 
+                <strong className="text-white"> Color theory</strong> = Brand palettes and user emotion • 
+                <strong className="text-white"> Negative space</strong> = Simplicity in code • 
+                <strong className="text-white"> Light and contrast</strong> = Accessibility and readability
+              </p>
+              <p className="text-gray-400 text-sm italic">
+                "Every brushstroke teaches patience. Every canvas teaches seeing the whole while crafting the parts. These lessons make me a better engineer."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <div 
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-fadeInUp"
+          onClick={() => setLightboxImage(null)}
+        >
+          <button
+            onClick={() => setLightboxImage(null)}
+            className="absolute top-8 right-8 w-12 h-12 rounded-full border-2 border-gray-600 hover:border-pink-400 text-gray-400 hover:text-white transition-all flex items-center justify-center text-2xl"
+            onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
+            onMouseLeave={() => setMagnetTarget(null)}
+          >
+            ✕
+          </button>
+
+          <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              {/* Image */}
+              <div className="relative">
+                <img 
+                  src={`/paintings/${lightboxImage.filename}`}
+                  alt={lightboxImage.title}
+                  className="w-full rounded-2xl shadow-2xl border-2 border-pink-400/30"
+                />
+                {lightboxImage.featured && (
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs bg-gradient-to-r from-pink-400 to-purple-400 text-black font-medium">
+                    FEATURED
+                  </div>
+                )}
+              </div>
+
+              {/* Details */}
+              <div className="text-left">
+                <h2 className="text-4xl font-light mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                  {lightboxImage.title}
+                </h2>
+                <div className="mb-6">
+                  <p className="text-cyan-400 text-lg mb-2">{lightboxImage.medium}</p>
+                  <div className="flex items-center gap-2 text-sm text-pink-400">
+                    <Sparkles className="w-4 h-4" />
+                    <span>{lightboxImage.theme}</span>
+                  </div>
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  {lightboxImage.description}
+                </p>
+                
+                {/* Connection to Engineering */}
+                <div className="border-t border-gray-800 pt-6">
+                  <h4 className="text-sm text-gray-500 uppercase tracking-wider mb-3">Design Skills Applied</h4>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 rounded-full text-xs border border-pink-400/30 bg-pink-400/10 text-pink-400">
+                      Color Theory
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-xs border border-purple-400/30 bg-purple-400/10 text-purple-400">
+                      Composition
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-xs border border-cyan-400/30 bg-cyan-400/10 text-cyan-400">
+                      Visual Balance
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Contact */}
       <section 
