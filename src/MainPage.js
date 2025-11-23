@@ -551,8 +551,6 @@ function MainPage() {
       }
     ]
   };
-    
-  };
 
   // Node contexts
   const nodeContexts = {
