@@ -1799,7 +1799,7 @@ Answer the user's question:`
               {/* Image */}
               <div className="relative">
                 <img 
-                  src={`/paintings/${lightboxImage.filename}`}
+                  src={`/painting/${lightboxImage.filename}`}
                   alt={lightboxImage.title}
                   className="w-full rounded-2xl shadow-2xl border-2 border-pink-400/30"
                 />
