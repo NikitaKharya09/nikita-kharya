@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Brain, Send, Sparkles, Network, Mail, Linkedin, Download, MapPin, Award, Compass, Briefcase, BookOpen, Rocket, ChevronRight, Layers, Zap, Code, Database, GitBranch } from 'lucide-react';
 
 // ============================================================================
-// KNOWLEDGE BASES FOR AI ASSISTANT 
+// KNOWLEDGE BASES FOR AI ASSISTANT
 // ============================================================================
 
 const EXPERIENCE_KNOWLEDGE = {
