@@ -530,8 +530,7 @@ function MainPage() {
         filename: "spring-triptych.jpg",
         description: "Three-panel masterpiece with birds and yellow blossoms against gradient sky - my most ambitious piece showcasing color theory and composition",
         medium: "Acrylic on Canvas (3-Panel)",
-        theme: "Color Theory & Composition",
-        featured: true
+        theme: "Color Theory & Composition"
       },
       {
         id: 7,
@@ -1698,7 +1697,7 @@ Answer the user's question:`
               return (
                 <div
                   key={painting.id}
-                  className={`group relative ${isVisible ? 'animate-fadeInUp' : 'opacity-0'} ${painting.featured ? 'md:col-span-2' : ''}`}
+                  className={`group relative ${isVisible ? 'animate-fadeInUp' : 'opacity-0'}`}
                   style={{ animationDelay: `${index * 0.1}s` }}
                   onMouseEnter={() => { setHoveredPainting(painting.id); setMagnetTarget(null); }}
                   onMouseLeave={() => setHoveredPainting(null)}
