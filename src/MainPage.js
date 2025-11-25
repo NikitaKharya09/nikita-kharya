@@ -1873,7 +1873,7 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['nodes'] = el}
         data-section="nodes"
-        className="relative py-20 px-8 bg-transparent"
+        className="relative py-20 px-8 pb-40 sm:pb-20 bg-transparent"
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
@@ -2041,7 +2041,7 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['timeline'] = el}
         data-section="timeline"
-        className="relative pt-40 sm:pt-20 pb-20 px-4 sm:px-8 bg-transparent min-h-screen"
+        className="relative pt-80 sm:pt-20 pb-20 px-4 sm:px-8 bg-transparent min-h-screen"
         style={{ position: 'relative', zIndex: 1 }}
       >
         {/* Dimmer overlay for this section */}
