@@ -1873,7 +1873,7 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['nodes'] = el}
         data-section="nodes"
-        className="relative py-20 px-8 pb-32 sm:pb-20 bg-transparent"
+        className="relative py-20 px-8 pb-80 sm:pb-20 bg-transparent"
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
