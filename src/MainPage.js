@@ -551,9 +551,48 @@ function MainPage() {
     experience: {
       welcome: "**Experience & Skills Node**\n\n12+ years across healthcare, telecom, banking, cloud, and fintech. Selected as AI Squad Catalyst at Morgan Stanley.\n\nAsk me:\n• What is AI Squad Catalyst?\n• Tell me about Morgan Stanley\n• What did you build at VMware?\n• Your Deutsche Bank work?\n• Accenture migration projects?\n• Where did you start?"
     },
-    research: {
-      welcome: "**Research Node**\n\nPublished: 'When AI Reasoning Meets Interface Design'\n\nIntroducing the iGraph system for AI transparency.\n\nAsk me:\n• Explain your research\n• What is iGraph?\n• How is it used in production?\n• Why does AI transparency matter?"
-    },
+ research: {
+    welcome: `**Research Node**
+
+Published: *"Improving Human Verification of LLM Reasoning through Interactive Explanation Interfaces"*
+
+📄 **Paper:** [arXiv:2510.22922](https://arxiv.org/abs/2510.22922)
+🎮 **Demo:** [Try Interactive Interfaces](https://huggingface.co/spaces/interactiveReasoning/interactive_explanation_experiment)
+
+**Ask me about:**
+
+🎯 **The Problem**
+- What problem does this solve?
+- Why is LLM verification hard?
+
+💡 **The Solution**
+- What is iGraph?
+- What is iPoT?
+- What is iCoT?
+- How do they work?
+
+📊 **Results**
+- What were the findings?
+- How much better is iGraph?
+- Show me the statistics
+
+🎨 **Design & Tech**
+- What are the design features?
+- How did you build this?
+- What's the architecture?
+
+💭 **Personal Story**
+- Why did you do this research?
+- How does frontend experience help?
+- What's your background?
+
+🚀 **Applications**
+- Where can I use this?
+- How does it help education/finance?
+- What's the ROI?
+
+Try: "What is iGraph?" or "Show me the results" or "Why did you do this?"`
+  },
     innovation: {
       welcome: "**Innovation Node**\n\nExploring the future of UI+AI interactions.\n\nAI Squad Catalyst guiding team into agent-native development.\n\nAsk me:\n• What will interfaces look like in 5 years?\n• Tell me about your experiments\n• What are you working on?\n• What's your technical stack?\n• What is agent-native development?"
     }
@@ -629,6 +668,559 @@ Answer the user's question:`
   // Enhanced fallback responses for production deployment
   const getFallbackResponse = (query, context) => {
     const q = query.toLowerCase();
+
+     if (context === 'research') {
+    // CORE PROBLEM
+    if (q.includes('problem') || q.includes('why difficult') || q.includes('wall of text') || q.includes('verify')) {
+      return `**The LLM Verification Problem**
+
+Traditional Chain-of-Thought explanations are "walls of text"—long, dense, hard to parse.
+
+**The Problem:**
+- LLMs generate 1000+ token explanations
+- Humans can't detect subtle errors
+- Cognitive overload makes verification slow
+- Mistakes look plausible
+
+**The Impact:**
+- Can't trust AI in high-stakes domains
+- Users miss critical errors
+- 39% lower error detection vs interactive formats
+
+This matters in education, finance, healthcare—anywhere wrong answers cost.
+
+[Try the demo →](https://huggingface.co/spaces/interactiveReasoning/interactive_explanation_experiment)`;
+    }
+
+    // iGRAPH
+    if (q.includes('igraph') || q.includes('graph visualization') || q.includes('visual')) {
+      return `**iGraph: Interactive Graph Visualization**
+
+Your LLM reasoning as a flowchart:
+- **Nodes** = reasoning steps (inputs, calculations, results)
+- **Edges** = logical connections and dependencies
+- **Color-coded variables** throughout
+- **Left-to-right flow** shows temporal progression
+
+**Why It Wins:**
+- 72% accuracy vs 61% with text
+- 18 seconds faster per problem
+- 85% user satisfaction
+- Errors visually "jump out"
+
+The key: 2D spatial layout > linear text for tracing logic.
+
+[Try iGraph →](https://huggingface.co/spaces/interactiveReasoning/interactive_explanation_experiment)`;
+    }
+
+    // iCoT
+    if (q.includes('icot') || q.includes('interactive chain')) {
+      return `**iCoT: Interactive Chain-of-Thought**
+
+Same CoT content, better presentation:
+
+**Features:**
+✓ Step-by-step reveal with playback controls
+✓ Color-coded variables throughout
+✓ Problem summary panel
+✓ Discrete, highlighted segments
+✓ No scrolling needed
+
+**Results:**
+- 69% accuracy vs 61% traditional CoT
+- 10 seconds faster verification
+- 79% liked dual-panel layout
+
+Best for: Users who prefer text but need structure.`;
+    }
+
+    // iPOT
+    if (q.includes('ipot') || q.includes('program of thought') || q.includes('code') || q.includes('pseudo')) {
+      return `**iPoT: Reasoning as Code**
+
+Transform math reasoning into pseudo-code format:
+
+\`\`\`python
+# Input
+num_students = 24
+pencils_per_student = 3
+extra_pencils = 5
+
+# Calculate
+total_needed = num_students * pencils_per_student
+final_total = total_needed + extra_pencils
+
+# Result = 77
+\`\`\`
+
+**Features:**
+- Each line = one logical step
+- Variable tracking panel
+- Execute step-by-step
+- Debug-like interface
+
+**Results:** 70% accuracy, high engagement among technical users.`;
+    }
+
+    // RESULTS / FINDINGS
+    if (q.includes('results') || q.includes('findings') || q.includes('accuracy') || q.includes('statistics')) {
+      return `**Key Results: Interactivity Wins**
+
+**VERIFICATION ACCURACY:**
+- iGraph:  71.9% ✓✓✓
+- iPoT:    70.2% ✓✓
+- iCoT:    69.3% ✓
+- CoT:     61.0% ✗
+
+**ERROR LOCALIZATION:**
+- iGraph:  59.7%
+- iPoT:    58.1%
+- iCoT:    56.7%
+- CoT:     48.7%
+
+**TIME PER QUESTION:**
+- iGraph:  119 sec ⚡
+- iPoT:    127 sec
+- iCoT:    127 sec
+- CoT:     137 sec
+
+**Bottom line:** Interactive formats = 10-point accuracy jump + 18 seconds faster.
+
+All differences statistically significant (p < 0.05).`;
+    }
+
+    // WHY iGRAPH BEST
+    if (q.includes('why igraph') || q.includes('igraph best') || q.includes('igraph win')) {
+      return `**Why iGraph Dominated**
+
+Three reasons visual beats text:
+
+**1. Spatial Processing**
+- 2D layout uses different brain pathways
+- Relationships visible at a glance
+- Pattern recognition faster than reading
+
+**2. Reduced Cognitive Load**
+- No tracking in working memory
+- Structure externalized on screen
+- "See" the whole reasoning flow
+
+**3. Error Salience**
+- Broken connections visually obvious
+- Inconsistencies stand out
+- Visual anomalies trigger attention
+
+Users said: "I could *see* where it went wrong."
+
+That's the power of visual reasoning.`;
+    }
+
+    // APPLICATIONS / REAL WORLD
+    if (q.includes('use') || q.includes('application') || q.includes('real world') || q.includes('practical')) {
+      return `**Where This Matters**
+
+**HIGH-STAKES DOMAINS:**
+
+🎓 **Education**
+- Homework help verification
+- Tutoring systems
+- Student error detection
+
+💰 **Finance**
+- Model explainability
+- Compliance auditing
+- Risk analysis verification
+
+⚕️ **Healthcare**
+- Diagnosis support systems
+- Treatment recommendation review
+- Clinical decision support
+
+⚖️ **Legal**
+- Contract analysis
+- Case reasoning review
+- Compliance checking
+
+🏗️ **Engineering**
+- Design validation
+- Safety analysis
+- System verification
+
+Anywhere wrong answers are expensive. Anywhere trust requires verifiability.`;
+    }
+
+    // EDUCATION SPECIFIC
+    if (q.includes('education') || q.includes('student') || q.includes('learning') || q.includes('teaching')) {
+      return `**Education Applications**
+
+**The Problem:**
+Students use ChatGPT for homework but can't verify if it's correct.
+
+**How iGraph Helps:**
+
+**For Students:**
+- Understand step-by-step reasoning visually
+- Spot where their reasoning diverges
+- Learn to verify, not just accept
+- Build critical thinking skills
+
+**For Teachers:**
+- Quickly scan student work
+- Identify common misconceptions
+- See error patterns across class
+- Save grading time
+
+**Impact:**
+- 10+ point accuracy improvement
+- 18 seconds faster verification
+- Higher engagement scores
+- Better learning outcomes
+
+This isn't just checking answers—it's building understanding.`;
+    }
+
+    // DESIGN FEATURES
+    if (q.includes('design') || q.includes('features') || q.includes('dual panel') || q.includes('color')) {
+      return `**4 Key Design Features**
+
+Every interactive interface has:
+
+**1. Dual-Panel Layout** (85% approval)
+- Left: Problem + summary
+- Right: Step-by-step solution
+- No scrolling, no context loss
+
+**2. Color-Coded Variables** (89% approval)
+- Each variable = unique color
+- Same color everywhere it appears
+- Easy to trace through steps
+
+**3. Problem Summarization** (87% approval)
+- Key info at a glance
+- Quick reference while reading
+- Reduces cognitive load
+
+**4. Step-by-Step Controls** (82% approval)
+- Forward/back buttons
+- Control your pace
+- Progressive disclosure
+
+**Design Principle:** Reduce mental effort, increase clarity.
+
+Based on cognitive load theory.`;
+    }
+
+    // METHODOLOGY
+    if (q.includes('methodology') || q.includes('study') || q.includes('test') || q.includes('participant') || q.includes('gsm8k')) {
+      return `**Study Design**
+
+**Participants:** 125 undergraduate students
+**Format:** Between-subjects (each person = 1 interface)
+**Task:** Review 10 math problems, identify errors
+
+**Dataset:**
+- 500 GSM8K problems (4-7 reasoning steps)
+- 450 with injected errors (9 error types)
+- 50 correct solutions
+
+**Error Types:**
+Calculation, Counting, Context Value, Contradictory Step, Missing Step, Hallucination, Unit Conversion, Operator, Formula Confusion
+
+**Metrics:**
+✓ Verification accuracy
+✓ Error localization accuracy
+✓ Time per question
+✓ Click-level interaction logs
+✓ Post-study surveys (7-point Likert)
+
+**Result:** All interactive > CoT (p < 0.05)`;
+    }
+
+    // IMPLEMENTATION / TECH
+    if (q.includes('build') || q.includes('implement') || q.includes('tech') || q.includes('architecture') || q.includes('pipeline')) {
+      return `**Implementation Architecture**
+
+**2-Stage Pipeline:**
+
+**Stage 1: Content Generation**
+- Input: Math problem + solution
+- LLM: Claude 3.7 Sonnet
+- Output: Tagged intermediate representation
+  \`\`\`xml
+  <fact>...</fact>
+  <step>...</step>
+  <formula>...</formula>
+  <var>x = 5</var>
+  \`\`\`
+
+**Stage 2: Interface Rendering**
+- Input: Tags + Interface template
+- LLM: Generate HTML/JS application
+- Output: Interactive interface
+
+**Why 2 Stages?**
+- Ensures consistency across formats
+- Same content, different presentations
+- Eliminates LLM output variation
+
+**Tech Stack:**
+- Frontend: HTML/CSS/JavaScript
+- Backend: Python + FastAPI
+- Hosting: HuggingFace Spaces
+- LLM: Claude 3.7 Sonnet API
+
+[View demo code →](https://huggingface.co/spaces/interactiveReasoning/interactive_explanation_experiment)`;
+    }
+
+    // DEMO
+    if (q.includes('demo') || q.includes('try') || q.includes('show')) {
+      return `**Try It Yourself!**
+
+🔗 **Live Demo:** https://huggingface.co/spaces/interactiveReasoning/interactive_explanation_experiment
+
+**What You'll Experience:**
+1. See all 4 formats side-by-side
+2. Try to find errors in LLM reasoning
+3. Compare your accuracy across formats
+4. Feel the difference interactivity makes
+
+**Quick Start:**
+- No login required
+- 5-10 minutes to test
+- Mobile-friendly
+- Share with colleagues
+
+**What to Notice:**
+✓ How much easier graphs make it
+✓ How colors help tracking
+✓ How step-by-step reduces overwhelm
+✓ How playback controls help focus
+
+**Then Read:**
+📄 Full Paper: https://arxiv.org/abs/2510.22922`;
+    }
+
+    // PERSONAL STORY / BACKGROUND
+    if (q.includes('your') || q.includes('background') || q.includes('first paper') || q.includes('story') || q.includes('frontend') || q.includes('motivation')) {
+      return `**From Frontend to Research**
+
+I'm a Lead Software Engineer & VP at a fintech company. 12+ years building UIs, leading teams, shipping products.
+
+Then I co-authored my first research paper.
+
+**The Connection:**
+My frontend experience directly shaped this research:
+
+**UI/UX Perspective:**
+- LLM outputs are interfaces
+- User comprehension matters
+- Design affects outcomes
+- Interaction enables understanding
+
+**Real-World Constraints:**
+- Production systems need trust
+- Users aren't AI experts
+- Errors have consequences
+- Time is money
+
+**The Insight:**
+If you're building AI products, the interface matters as much as the model.
+
+**My Contribution:**
+I brought practical design thinking to an academic problem. Result: 10-point accuracy jump through design alone.
+
+This is the future: AI+UX together.`;
+    }
+
+    // WHY DID YOU DO THIS
+    if (q.includes('why') && (q.includes('you') || q.includes('do this'))) {
+      return `**Why This Research Matters to Me**
+
+**The Spark:**
+Working in fintech, I saw LLMs making financial calculations. Smart models, but users couldn't verify the reasoning. Blind trust in high-stakes decisions = unacceptable.
+
+**The Problem:**
+- Users just accepted plausible explanations
+- Errors went unnoticed
+- Trust was binary: believe it or don't
+- No verification possible
+
+**The Question:**
+What if we redesigned how LLMs present reasoning?
+
+**The Approach:**
+Apply 12 years of frontend experience to AI explanations—user-centered design, cognitive load principles, interactive affordances.
+
+**The Result:**
+Proof that design matters in AI systems. 10-point accuracy improvement through better UX.
+
+**The Mission:**
+Build AI systems humans can actually work with. Not "trust me" AI, but "let me show you" AI.
+
+This is about democratizing AI verification. Anyone should be able to check if the AI is right.`;
+    }
+
+    // FUTURE WORK
+    if (q.includes('future') || q.includes('next') || q.includes('roadmap') || q.includes('improve')) {
+      return `**What's Next**
+
+**Short Term (Research):**
+- Adaptive interfaces (auto-select format per user)
+- Multi-modal explanations (text + graph + code)
+- More domains beyond math
+- Real-time error highlighting
+
+**Medium Term (Product):**
+- Browser extension for ChatGPT/Claude
+- API for developers
+- Educational platform integration
+- Enterprise auditing tools
+
+**Long Term (Vision):**
+- Every LLM output is interactive
+- Self-explaining AI systems
+- Verification as a service
+- Universal explainability layer
+
+**The Big Question:**
+Can we make ALL AI reasoning this verifiable?
+
+The goal: AI you can actually trust because you can actually verify.
+
+[Follow my research] [Collaborate with me]`;
+    }
+
+    // LIMITATIONS
+    if (q.includes('limitation') || q.includes('downside') || q.includes('challenge') || q.includes('doesn\'t work')) {
+      return `**Honest Limitations**
+
+**iGraph Challenges:**
+- Complex problems → cluttered graphs
+- Too many nodes = visual overload
+- Requires graph literacy
+
+**iPoT Challenges:**
+- Not everyone reads code
+- Syntax can intimidate
+- Technical users only
+
+**General Limitations:**
+- Tested only on math (GSM8K)
+- Undergraduate participants only
+- 4-7 step problems only
+- English only
+- Single LLM (Claude 3.7)
+
+**When This Might NOT Work:**
+- Very simple problems (overkill)
+- Very complex proofs (too many nodes)
+- Non-technical audiences (iPoT)
+- Low-stakes quick answers
+
+**The Trade-off:**
+Better verification costs development time, computational resources, and interface complexity.
+
+Worth it for high-stakes? YES.
+Worth it for casual chat? Maybe not.`;
+    }
+
+    // COMPARISON
+    if (q.includes('compare') || q.includes('vs') || q.includes('difference') || q.includes('which better')) {
+      return `**Format Comparison**
+
+| Format | Accuracy | Speed | Best For |
+|--------|----------|-------|----------|
+| **iGraph** | 72% | 119s | Visual learners, complex problems |
+| **iPoT** | 70% | 127s | Technical users, programmers |
+| **iCoT** | 69% | 127s | Text-preferring users |
+| **CoT** | 61% | 137s | Legacy compatibility only |
+
+**When to Use Each:**
+
+**iGraph** (Recommended):
+✓ Complex multi-step problems
+✓ Visual learners
+✓ When speed matters
+✓ Error detection critical
+
+**iPoT:**
+✓ Technical audiences
+✓ Logic-heavy problems
+
+**iCoT:**
+✓ Text-preferring users
+✓ Simple problems
+
+**The Verdict:** Start with iGraph.`;
+    }
+
+    // ROI / DECISION
+    if (q.includes('should i') || q.includes('worth') || q.includes('roi') || q.includes('cost')) {
+      return `**Should You Implement This?**
+
+✅ **YES, if you have:**
+- High-stakes decisions ($$$ or safety)
+- Users who need to verify AI
+- Complex multi-step reasoning
+- Error costs > implementation costs
+
+⚠️ **MAYBE, if you have:**
+- Medium-stakes scenarios
+- Budget constraints
+
+❌ **NO, if you have:**
+- Low-stakes casual use
+- Very simple problems
+
+**ROI Calculation:**
+
+**Cost to Implement:**
+- 2-4 weeks dev time
+- LLM API costs (~$0.01/query)
+- Hosting (~$50/mo)
+
+**Benefit Per User:**
+- 10% better accuracy = catch 10% more errors
+- 18 sec time savings
+- Trust improvement
+
+**Break-even:** ~100 users in high-stakes domain
+
+**Bottom Line:**
+If error costs > $1000, implement immediately.`;
+    }
+
+    // PAPER / RESEARCH GENERAL
+    if (q.includes('paper') || q.includes('research') || q.includes('explain')) {
+      return `**My Research: "When AI Reasoning Meets Interface Design"**
+
+Problem: AI explanations are text walls. Users can't verify.
+
+**Solution:** Three interactive interfaces
+- **iGraph** - Visual flowchart (72% accuracy)
+- **iPoT** - Code-based format (70% accuracy)
+- **iCoT** - Structured text (69% accuracy)
+vs Traditional CoT (61% accuracy)
+
+**Key Innovation:**
+Changed paradigm from *text-in, text-out* to *text-in, application-out*.
+
+**Impact:**
+- 10+ point accuracy improvement
+- 18 seconds faster verification
+- 125-person user study
+- Published on arXiv
+
+I turned "trust me" AI into "let me show you" AI.
+
+This is how we trust AI in finance, healthcare, education.
+
+[Read paper →](https://arxiv.org/abs/2510.22922) | [Try demo →](https://huggingface.co/spaces/interactiveReasoning/interactive_explanation_experiment)`;
+    }
+
+    // DEFAULT RESEARCH
+    return nodeContexts.research.welcome;
+  }
     
     if (context === 'experience') {
       // AI Squad Catalyst
