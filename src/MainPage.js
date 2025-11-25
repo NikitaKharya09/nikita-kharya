@@ -1873,7 +1873,7 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['nodes'] = el}
         data-section="nodes"
-        className="relative py-20 px-8 pb-40 sm:pb-20 bg-transparent"
+        className="relative py-20 px-8 pb-32 sm:pb-20 bg-transparent"
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
@@ -2041,12 +2041,12 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['timeline'] = el}
         data-section="timeline"
-        className="relative pt-80 sm:pt-20 pb-20 px-4 sm:px-8 bg-transparent min-h-screen"
-        style={{ position: 'relative', zIndex: 1 }}
+        className="relative pt-32 sm:pt-20 pb-20 px-4 sm:px-8 bg-transparent min-h-screen"
+        style={{ position: 'relative', zIndex: 2 }}
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
-        <div className="max-w-5xl mx-auto relative">
+        <div className="max-w-5xl mx-auto relative" style={{ zIndex: 1 }}>
           <div className={`text-center mb-12 sm:mb-16 ${visibleSections.has('timeline') ? 'animate-fadeInUp' : 'opacity-0'}`}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               The Evolution
