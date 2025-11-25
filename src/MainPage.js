@@ -1842,17 +1842,17 @@ This is how we trust AI in finance, healthcare, education.
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40" style={{ zIndex: 3 }} />
 
         <div className="relative z-10 text-center px-8 max-w-4xl" style={{ position: 'relative', zIndex: 10 }}>
-          <h1 className="text-7xl font-light mb-6 animate-fadeInUp">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-light mb-6 animate-fadeInUp">
             <span className="bg-gradient-to-r from-white via-cyan-300 to-purple-300 bg-clip-text text-transparent">
               Nikita Kharya
             </span>
           </h1>
           
-          <h2 className="text-4xl font-light mb-6 text-gray-300 animate-fadeInUp stagger-1">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light mb-6 text-gray-300 animate-fadeInUp stagger-1">
             {portfolioData.tagline}
           </h2>
           
-          <p className="text-xl text-cyan-300/70 font-light mb-12 animate-fadeInUp stagger-2">
+          <p className="text-base sm:text-lg lg:text-xl text-cyan-300/70 font-light mb-12 px-4 animate-fadeInUp stagger-2">
             {portfolioData.subtitle}
           </p>
 
@@ -2053,7 +2053,7 @@ This is how we trust AI in finance, healthcare, education.
           </div>
 
           <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-px">
+            <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px">
               <div className={`h-full bg-gradient-to-b from-cyan-400 via-blue-400 to-purple-400 ${visibleSections.has('timeline') ? 'animate-pulse' : ''}`} />
             </div>
 
@@ -2065,15 +2065,15 @@ This is how we trust AI in finance, healthcare, education.
               return (
                 <div 
                   key={phase.id} 
-                  className={`relative mb-16 pl-16 sm:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
+                  className={`relative mb-12 sm:mb-16 pl-20 sm:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
                   style={{ animationDelay: `${index * 0.15}s` }}
                   onMouseEnter={() => { setHoveredTimeline(phase.id); setMagnetTarget(null); }}
                   onMouseLeave={() => { setHoveredTimeline(null); }}
                 >
                   <FloatingParticles isActive={isHovered} />
                   
-                  <div className={`absolute left-0 w-16 h-16 rounded-full border-2 ${phase.current ? 'border-cyan-400' : phase.research ? 'border-purple-400' : 'border-gray-600'} ${phase.current || phase.research ? 'animate-pulse' : ''} bg-black flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-125' : ''}`}>
-                    <Icon className={`w-6 h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
+                  <div className={`absolute left-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 ${phase.current ? 'border-cyan-400' : phase.research ? 'border-purple-400' : 'border-gray-600'} ${phase.current || phase.research ? 'animate-pulse' : ''} bg-black flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-125' : ''}`}>
+                    <Icon className={`w-4 h-4 sm:w-6 sm:h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
                     {isHovered && (
                       <div className="absolute inset-0 w-16 h-16 rounded-full border-2 border-cyan-400 animate-pulse-ring" />
                     )}
@@ -2085,8 +2085,8 @@ This is how we trust AI in finance, healthcare, education.
                     </div>
                   )}
 
-                  <div className={`border border-gray-800 rounded-2xl p-8 backdrop-blur-xl bg-gray-900/50 hover:border-cyan-400/50 transition-all duration-300 ${isHovered ? 'transform -translate-y-1 shadow-xl shadow-cyan-400/20' : ''}`}>
-                    <div className="flex items-center justify-between mb-4">
+                  <div className={`border border-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 backdrop-blur-xl bg-gray-900/50 hover:border-cyan-400/50 transition-all duration-300 ${isHovered ? 'transform -translate-y-1 shadow-xl shadow-cyan-400/20' : ''}`}>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-3 mb-4">
                       <div className="flex items-center gap-3 flex-wrap">
                         <span className="px-3 py-1 rounded-full text-xs border border-cyan-400/50 text-cyan-400 bg-cyan-400/10">
                           {phase.years}
@@ -2111,8 +2111,8 @@ This is how we trust AI in finance, healthcare, education.
                       )}
                     </div>
 
-                    <h3 className="text-3xl font-light mb-2 text-cyan-400">{phase.phase}</h3>
-                    <p className="text-lg text-gray-300 mb-6">{phase.company} • {phase.role}</p>
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-light mb-2 text-cyan-400">{phase.phase}</h3>
+                    <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-4 sm:mb-6">{phase.company} • {phase.role}</p>
 
                     <div className={`p-6 rounded-xl border ${isHovered ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-cyan-400/20 bg-cyan-400/5'} mb-4 transition-all`}>
                       <div className="flex items-center gap-2 mb-3">
@@ -2145,29 +2145,29 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['expertise'] = el}
         data-section="expertise"
-        className="relative py-20 px-8 bg-transparent"
+        className="relative py-20 px-4 sm:px-8 bg-transparent"
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-16 ${visibleSections.has('expertise') ? 'animate-fadeInUp' : 'opacity-0'}`}>
-            <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
               Technical Expertise
             </h2>
-            <p className="text-xl text-gray-400 font-light">12+ years of hands-on experience</p>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-400 font-light">12+ years of hands-on experience</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {portfolioData.expertise.map((item, i) => (
               <div 
                 key={i} 
-                className={`group p-8 border border-gray-800 rounded-2xl bg-gray-900/50 hover:border-cyan-400/50 transition-all hover:transform hover:-translate-y-1 ${visibleSections.has('expertise') ? 'animate-fadeInUp' : 'opacity-0'}`}
+                className={`group p-4 sm:p-6 lg:p-8 border border-gray-800 rounded-xl sm:rounded-2xl bg-gray-900/50 hover:border-cyan-400/50 transition-all hover:transform hover:-translate-y-1 ${visibleSections.has('expertise') ? 'animate-fadeInUp' : 'opacity-0'}`}
                 style={{ animationDelay: `${i * 0.1}s` }}
                 onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
                 onMouseLeave={() => setMagnetTarget(null)}
               >
-                <h3 className="text-2xl font-light mb-4 text-cyan-400 group-hover:animate-glow">{item.category}</h3>
-                <p className="text-gray-300 text-sm leading-relaxed">{item.skills}</p>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-light mb-3 sm:mb-4 text-cyan-400 group-hover:animate-glow break-words">{item.category}</h3>
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed break-words">{item.skills}</p>
               </div>
             ))}
           </div>
@@ -2178,19 +2178,19 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['blog'] = el}
         data-section="blog"
-        className="relative py-20 px-8 bg-transparent"
+        className="relative py-20 px-4 sm:px-8 bg-transparent"
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-6xl mx-auto">
           <div className={`text-center mb-16 ${visibleSections.has('blog') ? 'animate-fadeInUp' : 'opacity-0'}`}>
-            <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-4 bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
               Thought Leadership
             </h2>
-            <p className="text-xl text-gray-400 font-light">Writing about the intersection of AI, UI, and human experience</p>
+            <p className="text-base sm:text-lg lg:text-xl text-gray-400 font-light px-4">Writing about the intersection of AI, UI, and human experience</p>
           </div>
 
-          <div className="grid gap-8">
+          <div className="grid gap-6 sm:gap-8">
             {portfolioData.blogs.map((blog, idx) => (
               <div 
                 key={blog.id} 
@@ -2207,11 +2207,11 @@ This is how we trust AI in finance, healthcare, education.
                   </div>
                 )}
 
-                <div className="border border-gray-800 rounded-2xl bg-gray-900/50 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden group-hover:transform group-hover:-translate-y-1 group-hover:shadow-2xl group-hover:shadow-cyan-400/20">
+                <div className="border border-gray-800 rounded-xl sm:rounded-2xl bg-gray-900/50 hover:border-cyan-400/50 transition-all duration-300 overflow-hidden group-hover:transform group-hover:-translate-y-1 group-hover:shadow-2xl group-hover:shadow-cyan-400/20">
                   <div className="h-1 bg-gradient-to-r from-purple-400 via-cyan-400 to-blue-400" />
                   
-                  <div className="p-8">
-                    <div className="flex items-center gap-4 mb-6">
+                  <div className="p-4 sm:p-6 lg:p-8">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4 sm:mb-6 text-sm">
                       <span className="text-sm text-cyan-400">{blog.date}</span>
                       <span className="text-sm text-gray-500">•</span>
                       <span className="text-sm text-gray-400">{blog.readTime}</span>
@@ -2232,10 +2232,10 @@ This is how we trust AI in finance, healthcare, education.
                       )}
                     </div>
 
-                    <h3 className="text-3xl font-light mb-3 text-white group-hover:text-cyan-400 transition-colors">
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-light mb-3 text-white group-hover:text-cyan-400 transition-colors break-words">
                       {blog.title}
                     </h3>
-                    <p className="text-lg text-gray-400 mb-6 font-light">
+                    <p className="text-sm sm:text-base lg:text-lg text-gray-400 mb-4 sm:mb-6 font-light break-words">
                       {blog.subtitle}
                     </p>
 
@@ -2286,22 +2286,22 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['gallery'] = el}
         data-section="gallery"
-        className="relative py-20 px-8 bg-transparent"
+        className="relative py-20 px-4 sm:px-8 bg-transparent"
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-7xl mx-auto">
           <div className={`text-center mb-16 ${visibleSections.has('gallery') ? 'animate-fadeInUp' : 'opacity-0'}`}>
-            <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-light mb-4 bg-gradient-to-r from-pink-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
               Canvas & Code: Where Art Meets Technology
             </h2>
-            <p className="text-xl text-gray-400 font-light max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg lg:text-xl text-gray-400 font-light max-w-3xl mx-auto px-4">
               My painting practice trains the eye for composition, color harmony, and visual balance; skills that directly translate to exceptional UI design. Here's proof that art and engineering aren't separate worlds.
             </p>
           </div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12">
             {portfolioData.paintings.map((painting, index) => {
               const isHovered = hoveredPainting === painting.id;
               const isVisible = visibleSections.has('gallery');
@@ -2446,16 +2446,16 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['contact'] = el}
         data-section="contact"
-        className="relative py-20 px-8 bg-transparent"
+        className="relative py-20 px-4 sm:px-8 bg-transparent"
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
         <div className="max-w-4xl mx-auto text-center">
           <div className={`w-px h-24 bg-gradient-to-b from-transparent to-cyan-400 mx-auto mb-8 ${visibleSections.has('contact') ? 'animate-fadeInUp' : 'opacity-0'}`} />
-          <h2 className={`text-4xl font-light mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent ${visibleSections.has('contact') ? 'animate-fadeInUp stagger-1' : 'opacity-0'}`}>
+          <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-light mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent ${visibleSections.has('contact') ? 'animate-fadeInUp stagger-1' : 'opacity-0'}`}>
             Let's Build the Future
           </h2>
-          <p className={`text-lg text-gray-300 font-light mb-12 ${visibleSections.has('contact') ? 'animate-fadeInUp stagger-2' : 'opacity-0'}`}>
+          <p className={`text-sm sm:text-base lg:text-lg text-gray-300 font-light mb-12 px-4 max-w-2xl mx-auto ${visibleSections.has('contact') ? 'animate-fadeInUp stagger-2' : 'opacity-0'}`}>
             I design systems, not screens. My work sits at the intersection of UI craft, technical architecture, and AI-driven intelligence.
           </p>
 
@@ -2497,15 +2497,15 @@ This is how we trust AI in finance, healthcare, education.
 
       {/* AI Chat */}
       {showAI && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-8 bg-black/90 backdrop-blur-xl">
-          <div className="w-full max-w-2xl h-[600px] border border-cyan-400/30 rounded-3xl bg-black/90 flex flex-col overflow-hidden shadow-2xl animate-scaleIn">
-            <div className="p-6 border-b border-cyan-400/20 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full border border-cyan-400/50 bg-cyan-400/10 flex items-center justify-center">
-                  <Brain className="w-5 h-5 text-cyan-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 lg:p-8 bg-black/90 backdrop-blur-xl">
+          <div className="w-full max-w-2xl h-[80vh] sm:h-[600px] border border-cyan-400/30 rounded-2xl sm:rounded-3xl bg-black/90 flex flex-col overflow-hidden shadow-2xl animate-scaleIn">
+            <div className="p-4 sm:p-6 border-b border-cyan-400/20 flex items-center justify-between">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-cyan-400/50 bg-cyan-400/10 flex items-center justify-center">
+                  <Brain className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-light">Nikita's AI Assistant</h3>
+                  <h3 className="text-base sm:text-lg font-light">Nikita's AI Assistant</h3>
                   <p className="text-xs text-gray-400">
                     {selectedNode ? `${portfolioData.neuralNodes.find(n => n.id === selectedNode)?.label || 'Chat'}` : 'Ask me anything'}
                   </p>
@@ -2521,10 +2521,10 @@ This is how we trust AI in finance, healthcare, education.
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-black">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 sm:space-y-4 bg-black">
               {messages.length === 0 && (
                 <div className="text-center py-12">
-                  <Brain className="w-16 h-16 rounded-full border border-cyan-400/30 bg-cyan-400/10 p-4 mx-auto mb-4 animate-pulse text-cyan-400" />
+                  <Brain className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-cyan-400/30 bg-cyan-400/10 p-3 sm:p-4 mx-auto mb-4 animate-pulse text-cyan-400" />
                   <p className="text-gray-300 font-light mb-6 text-left max-w-md mx-auto whitespace-pre-line">
                     {selectedNode && nodeContexts[selectedNode] ? nodeContexts[selectedNode].welcome : 
                       "Hi! I'm here to answer questions about Nikita's work, experience, research, and vision. Ask me anything!"}
