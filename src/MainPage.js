@@ -442,7 +442,7 @@ function MainPage() {
         years: "2024",
         company: "Independent Research",
         role: "Author & Innovator",
-        story: "Published research transforming how humans interact with AI systems.\n\n• Paper: 'When AI Reasoning Meets Interface Design'\n• Introduced iGraph visualization for AI transparency\nKey Insight: The future isn't just smarter AI, it's AI we can understand and verify.",
+        story: "Published research transforming how humans interact with AI systems.\n\n• Paper: 'When AI Reasoning Meets Interface Design'\n• Introduced iGraph visualization for AI transparency\n\nKey Insight: The future isn't just smarter AI, it's AI we can understand and verify.",
         tech: ["AI Transparency", "iGraph", "Reasoning Visualization", "Human-AI Verification"],
         icon: BookOpen,
         research: true,
@@ -1458,25 +1458,33 @@ This is how we trust AI in finance, healthcare, education.
     );
   };
 
-  // Smooth inertia scrolling
+  // Smooth inertia scrolling (desktop only)
   useEffect(() => {
+    // Detect if device has touch capability (mobile/tablet)
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    // Skip smooth scroll on mobile - use native scrolling
+    if (isTouchDevice) {
+      return;
+    }
+  
     const handleWheel = (e) => {
       if (showAI) return; // Disable when modal is open
       e.preventDefault();
       targetScroll.current += e.deltaY;
       targetScroll.current = Math.max(0, Math.min(targetScroll.current, document.body.scrollHeight - window.innerHeight));
     };
-
+  
     const smoothScroll = () => {
       scrollVelocity.current = (targetScroll.current - currentScroll.current) * 0.08;
       currentScroll.current += scrollVelocity.current;
       window.scrollTo(0, currentScroll.current);
       requestAnimationFrame(smoothScroll);
     };
-
+  
     window.addEventListener('wheel', handleWheel, { passive: false });
     const animId = requestAnimationFrame(smoothScroll);
-
+  
     return () => {
       window.removeEventListener('wheel', handleWheel);
       cancelAnimationFrame(animId);
