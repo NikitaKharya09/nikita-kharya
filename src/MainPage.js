@@ -2041,7 +2041,7 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['timeline'] = el}
         data-section="timeline"
-        className="relative py-32 sm:py-20 px-4 sm:px-8 bg-transparent min-h-screen"
+        className="relative pt-40 sm:pt-20 pb-20 px-4 sm:px-8 bg-transparent min-h-screen"
         style={{ position: 'relative', zIndex: 1 }}
       >
         {/* Dimmer overlay for this section */}
@@ -2065,97 +2065,112 @@ This is how we trust AI in finance, healthcare, education.
               const isVisible = visibleSections.has('timeline');
               
               return (
-                <div 
-                  key={phase.id} 
-                  className={`relative mb-8 sm:mb-12 md:mb-16 pl-0 sm:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
-                  style={{ animationDelay: `${index * 0.15}s` }}
-                  onMouseEnter={() => { setHoveredTimeline(phase.id); setMagnetTarget(null); }}
-                  onMouseLeave={() => { setHoveredTimeline(null); }}
-                >
-                  <FloatingParticles isActive={isHovered} />
-                  
-                  {/* Icon - hidden on mobile, absolute positioned on desktop */}
-                  <div className={`
-                    hidden sm:flex
-                    absolute left-0 top-0
-                    w-16 h-16 
-                    rounded-full border-2 
-                    ${phase.current ? 'border-cyan-400' : phase.research ? 'border-purple-400' : 'border-gray-600'} 
-                    ${phase.current || phase.research ? 'animate-pulse' : ''} 
-                    bg-black items-center justify-center 
-                    transition-all duration-300 
-                    ${isHovered ? 'scale-125' : ''}
-                  `}>
-                    <Icon className={`w-6 h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
-                    {isHovered && (
-                      <div className="absolute inset-0 w-16 h-16 rounded-full border-2 border-cyan-400 animate-pulse-ring" />
-                    )}
-                  </div>
-
-                  {index < portfolioData.timeline.length - 1 && isHovered && (
-                    <div className="absolute left-8 top-16 w-px h-24 overflow-hidden hidden sm:block">
-                      <div className="h-full bg-gradient-to-b from-cyan-400 to-transparent animate-pulse" />
-                    </div>
-                  )}
-
-                  <div className={`
-                      border border-gray-800 rounded-xl sm:rounded-2xl 
-                      p-4 sm:p-6 lg:p-8 
-                      backdrop-blur-xl bg-gray-900/50 
-                      hover:border-cyan-400/50 
+                <React.Fragment key={phase.id}>
+                  <div 
+                    className={`relative mb-8 sm:mb-12 md:mb-16 pl-0 sm:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
+                    style={{ animationDelay: `${index * 0.15}s` }}
+                    onMouseEnter={() => { setHoveredTimeline(phase.id); setMagnetTarget(null); }}
+                    onMouseLeave={() => { setHoveredTimeline(null); }}
+                  >
+                    <FloatingParticles isActive={isHovered} />
+                    
+                    {/* Icon - hidden on mobile, absolute positioned on desktop */}
+                    <div className={`
+                      hidden sm:flex
+                      absolute left-0 top-0
+                      w-16 h-16 
+                      rounded-full border-2 
+                      ${phase.current ? 'border-cyan-400' : phase.research ? 'border-purple-400' : 'border-gray-600'} 
+                      ${phase.current || phase.research ? 'animate-pulse' : ''} 
+                      bg-black items-center justify-center 
                       transition-all duration-300 
-                      ${isHovered ? 'transform -translate-y-1 shadow-xl shadow-cyan-400/20' : ''}
-                      w-full overflow-hidden
+                      ${isHovered ? 'scale-125' : ''}
                     `}>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-2 sm:gap-3 mb-4">
-                      <div className="flex items-center gap-3 flex-wrap">
-                        <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/50 text-cyan-400 bg-cyan-400/10">
-                          {phase.years}
-                        </span>
-                        {phase.current && <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-cyan-400/20 text-cyan-400 animate-pulse">CURRENT</span>}
-                        {phase.catalyst && (
-                          <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-gradient-to-r from-purple-400/20 to-cyan-400/20 border border-purple-400/50 text-purple-400 animate-pulse">
-                            AI SQUAD CATALYST
-                          </span>
-                        )}
-                        {phase.research && <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-purple-400/20 text-purple-400">RESEARCH</span>}
-                      </div>
-                      
-                      {phase.metrics && (
-                        <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm">
-                          {Object.entries(phase.metrics).map(([key, value]) => (
-                            <div key={key} className="px-2 sm:px-3 py-1 rounded-full bg-gray-800 text-gray-400 text-xs sm:text-sm">
-                              <span className="text-cyan-400">{value}</span> {key}
-                            </div>
-                          ))}
-                        </div>
+                      <Icon className={`w-6 h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
+                      {isHovered && (
+                        <div className="absolute inset-0 w-16 h-16 rounded-full border-2 border-cyan-400 animate-pulse-ring" />
                       )}
                     </div>
 
-                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-2 text-cyan-400 break-words">{phase.phase}</h3>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-4 sm:mb-6 break-words">{phase.company} • {phase.role}</p>
-
-                    <div className={`p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl border ${isHovered ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-cyan-400/20 bg-cyan-400/5'} mb-4 transition-all overflow-hidden`}>
-                      <div className="flex items-center gap-2 mb-2 sm:mb-3">
-                        <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400" />
-                        <span className="text-xs sm:text-sm text-cyan-400 font-medium">Key Impact</span>
+                    {index < portfolioData.timeline.length - 1 && isHovered && (
+                      <div className="absolute left-8 top-16 w-px h-24 overflow-hidden hidden sm:block">
+                        <div className="h-full bg-gradient-to-b from-cyan-400 to-transparent animate-pulse" />
                       </div>
-                      <p className="text-gray-300 text-sm sm:text-base leading-relaxed whitespace-pre-line break-words">{phase.story}</p>
-                    </div>
+                    )}
 
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {phase.tech.map((tech, i) => (
-                        <span 
-                          key={i} 
-                          className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-gray-800 text-gray-300 border border-gray-700 transition-all ${isHovered ? 'border-cyan-400/50 bg-cyan-400/10 text-cyan-400' : ''}`}
-                          style={{ transitionDelay: `${i * 50}ms` }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    <div className={`
+                        border border-gray-800 rounded-xl sm:rounded-2xl 
+                        p-4 sm:p-6 lg:p-8 
+                        backdrop-blur-xl bg-gray-900/50 
+                        hover:border-cyan-400/50 
+                        transition-all duration-300 
+                        ${isHovered ? 'transform -translate-y-1 shadow-xl shadow-cyan-400/20' : ''}
+                        w-full overflow-hidden
+                      `}>
+                      <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-2 sm:gap-3 mb-4">
+                        <div className="flex items-center gap-3 flex-wrap">
+                          <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/50 text-cyan-400 bg-cyan-400/10">
+                            {phase.years}
+                          </span>
+                          {phase.current && <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-cyan-400/20 text-cyan-400 animate-pulse">CURRENT</span>}
+                          {phase.catalyst && (
+                            <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-gradient-to-r from-purple-400/20 to-cyan-400/20 border border-purple-400/50 text-purple-400 animate-pulse">
+                              AI SQUAD CATALYST
+                            </span>
+                          )}
+                          {phase.research && <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-purple-400/20 text-purple-400">RESEARCH</span>}
+                        </div>
+                        
+                        {phase.metrics && (
+                          <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm">
+                            {Object.entries(phase.metrics).map(([key, value]) => (
+                              <div key={key} className="px-2 sm:px-3 py-1 rounded-full bg-gray-800 text-gray-400 text-xs sm:text-sm">
+                                <span className="text-cyan-400">{value}</span> {key}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
+                      <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-2 text-cyan-400 break-words">{phase.phase}</h3>
+                      <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-4 sm:mb-6 break-words">{phase.company} • {phase.role}</p>
+
+                      <div className={`p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl border ${isHovered ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-cyan-400/20 bg-cyan-400/5'} mb-4 transition-all overflow-hidden`}>
+                        <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                          <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400" />
+                          <span className="text-xs sm:text-sm text-cyan-400 font-medium">Key Impact</span>
+                        </div>
+                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed whitespace-pre-line break-words">{phase.story}</p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                        {phase.tech.map((tech, i) => (
+                          <span 
+                            key={i} 
+                            className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-gray-800 text-gray-300 border border-gray-700 transition-all ${isHovered ? 'border-cyan-400/50 bg-cyan-400/10 text-cyan-400' : ''}`}
+                            style={{ transitionDelay: `${i * 50}ms` }}
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
+
+                  {/* Mobile separator - only show between cards, not after last one */}
+                  {index < portfolioData.timeline.length - 1 && (
+                    <div className="block sm:hidden mb-8">
+                      <div className="relative h-12 flex items-center">
+                        <div className="absolute inset-0 flex items-center">
+                          <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"></div>
+                        </div>
+                        <div className="relative mx-auto w-8 h-8 rounded-full border border-cyan-400/30 bg-black/80 flex items-center justify-center">
+                          <div className="w-2 h-2 rounded-full bg-cyan-400/50"></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </React.Fragment>
               );
             })}
           </div>
