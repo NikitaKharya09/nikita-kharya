@@ -428,8 +428,8 @@ function MainPage() {
         phase: "VP Evolution — The AI-Augmented Architect",
         years: "2023-Present",
         company: "Morgan Stanley",
-        role: "Vice President, UI Engineering & Architecture",
-        story: "Leading enterprise transformation through AI-augmented development and unified platforms.\n\n• Selected as AI Squad Catalyst—peer leader guiding squad into agent-native GenAI development\n• One UI Platform: 3 apps → 1 workflow = 33+ hours saved daily\n• AI Framework: Compressed 3-week cycles into 2 days (10x speedup)\n• Compliance platform now firm-wide standard\n• Managing 8 engineers across multiple high-impact projects\n\nKey Insight: AI amplifies great architecture, it doesn't replace it.",
+        role: "Vice President",
+        story: "Leading enterprise transformation through AI-augmented development and unified platforms.\n\n• Selected as AI Squad Catalyst, guiding my squad into agent-native GenAI development\n• One UI Platform: 3 apps → 1 workflow = 33+ hours saved daily\n• AI Framework: Compressed 3-week cycles into 2 days (10x speedup)\n• The developed compliance platform is now a firm-wide standard\n• Managing 8 engineers across multiple high-impact projects\n\nKey Insight: AI amplifies great architecture, it doesn't replace it.",
         tech: ["React", "TypeScript", "GraphQL", "AI/LLM Integration", "Micro-Frontends", "Agent-Native Development"],
         icon: Zap,
         current: true,
@@ -441,8 +441,8 @@ function MainPage() {
         phase: "Research — The Future Builder",
         years: "2024",
         company: "Independent Research",
-        role: "Published Author & Innovator",
-        story: "Published research transforming how humans interact with AI systems.\n\n• Paper: 'When AI Reasoning Meets Interface Design'\n• Introduced iGraph visualization for AI transparency\n• Deployed in production at Morgan Stanley for compliance verification\n\nKey Insight: The future isn't just smarter AI, it's AI we can understand and verify.",
+        role: "Author & Innovator",
+        story: "Published research transforming how humans interact with AI systems.\n\n• Paper: 'When AI Reasoning Meets Interface Design'\n• Introduced iGraph visualization for AI transparency\nKey Insight: The future isn't just smarter AI, it's AI we can understand and verify.",
         tech: ["AI Transparency", "iGraph", "Reasoning Visualization", "Human-AI Verification"],
         icon: BookOpen,
         research: true,
@@ -486,59 +486,59 @@ function MainPage() {
     paintings: [
       {
         id: 1,
-        title: "Abstract Face",
+        title: "Life",
         filename: "abstract-face.jpg",
-        description: "Modern geometric face with vibrant colors - experimentation with abstract expressionism",
+        description: "The struggles of life make you stronger, wiser, more beautiful. Every crack tells a story of resilience, every shadow holds a lesson learned.",
         medium: "Acrylic on Canvas",
-        theme: "Abstract & Modern"
+        theme: "Existential Abstraction"
       },
       {
         id: 2,
-        title: "Birds on Wire",
+        title: "Friends",
         filename: "birds-on-wire.jpg",
-        description: "Whimsical trio of birds perched on a wire - playful expressions and vibrant colors demonstrate composition and character design",
+        description: "True friendship is finding your flock!! Those souls who sit beside you in comfortable silence, who stay through the seasons, who make the journey lighter simply by being there.",
         medium: "Acrylic on Canvas",
-        theme: "Playful & Expressive"
+        theme: "Connection & Belonging"
       },
       {
         id: 3,
         title: "Spring Triptych",
         filename: "spring-triptych.jpg",
-        description: "Three-panel masterpiece with birds and yellow blossoms against gradient sky - my most ambitious piece showcasing color theory and composition",
+        description: "Happiness blooms in three acts: the promise of dawn, the fullness of day, the peace of twilight. Joy is not a moment but a journey through seasons of color and light.",
         medium: "Acrylic on Canvas (3-Panel)",
-        theme: "Color Theory & Composition"
+        theme: "Joy & Renewal"
       },
       {
         id: 4,
-        title: "Eye Reflection",
+        title: "Vision",
         filename: "eye-reflection.jpg",
-        description: "Detailed study of human eye with blue reflections - focus on realism and light",
+        description: "We don't see the world as it is, we see it as we are. Every eye holds a universe, every gaze reflects a truth. What you see depends on how you look.",
         medium: "Acrylic on Canvas",
-        theme: "Realism & Detail"
+        theme: "Perception & Perspective"
       },
       {
         id: 5,
-        title: "Water Joy",
+        title: "Breathe",
         filename: "water-joy.jpg",
-        description: "Dynamic swimmer captured mid-splash - movement, light, and energy",
+        description: "In the chaos, remember to breathe. Like water finding its way, like waves returning to shore. Let go, flow freely, and trust the current of life.",
         medium: "Acrylic on Canvas",
-        theme: "Movement & Energy"
+        theme: "Serenity & Release"
       },
       {
         id: 6,
         title: "Snoopy Love",
         filename: "snoopy-love.jpg",
-        description: "Miniature canvas featuring beloved character - attention to detail in small format",
-        medium: "Acrylic on Mini Canvas",
-        theme: "Character Study"
+        description: "Love is simple, pure, and unconditional!! Like a loyal companion who sees only the best in you. Sometimes the smallest hearts hold the biggest love.",
+        medium: "Acrylic on Canvas",
+        theme: "Innocence & Devotion"
       },
       {
         id: 7,
-        title: "Cultural Portrait",
+        title: "Heritage",
         filename: "cultural-portrait.jpg",
-        description: "Traditional dress with bold colors and cultural significance",
+        description: "We carry our ancestors in our eyes, our traditions in our hands, our stories in our hearts. This portrait honors the beauty of cultural identity, the past woven into the present, creating who we are.",
         medium: "Acrylic on Canvas",
-        theme: "Culture & Tradition"
+        theme: "Identity & Legacy"
       }
     ]
   };
@@ -1420,7 +1420,7 @@ This is how we trust AI in finance, healthcare, education.
     if (context === 'principles') {
       // Design Philosophy
       if (q.includes('paint') || q.includes('art') || q.includes('show') || q.includes('gallery') || q.includes('work')) {
-        return "**My Painting Practice:**\n\nI maintain an active painting practice that directly informs my UI design work.\n\n**Featured Work:**\n• **Spring Triptych** - 3-panel masterpiece showcasing color theory\n• **Water Joy** - Dynamic movement and energy\n• **Abstract Face** - Modern geometric experimentation\n• **Birds on Wire** - Playful character design\n• Plus more in my gallery!\n\n**What Painting Teaches:**\n• **Composition** → Visual hierarchy in UI\n• **Color Theory** → Brand palettes & emotion\n• **Negative Space** → Simplicity in code\n• **Light & Contrast** → Accessibility\n\n**Media:** Acrylic on canvas (various sizes)\n\n**Check the gallery** section to see all my paintings and how they connect to my engineering work!";
+        return "**My Painting Practice:**\n\nI maintain an active painting practice that directly informs my UI design work.\n\n**Featured Work:**\n• **Life** - Resilience and existential beauty through abstract expression\n• **Spring Triptych** - Joy's journey through dawn, day, and twilight\n• **Friends** - Connection and belonging through simple moments\n• **Vision** - Perception shapes reality in every gaze\n• **Breathe** - Flow and serenity like water finding its way\n• **Heritage** - Cultural identity woven through generations\n• **Snoopy Love** - Pure, unconditional devotion\n\n**What Painting Teaches:**\n• **Composition** → Visual hierarchy in UI\n• **Color Theory** → Emotional design & brand palettes\n• **Negative Space** → Simplicity in code\n• **Light & Contrast** → Accessibility & depth\n• **Storytelling** → Meaningful user experiences\n\n**Media:** Acrylic on canvas (various sizes)\n\n**Check the gallery** section to see all 7 paintings and how art and engineering converge!";
       }
       
       // Design Philosophy
@@ -1430,7 +1430,7 @@ This is how we trust AI in finance, healthcare, education.
       
       // Art & Code Connection
       if (q.includes('creative') || q.includes('connect') || q.includes('design')) {
-        return "**Art & Code Connection:**\n\nArt and code are both acts of creation through constraint.\n\n**Parallels:**\n• **Composition:** Both require seeing the whole while crafting parts\n• **Iteration:** Both improve through continuous refinement\n• **Constraint:** Limitations drive creativity\n• **Craft:** Excellence comes from practiced skill\n\n**From Canvas to Code:**\n• **Spring Triptych** demonstrates color gradient mastery → UI color systems\n• **Eye Reflection** teaches light and detail → Micro-interactions\n• **Abstract Face** experiments with geometry → Component composition\n\n**Philosophy:**\nCode is as much an art as painting—both require vision, craft, and care.\n\nArt isn't separate from engineering—it's how I think about design.\n\n**See my gallery** to explore the full collection!";
+       return "**Art & Code Connection:**\n\nArt and code are both acts of creation through constraint.\n\n**Parallels:**\n• **Composition:** Both require seeing the whole while crafting parts\n• **Iteration:** Both improve through continuous refinement\n• **Constraint:** Limitations drive creativity\n• **Craft:** Excellence comes from practiced skill\n• **Meaning:** Both tell stories through deliberate choices\n\n**From Canvas to Code:**\n• **Spring Triptych** demonstrates color harmony → Gradient systems & emotional palettes\n• **Vision** teaches perspective and depth → Layer hierarchy & UI focus\n• **Life** experiments with texture and resilience → Component composition & state\n• **Friends** explores connection → Information architecture & user flows\n• **Breathe** captures flow and serenity → Animation & interaction design\n\n**Philosophy:**\nCode is as much an art as painting—both require vision, craft, and care.\n\nArt isn't separate from engineering—it's how I think about design.\n\n**See my gallery** to explore all 7 paintings and their engineering parallels!";
       }
       
       return nodeContexts.principles.welcome;
@@ -2268,7 +2268,7 @@ This is how we trust AI in finance, healthcare, education.
               Canvas & Code: Where Art Meets Technology
             </h2>
             <p className="text-xl text-gray-400 font-light max-w-3xl mx-auto">
-              My painting practice trains the eye for composition, color harmony, and visual balance—skills that directly translate to exceptional UI design. Here's proof that art and engineering aren't separate worlds.
+              My painting practice trains the eye for composition, color harmony, and visual balance; skills that directly translate to exceptional UI design. Here's proof that art and engineering aren't separate worlds.
             </p>
           </div>
 
