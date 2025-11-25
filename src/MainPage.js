@@ -1751,22 +1751,6 @@ Answer the user's question:`
               );
             })}
           </div>
-
-          {/* Art Philosophy */}
-          <div className={`max-w-4xl mx-auto text-center ${visibleSections.has('gallery') ? 'animate-fadeInUp stagger-3' : 'opacity-0'}`}>
-            <div className="border border-pink-400/20 rounded-2xl bg-gradient-to-br from-pink-400/10 to-purple-400/10 p-8 backdrop-blur-sm">
-              <h3 className="text-2xl font-light mb-4 text-pink-400">The Connection</h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
-                <strong className="text-white">Composition in painting</strong> = Visual hierarchy in UI • 
-                <strong className="text-white"> Color theory</strong> = Brand palettes and user emotion • 
-                <strong className="text-white"> Negative space</strong> = Simplicity in code • 
-                <strong className="text-white"> Light and contrast</strong> = Accessibility and readability
-              </p>
-              <p className="text-gray-400 text-sm italic">
-                "Every brushstroke teaches patience. Every canvas teaches seeing the whole while crafting the parts. These lessons make me a better engineer."
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
