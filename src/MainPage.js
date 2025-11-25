@@ -2037,15 +2037,16 @@ This is how we trust AI in finance, healthcare, education.
         </div>
       </section>
 
-      {/* Timeline */}
+     {/* Timeline */}
       <section 
         ref={el => sectionRefs.current['timeline'] = el}
         data-section="timeline"
-        className="relative pt-32 sm:pt-20 pb-20 px-4 sm:px-8 bg-transparent min-h-screen"
-        style={{ position: 'relative', zIndex: 2 }}
+        className="relative mt-40 sm:mt-0 pt-20 sm:pt-20 pb-20 px-4 sm:px-8 bg-transparent min-h-screen"
+        style={{ position: 'relative', zIndex: 10 }}
       >
-        {/* Dimmer overlay for this section */}
-        <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
+        {/* Strong background to ensure visibility */}
+        <div className="absolute inset-0 bg-black/90 pointer-events-none" style={{ zIndex: 0 }} />
+        
         <div className="max-w-5xl mx-auto relative" style={{ zIndex: 1 }}>
           <div className={`text-center mb-12 sm:mb-16 ${visibleSections.has('timeline') ? 'animate-fadeInUp' : 'opacity-0'}`}>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -2055,7 +2056,7 @@ This is how we trust AI in finance, healthcare, education.
 
           <div className="relative overflow-visible">
             {/* Timeline line - visible on desktop (sm and up) */}
-            <div className="absolute left-8 top-0 bottom-0 w-px hidden sm:block">
+            <div className="absolute left-8 top-0 bottom-0 w-px hidden sm:block" style={{ zIndex: 0 }}>
               <div className={`h-full bg-gradient-to-b from-cyan-400 via-blue-400 to-purple-400 ${visibleSections.has('timeline') ? 'animate-pulse' : ''}`} />
             </div>
 
@@ -2068,7 +2069,7 @@ This is how we trust AI in finance, healthcare, education.
                 <React.Fragment key={phase.id}>
                   <div 
                     className={`relative mb-8 sm:mb-12 md:mb-16 pl-0 sm:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
-                    style={{ animationDelay: `${index * 0.15}s` }}
+                    style={{ animationDelay: `${index * 0.15}s`, position: 'relative', zIndex: 1 }}
                     onMouseEnter={() => { setHoveredTimeline(phase.id); setMagnetTarget(null); }}
                     onMouseLeave={() => { setHoveredTimeline(null); }}
                   >
@@ -2085,7 +2086,9 @@ This is how we trust AI in finance, healthcare, education.
                       bg-black items-center justify-center 
                       transition-all duration-300 
                       ${isHovered ? 'scale-125' : ''}
-                    `}>
+                    `}
+                    style={{ zIndex: 2 }}
+                    >
                       <Icon className={`w-6 h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
                       {isHovered && (
                         <div className="absolute inset-0 w-16 h-16 rounded-full border-2 border-cyan-400 animate-pulse-ring" />
@@ -2101,7 +2104,7 @@ This is how we trust AI in finance, healthcare, education.
                     <div className={`
                         border border-gray-800 rounded-xl sm:rounded-2xl 
                         p-4 sm:p-6 lg:p-8 
-                        backdrop-blur-xl bg-gray-900/50 
+                        backdrop-blur-xl bg-gray-900/90
                         hover:border-cyan-400/50 
                         transition-all duration-300 
                         ${isHovered ? 'transform -translate-y-1 shadow-xl shadow-cyan-400/20' : ''}
@@ -2159,7 +2162,7 @@ This is how we trust AI in finance, healthcare, education.
 
                   {/* Mobile separator - only show between cards, not after last one */}
                   {index < portfolioData.timeline.length - 1 && (
-                    <div className="block sm:hidden mb-8">
+                    <div className="block sm:hidden mb-8" style={{ position: 'relative', zIndex: 1 }}>
                       <div className="relative h-12 flex items-center">
                         <div className="absolute inset-0 flex items-center">
                           <div className="w-full h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"></div>
