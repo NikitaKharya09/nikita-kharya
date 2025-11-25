@@ -10,8 +10,7 @@ const EXPERIENCE_KNOWLEDGE = {
     nodeName: "Experience & Skills",
     totalYears: 12,
     currentTitle: "Vice President, UI Engineering & Architecture",
-    currentCompany: "Morgan Stanley",
-    location: "Boston, MA"
+    currentCompany: "Morgan Stanley"
   },
 
   careerSummary: {
@@ -1726,10 +1725,35 @@ This is how we trust AI in finance, healthcare, education.
   return (
     <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
       <style jsx>{`
+        html {
+          font-size: 18px !important;
+        }
         
+        @media (max-width: 640px) {
+          html {
+            font-size: 16px !important;
+          }
+        }
         
         body {
+          font-size: 1.125rem;
+          line-height: 1.7;
           overscroll-behavior: none;
+        }
+        
+        p {
+          font-size: 1.125rem !important;
+          line-height: 1.8 !important;
+        }
+        
+        .text-xs { font-size: 0.875rem !important; }
+        .text-sm { font-size: 1rem !important; }
+        .text-base { font-size: 1.125rem !important; }
+        .text-lg { font-size: 1.25rem !important; }
+        .text-xl { font-size: 1.5rem !important; }
+        
+        * {
+          letter-spacing: 0.01em;
         }
         
         @keyframes float {
@@ -1838,10 +1862,6 @@ This is how we trust AI in finance, healthcare, education.
               <span>{portfolioData.company}</span>
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4" />
-              <span>Boston, MA</span>
-            </div>
-            <div className="flex items-center gap-2">
               <Award className="w-4 h-4" />
               <span>12+ Years</span>
             </div>
@@ -1885,7 +1905,7 @@ This is how we trust AI in finance, healthcare, education.
               ))}
             </div>
 
-            <div className="grid grid-cols-4 gap-12 h-full items-center justify-center max-w-5xl mx-auto">
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 h-full items-center justify-center max-w-5xl mx-auto px-4">
               {portfolioData.neuralNodes.map((node, index) => {
                 const Icon = node.icon;
                 const isHovered = activeNode === node.id;
@@ -2021,7 +2041,7 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['timeline'] = el}
         data-section="timeline"
-        className="relative py-20 px-8 bg-transparent"
+        className="relative py-20 px-4 sm:px-8 bg-transparent min-h-screen"
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
@@ -2045,7 +2065,7 @@ This is how we trust AI in finance, healthcare, education.
               return (
                 <div 
                   key={phase.id} 
-                  className={`relative mb-16 pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
+                  className={`relative mb-16 pl-16 sm:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
                   style={{ animationDelay: `${index * 0.15}s` }}
                   onMouseEnter={() => { setHoveredTimeline(phase.id); setMagnetTarget(null); }}
                   onMouseLeave={() => { setHoveredTimeline(null); }}
@@ -2357,26 +2377,26 @@ This is how we trust AI in finance, healthcare, education.
       {/* Lightbox Modal */}
       {lightboxImage && (
         <div 
-          className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-fadeInUp"
+          className="fixed inset-0 z-[200] flex items-center justify-center p-2 sm:p-4 bg-black/95 backdrop-blur-xl animate-fadeInUp overflow-y-auto"
           onClick={() => setLightboxImage(null)}
         >
           <button
             onClick={() => setLightboxImage(null)}
-            className="absolute top-8 right-8 w-12 h-12 rounded-full border-2 border-gray-600 hover:border-pink-400 text-gray-400 hover:text-white transition-all flex items-center justify-center text-2xl"
+            className="fixed top-4 right-4 z-[201] w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-pink-400 bg-black/80 hover:bg-pink-400/20 text-pink-400 hover:text-white transition-all flex items-center justify-center text-xl sm:text-2xl font-bold shadow-lg"
             onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
             onMouseLeave={() => setMagnetTarget(null)}
           >
             ✕
           </button>
 
-          <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="max-w-6xl w-full my-4 sm:my-0" onClick={(e) => e.stopPropagation()}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8 items-start">
               {/* Image */}
-              <div className="relative">
+              <div className="relative max-h-[50vh] sm:max-h-none overflow-hidden">
                 <img 
                   src={`/painting/${lightboxImage.filename}`}
                   alt={lightboxImage.title}
-                  className="w-full rounded-2xl shadow-2xl border-2 border-pink-400/30"
+                  className="w-full h-full object-contain rounded-xl sm:rounded-2xl shadow-2xl border-2 border-pink-400/30"
                 />
                 {lightboxImage.featured && (
                   <div className="absolute top-4 right-4 px-3 py-1 rounded-full text-xs bg-gradient-to-r from-pink-400 to-purple-400 text-black font-medium">
@@ -2386,8 +2406,8 @@ This is how we trust AI in finance, healthcare, education.
               </div>
 
               {/* Details */}
-              <div className="text-left">
-                <h2 className="text-4xl font-light mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+             <div className="text-left px-4 sm:px-0">
+                <h2 className="text-2xl sm:text-4xl font-light mb-3 sm:mb-4 bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
                   {lightboxImage.title}
                 </h2>
                 <div className="mb-6">
@@ -2439,10 +2459,10 @@ This is how we trust AI in finance, healthcare, education.
             I design systems, not screens. My work sits at the intersection of UI craft, technical architecture, and AI-driven intelligence.
           </p>
 
-          <div className={`flex items-center justify-center gap-6 ${visibleSections.has('contact') ? 'animate-fadeInUp stagger-3' : 'opacity-0'}`}>
+          <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4 ${visibleSections.has('contact') ? 'animate-fadeInUp stagger-3' : 'opacity-0'}`}>
             <a 
               href="mailto:nikitakharya09@gmail.com" 
-              className="px-6 py-3 border border-cyan-400/50 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all flex items-center gap-2 group"
+              className="w-full sm:w-auto px-6 py-3 border border-cyan-400/50 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all flex items-center justify-center gap-2 group"
               onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
               onMouseLeave={() => setMagnetTarget(null)}
             >
@@ -2453,7 +2473,7 @@ This is how we trust AI in finance, healthcare, education.
               href="https://www.linkedin.com/in/nikita-kharya-14a83670/" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="px-6 py-3 border border-cyan-400/50 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all flex items-center gap-2 group"
+              className="w-full sm:w-auto px-6 py-3 border border-cyan-400/50 rounded-full hover:border-cyan-400 hover:bg-cyan-400/10 transition-all flex items-center justify-center gap-2 group"
               onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
               onMouseLeave={() => setMagnetTarget(null)}
             >
@@ -2463,7 +2483,7 @@ This is how we trust AI in finance, healthcare, education.
             <a 
               href="/Nikita_Kharya_Resume.txt"
               download="Nikita_Kharya_Resume.txt"
-              className="px-6 py-3 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 border border-cyan-400/50 rounded-full hover:from-cyan-400/30 hover:to-purple-400/30 transition-all flex items-center gap-2 group"
+              className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 border border-cyan-400/50 rounded-full hover:from-cyan-400/30 hover:to-purple-400/30 transition-all flex items-center justify-center gap-2 group"
               onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
               onMouseLeave={() => setMagnetTarget(null)}
             >
