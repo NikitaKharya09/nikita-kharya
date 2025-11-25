@@ -1803,6 +1803,15 @@ This is how we trust AI in finance, healthcare, education.
             transform: scale(1);
           }
         }
+
+        /* Extra small breakpoint for timeline */
+        @media (min-width: 475px) {
+          .xs\:block { display: block; }
+          .xs\:mb-0 { margin-bottom: 0; }
+          .xs\:mx-0 { margin-left: 0; margin-right: 0; }
+          .xs\:absolute { position: absolute; }
+          .xs\:pl-16 { padding-left: 4rem; }
+        }
         
         .animate-float { animation: float 3s ease-in-out infinite; }
         .animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
@@ -2042,18 +2051,20 @@ This is how we trust AI in finance, healthcare, education.
         ref={el => sectionRefs.current['timeline'] = el}
         data-section="timeline"
         className="relative py-20 px-4 sm:px-8 bg-transparent min-h-screen"
+        style={{ position: 'relative', zIndex: 1 }}
       >
         {/* Dimmer overlay for this section */}
         <div className="absolute inset-0 bg-black/70 pointer-events-none" style={{ zIndex: -1 }} />
-        <div className="max-w-5xl mx-auto">
-          <div className={`text-center mb-16 ${visibleSections.has('timeline') ? 'animate-fadeInUp' : 'opacity-0'}`}>
-            <h2 className="text-5xl font-light mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+        <div className="max-w-5xl mx-auto relative">
+          <div className={`text-center mb-12 sm:mb-16 ${visibleSections.has('timeline') ? 'animate-fadeInUp' : 'opacity-0'}`}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               The Evolution
             </h2>
           </div>
 
-          <div className="relative">
-            <div className="absolute left-6 sm:left-8 top-0 bottom-0 w-px">
+          <div className="relative overflow-visible">
+            {/* Timeline line - hidden on very small mobile, visible on larger screens */}
+            <div className="absolute left-4 sm:left-6 md:left-8 top-0 bottom-0 w-px hidden xs:block">
               <div className={`h-full bg-gradient-to-b from-cyan-400 via-blue-400 to-purple-400 ${visibleSections.has('timeline') ? 'animate-pulse' : ''}`} />
             </div>
 
@@ -2065,15 +2076,26 @@ This is how we trust AI in finance, healthcare, education.
               return (
                 <div 
                   key={phase.id} 
-                  className={`relative mb-12 sm:mb-16 pl-20 sm:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
+                  className={`relative mb-8 sm:mb-12 md:mb-16 pl-0 xs:pl-16 sm:pl-20 md:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
                   style={{ animationDelay: `${index * 0.15}s` }}
                   onMouseEnter={() => { setHoveredTimeline(phase.id); setMagnetTarget(null); }}
                   onMouseLeave={() => { setHoveredTimeline(null); }}
                 >
                   <FloatingParticles isActive={isHovered} />
                   
-                  <div className={`absolute left-0 w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 ${phase.current ? 'border-cyan-400' : phase.research ? 'border-purple-400' : 'border-gray-600'} ${phase.current || phase.research ? 'animate-pulse' : ''} bg-black flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-125' : ''}`}>
-                    <Icon className={`w-4 h-4 sm:w-6 sm:h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
+                  {/* Icon - show inline on mobile, absolute on larger screens */}
+                  <div className={`
+                    relative xs:absolute left-0 top-0
+                    w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 
+                    rounded-full border-2 
+                    ${phase.current ? 'border-cyan-400' : phase.research ? 'border-purple-400' : 'border-gray-600'} 
+                    ${phase.current || phase.research ? 'animate-pulse' : ''} 
+                    bg-black flex items-center justify-center 
+                    transition-all duration-300 
+                    ${isHovered ? 'scale-125' : ''}
+                    mb-4 xs:mb-0 mx-auto xs:mx-0
+                  `}>
+                    <Icon className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
                     {isHovered && (
                       <div className="absolute inset-0 w-16 h-16 rounded-full border-2 border-cyan-400 animate-pulse-ring" />
                     )}
@@ -2085,25 +2107,33 @@ This is how we trust AI in finance, healthcare, education.
                     </div>
                   )}
 
-                  <div className={`border border-gray-800 rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 backdrop-blur-xl bg-gray-900/50 hover:border-cyan-400/50 transition-all duration-300 ${isHovered ? 'transform -translate-y-1 shadow-xl shadow-cyan-400/20' : ''}`}>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-3 mb-4">
+                  <div className={`
+                      border border-gray-800 rounded-xl sm:rounded-2xl 
+                      p-4 sm:p-6 lg:p-8 
+                      backdrop-blur-xl bg-gray-900/50 
+                      hover:border-cyan-400/50 
+                      transition-all duration-300 
+                      ${isHovered ? 'transform -translate-y-1 shadow-xl shadow-cyan-400/20' : ''}
+                      w-full overflow-hidden
+                    `}>
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center sm:justify-between gap-2 sm:gap-3 mb-4">
                       <div className="flex items-center gap-3 flex-wrap">
-                        <span className="px-3 py-1 rounded-full text-xs border border-cyan-400/50 text-cyan-400 bg-cyan-400/10">
+                        <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm border border-cyan-400/50 text-cyan-400 bg-cyan-400/10">
                           {phase.years}
                         </span>
-                        {phase.current && <span className="px-3 py-1 rounded-full text-xs bg-cyan-400/20 text-cyan-400 animate-pulse">CURRENT</span>}
+                        {phase.current && <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-cyan-400/20 text-cyan-400 animate-pulse">CURRENT</span>}
                         {phase.catalyst && (
-                          <span className="px-3 py-1 rounded-full text-xs bg-gradient-to-r from-purple-400/20 to-cyan-400/20 border border-purple-400/50 text-purple-400 animate-pulse">
+                          <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-gradient-to-r from-purple-400/20 to-cyan-400/20 border border-purple-400/50 text-purple-400 animate-pulse">
                             AI SQUAD CATALYST
                           </span>
                         )}
-                        {phase.research && <span className="px-3 py-1 rounded-full text-xs bg-purple-400/20 text-purple-400">RESEARCH</span>}
+                        {phase.research && <span className="px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-purple-400/20 text-purple-400">RESEARCH</span>}
                       </div>
                       
                       {phase.metrics && (
-                        <div className="flex gap-3 text-xs">
+                        <div className="flex flex-wrap gap-2 sm:gap-3 text-xs sm:text-sm">
                           {Object.entries(phase.metrics).map(([key, value]) => (
-                            <div key={key} className="px-3 py-1 rounded-full bg-gray-800 text-gray-400">
+                            <div key={key} className="px-2 sm:px-3 py-1 rounded-full bg-gray-800 text-gray-400 text-xs sm:text-sm">
                               <span className="text-cyan-400">{value}</span> {key}
                             </div>
                           ))}
@@ -2111,22 +2141,22 @@ This is how we trust AI in finance, healthcare, education.
                       )}
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-light mb-2 text-cyan-400">{phase.phase}</h3>
-                    <p className="text-sm sm:text-base lg:text-lg text-gray-300 mb-4 sm:mb-6">{phase.company} • {phase.role}</p>
+                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-2 text-cyan-400 break-words">{phase.phase}</h3>
+                    <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-4 sm:mb-6 break-words">{phase.company} • {phase.role}</p>
 
-                    <div className={`p-6 rounded-xl border ${isHovered ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-cyan-400/20 bg-cyan-400/5'} mb-4 transition-all`}>
-                      <div className="flex items-center gap-2 mb-3">
-                        <Sparkles className="w-4 h-4 text-cyan-400" />
-                        <span className="text-xs text-cyan-400 font-medium">Key Impact</span>
+                    <div className={`p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl border ${isHovered ? 'border-cyan-400/40 bg-cyan-400/10' : 'border-cyan-400/20 bg-cyan-400/5'} mb-4 transition-all overflow-hidden`}>
+                      <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                        <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 text-cyan-400" />
+                        <span className="text-xs sm:text-sm text-cyan-400 font-medium">Key Impact</span>
                       </div>
-                      <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">{phase.story}</p>
+                      <p className="text-gray-300 text-sm sm:text-base leading-relaxed whitespace-pre-line break-words">{phase.story}</p>
                     </div>
 
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {phase.tech.map((tech, i) => (
                         <span 
                           key={i} 
-                          className={`px-3 py-1 rounded-full text-xs bg-gray-800 text-gray-300 border border-gray-700 transition-all ${isHovered ? 'border-cyan-400/50 bg-cyan-400/10 text-cyan-400' : ''}`}
+                          className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm bg-gray-800 text-gray-300 border border-gray-700 transition-all ${isHovered ? 'border-cyan-400/50 bg-cyan-400/10 text-cyan-400' : ''}`}
                           style={{ transitionDelay: `${i * 50}ms` }}
                         >
                           {tech}
