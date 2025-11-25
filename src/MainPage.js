@@ -486,6 +486,14 @@ function MainPage() {
     paintings: [
       {
         id: 1,
+        title: "Abstract Face",
+        filename: "abstract-face.jpg",
+        description: "Modern geometric face with vibrant colors - experimentation with abstract expressionism",
+        medium: "Acrylic on Canvas",
+        theme: "Abstract & Modern"
+      },
+      {
+        id: 2,
         title: "Birds on Wire",
         filename: "birds-on-wire.jpg",
         description: "Whimsical trio of birds perched on a wire - playful expressions and vibrant colors demonstrate composition and character design",
@@ -493,15 +501,15 @@ function MainPage() {
         theme: "Playful & Expressive"
       },
       {
-        id: 2,
-        title: "Snoopy Love",
-        filename: "snoopy-love.jpg",
-        description: "Miniature canvas featuring beloved character - attention to detail in small format",
-        medium: "Acrylic on Mini Canvas",
-        theme: "Character Study"
+        id: 3,
+        title: "Spring Triptych",
+        filename: "spring-triptych.jpg",
+        description: "Three-panel masterpiece with birds and yellow blossoms against gradient sky - my most ambitious piece showcasing color theory and composition",
+        medium: "Acrylic on Canvas (3-Panel)",
+        theme: "Color Theory & Composition"
       },
       {
-        id: 3,
+        id: 4,
         title: "Eye Reflection",
         filename: "eye-reflection.jpg",
         description: "Detailed study of human eye with blue reflections - focus on realism and light",
@@ -509,7 +517,7 @@ function MainPage() {
         theme: "Realism & Detail"
       },
       {
-        id: 4,
+        id: 5,
         title: "Water Joy",
         filename: "water-joy.jpg",
         description: "Dynamic swimmer captured mid-splash - movement, light, and energy",
@@ -517,20 +525,12 @@ function MainPage() {
         theme: "Movement & Energy"
       },
       {
-        id: 5,
-        title: "Butterfly",
-        filename: "butterfly.jpg",
-        description: "Elegant butterfly on dark background - contrast and natural beauty",
-        medium: "Acrylic on Canvas",
-        theme: "Nature & Contrast"
-      },
-      {
         id: 6,
-        title: "Spring Triptych",
-        filename: "spring-triptych.jpg",
-        description: "Three-panel masterpiece with birds and yellow blossoms against gradient sky - my most ambitious piece showcasing color theory and composition",
-        medium: "Acrylic on Canvas (3-Panel)",
-        theme: "Color Theory & Composition"
+        title: "Snoopy Love",
+        filename: "snoopy-love.jpg",
+        description: "Miniature canvas featuring beloved character - attention to detail in small format",
+        medium: "Acrylic on Mini Canvas",
+        theme: "Character Study"
       },
       {
         id: 7,
@@ -539,14 +539,6 @@ function MainPage() {
         description: "Traditional dress with bold colors and cultural significance",
         medium: "Acrylic on Canvas",
         theme: "Culture & Tradition"
-      },
-      {
-        id: 8,
-        title: "Abstract Face",
-        filename: "abstract-face.jpg",
-        description: "Modern geometric face with vibrant colors - experimentation with abstract expressionism",
-        medium: "Acrylic on Canvas",
-        theme: "Abstract & Modern"
       }
     ]
   };
@@ -836,7 +828,7 @@ Answer the user's question:`
     if (context === 'principles') {
       // Design Philosophy
       if (q.includes('paint') || q.includes('art') || q.includes('show') || q.includes('gallery') || q.includes('work')) {
-        return "**My Painting Practice:**\n\nI maintain an active painting practice that directly informs my UI design work.\n\n**Featured Work:**\n• **Spring Triptych** - 3-panel masterpiece showcasing color theory\n• **Water Joy** - Dynamic movement and energy\n• **Abstract Face** - Modern geometric experimentation\n• **Birds on Wire** - Playful character design\n• **Butterfly** - Nature and contrast\n• Plus more in my gallery!\n\n**What Painting Teaches:**\n• **Composition** → Visual hierarchy in UI\n• **Color Theory** → Brand palettes & emotion\n• **Negative Space** → Simplicity in code\n• **Light & Contrast** → Accessibility\n\n**Media:** Acrylic on canvas (various sizes)\n\n**Check the gallery** section to see all my paintings and how they connect to my engineering work!";
+        return "**My Painting Practice:**\n\nI maintain an active painting practice that directly informs my UI design work.\n\n**Featured Work:**\n• **Spring Triptych** - 3-panel masterpiece showcasing color theory\n• **Water Joy** - Dynamic movement and energy\n• **Abstract Face** - Modern geometric experimentation\n• **Birds on Wire** - Playful character design\n• Plus more in my gallery!\n\n**What Painting Teaches:**\n• **Composition** → Visual hierarchy in UI\n• **Color Theory** → Brand palettes & emotion\n• **Negative Space** → Simplicity in code\n• **Light & Contrast** → Accessibility\n\n**Media:** Acrylic on canvas (various sizes)\n\n**Check the gallery** section to see all my paintings and how they connect to my engineering work!";
       }
       
       // Design Philosophy
@@ -846,7 +838,7 @@ Answer the user's question:`
       
       // Art & Code Connection
       if (q.includes('creative') || q.includes('connect') || q.includes('design')) {
-        return "**Art & Code Connection:**\n\nArt and code are both acts of creation through constraint.\n\n**Parallels:**\n• **Composition:** Both require seeing the whole while crafting parts\n• **Iteration:** Both improve through continuous refinement\n• **Constraint:** Limitations drive creativity\n• **Craft:** Excellence comes from practiced skill\n\n**From Canvas to Code:**\n• **Spring Triptych** demonstrates color gradient mastery → UI color systems\n• **Eye Reflection** teaches light and detail → Micro-interactions\n• **Butterfly** explores contrast → Accessible color ratios\n• **Abstract Face** experiments with geometry → Component composition\n\n**Philosophy:**\nCode is as much an art as painting—both require vision, craft, and care.\n\nArt isn't separate from engineering—it's how I think about design.\n\n**See my gallery** to explore the full collection!";
+        return "**Art & Code Connection:**\n\nArt and code are both acts of creation through constraint.\n\n**Parallels:**\n• **Composition:** Both require seeing the whole while crafting parts\n• **Iteration:** Both improve through continuous refinement\n• **Constraint:** Limitations drive creativity\n• **Craft:** Excellence comes from practiced skill\n\n**From Canvas to Code:**\n• **Spring Triptych** demonstrates color gradient mastery → UI color systems\n• **Eye Reflection** teaches light and detail → Micro-interactions\n• **Abstract Face** experiments with geometry → Component composition\n\n**Philosophy:**\nCode is as much an art as painting—both require vision, craft, and care.\n\nArt isn't separate from engineering—it's how I think about design.\n\n**See my gallery** to explore the full collection!";
       }
       
       return nodeContexts.principles.welcome;
