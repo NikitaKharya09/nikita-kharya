@@ -495,7 +495,7 @@ function MainPage() {
         id: 2,
         title: "Friends",
         filename: "birds-on-wire.jpg",
-        description: "True friendship is finding your flock!! Those souls who sit beside you in comfortable silence, who stay through the seasons, who make the journey lighter simply by being there.",
+        description: "True friendship is finding your flock! Those souls who sit beside you in comfortable silence, who stay through the seasons, who make the journey lighter simply by being there.",
         medium: "Acrylic on Canvas",
         theme: "Connection & Belonging"
       },
@@ -527,7 +527,7 @@ function MainPage() {
         id: 6,
         title: "Snoopy Love",
         filename: "snoopy-love.jpg",
-        description: "Love is simple, pure, and unconditional!! Like a loyal companion who sees only the best in you. Sometimes the smallest hearts hold the biggest love.",
+        description: "Love is simple, pure, and unconditional! Like a loyal companion who sees only the best in you. Sometimes the smallest hearts hold the biggest love.",
         medium: "Acrylic on Canvas",
         theme: "Innocence & Devotion"
       },
@@ -545,7 +545,7 @@ function MainPage() {
   // Node contexts
   const nodeContexts = {
     principles: {
-      welcome: "**Canvas & Code Node**\n\nWhere art meets technology. I maintain an active painting practice with 8+ works in my gallery.\n\nAsk me:\n• Show me your paintings\n• Tell me about your art\n• What's your design philosophy?\n• How do art and code connect?\n• Tell me about specific paintings"
+      welcome: "**Canvas & Code Node**\n\nWhere art meets technology. I maintain an active painting practice with 7 works in my gallery.\n\nAsk me:\n• Show me your paintings\n• Tell me about your art\n• What's your design philosophy?\n• How do art and code connect?\n• Tell me about specific paintings"
     },
     experience: {
       welcome: "**Experience & Skills Node**\n\n12+ years across healthcare, telecom, banking, cloud, and fintech. Selected as AI Squad Catalyst at Morgan Stanley.\n\nAsk me:\n• What is AI Squad Catalyst?\n• Tell me about Morgan Stanley\n• What did you build at VMware?\n• Your Deutsche Bank work?\n• Accenture migration projects?\n• Where did you start?"
@@ -1803,15 +1803,6 @@ This is how we trust AI in finance, healthcare, education.
             transform: scale(1);
           }
         }
-
-        /* Extra small breakpoint for timeline */
-        @media (min-width: 475px) {
-          .xs\:block { display: block; }
-          .xs\:mb-0 { margin-bottom: 0; }
-          .xs\:mx-0 { margin-left: 0; margin-right: 0; }
-          .xs\:absolute { position: absolute; }
-          .xs\:pl-16 { padding-left: 4rem; }
-        }
         
         .animate-float { animation: float 3s ease-in-out infinite; }
         .animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
@@ -2050,7 +2041,7 @@ This is how we trust AI in finance, healthcare, education.
       <section 
         ref={el => sectionRefs.current['timeline'] = el}
         data-section="timeline"
-        className="relative py-20 px-4 sm:px-8 bg-transparent min-h-screen"
+        className="relative py-32 sm:py-20 px-4 sm:px-8 bg-transparent min-h-screen"
         style={{ position: 'relative', zIndex: 1 }}
       >
         {/* Dimmer overlay for this section */}
@@ -2063,8 +2054,8 @@ This is how we trust AI in finance, healthcare, education.
           </div>
 
           <div className="relative overflow-visible">
-            {/* Timeline line - hidden on very small mobile, visible on larger screens */}
-            <div className="absolute left-4 sm:left-6 md:left-8 top-0 bottom-0 w-px hidden xs:block">
+            {/* Timeline line - visible on desktop (sm and up) */}
+            <div className="absolute left-8 top-0 bottom-0 w-px hidden sm:block">
               <div className={`h-full bg-gradient-to-b from-cyan-400 via-blue-400 to-purple-400 ${visibleSections.has('timeline') ? 'animate-pulse' : ''}`} />
             </div>
 
@@ -2076,33 +2067,33 @@ This is how we trust AI in finance, healthcare, education.
               return (
                 <div 
                   key={phase.id} 
-                  className={`relative mb-8 sm:mb-12 md:mb-16 pl-0 xs:pl-16 sm:pl-20 md:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
+                  className={`relative mb-8 sm:mb-12 md:mb-16 pl-0 sm:pl-24 ${isVisible ? 'animate-fadeInLeft' : 'opacity-0'}`}
                   style={{ animationDelay: `${index * 0.15}s` }}
                   onMouseEnter={() => { setHoveredTimeline(phase.id); setMagnetTarget(null); }}
                   onMouseLeave={() => { setHoveredTimeline(null); }}
                 >
                   <FloatingParticles isActive={isHovered} />
                   
-                  {/* Icon - show inline on mobile, absolute on larger screens */}
+                  {/* Icon - hidden on mobile, absolute positioned on desktop */}
                   <div className={`
-                    relative xs:absolute left-0 top-0
-                    w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 
+                    hidden sm:flex
+                    absolute left-0 top-0
+                    w-16 h-16 
                     rounded-full border-2 
                     ${phase.current ? 'border-cyan-400' : phase.research ? 'border-purple-400' : 'border-gray-600'} 
                     ${phase.current || phase.research ? 'animate-pulse' : ''} 
-                    bg-black flex items-center justify-center 
+                    bg-black items-center justify-center 
                     transition-all duration-300 
                     ${isHovered ? 'scale-125' : ''}
-                    mb-4 xs:mb-0 mx-auto xs:mx-0
                   `}>
-                    <Icon className={`w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
+                    <Icon className={`w-6 h-6 ${phase.current ? 'text-cyan-400' : phase.research ? 'text-purple-400' : 'text-gray-400'}`} />
                     {isHovered && (
                       <div className="absolute inset-0 w-16 h-16 rounded-full border-2 border-cyan-400 animate-pulse-ring" />
                     )}
                   </div>
 
                   {index < portfolioData.timeline.length - 1 && isHovered && (
-                    <div className="absolute left-8 top-16 w-px h-24 overflow-hidden">
+                    <div className="absolute left-8 top-16 w-px h-24 overflow-hidden hidden sm:block">
                       <div className="h-full bg-gradient-to-b from-cyan-400 to-transparent animate-pulse" />
                     </div>
                   )}
@@ -2555,7 +2546,7 @@ This is how we trust AI in finance, healthcare, education.
               {messages.length === 0 && (
                 <div className="text-center py-12">
                   <Brain className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-cyan-400/30 bg-cyan-400/10 p-3 sm:p-4 mx-auto mb-4 animate-pulse text-cyan-400" />
-                  <p className="text-gray-300 font-light mb-6 text-left max-w-md mx-auto whitespace-pre-line">
+                  <p className="text-sm sm:text-base text-gray-300 font-light mb-6 text-left max-w-md mx-auto whitespace-pre-line leading-relaxed px-2">
                     {selectedNode && nodeContexts[selectedNode] ? nodeContexts[selectedNode].welcome : 
                       "Hi! I'm here to answer questions about Nikita's work, experience, research, and vision. Ask me anything!"}
                   </p>
@@ -2564,14 +2555,14 @@ This is how we trust AI in finance, healthcare, education.
 
               {messages.map((msg, i) => (
                 <div key={i} className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[80%] rounded-2xl px-5 py-4 ${msg.type === 'user' ? 'bg-cyan-400/20 border border-cyan-400/30' : 'bg-gray-900/50 border border-gray-800'}`}>
+                  <div className={`max-w-[85%] sm:max-w-[80%] rounded-xl sm:rounded-2xl px-3 sm:px-4 py-3 ${msg.type === 'user' ? 'bg-cyan-400/20 border border-cyan-400/30' : 'bg-gray-900/50 border border-gray-800'}`}>
                     {msg.type === 'ai' && (
                       <div className="flex items-center gap-2 mb-2">
                         <Brain className="w-3 h-3 text-cyan-400" />
-                        <span className="text-xs text-cyan-400">AI Response</span>
+                        <span className="text-sm text-cyan-400">AI Response</span>
                       </div>
                     )}
-                    <p className="text-sm font-light leading-relaxed whitespace-pre-line text-white">{msg.text}</p>
+                    <p className="text-sm sm:text-base font-light leading-relaxed whitespace-pre-line text-white break-words">{msg.text}</p>
                   </div>
                 </div>
               ))}
@@ -2591,26 +2582,26 @@ This is how we trust AI in finance, healthcare, education.
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="p-6 border-t border-cyan-400/20 bg-black">
-              <div className="flex gap-3">
+            <div className="p-3 sm:p-4 lg:p-6 border-t border-cyan-400/20 bg-black">
+              <div className="flex gap-2 sm:gap-3">
                 <input
                   type="text"
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend()}
                   placeholder="Ask about design philosophy, projects, or the future..."
-                  className="flex-1 px-5 py-3 bg-gray-900/50 border border-gray-800 rounded-xl focus:outline-none focus:border-cyan-400/50 text-white placeholder-gray-500 font-light text-sm"
+                  className="flex-1 px-3 sm:px-4 py-2 sm:py-3 bg-gray-900/50 border border-gray-800 rounded-lg sm:rounded-xl focus:outline-none focus:border-cyan-400/50 text-white placeholder-gray-500 font-light text-sm sm:text-base"
                   onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
                   onMouseLeave={() => setMagnetTarget(null)}
                 />
                 <button
                   onClick={handleSend}
                   disabled={!inputMessage.trim()}
-                  className="px-5 py-3 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 border border-cyan-400/50 rounded-xl hover:from-cyan-400/30 disabled:opacity-30"
+                  className="px-3 sm:px-4 py-2 sm:py-3 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 border border-cyan-400/50 rounded-lg sm:rounded-xl hover:from-cyan-400/30 disabled:opacity-30"
                   onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
                   onMouseLeave={() => setMagnetTarget(null)}
                 >
-                  <Send className="w-5 h-5 text-cyan-400" />
+                  <Send className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400" />
                 </button>
               </div>
             </div>
