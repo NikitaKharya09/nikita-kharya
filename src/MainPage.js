@@ -2520,8 +2520,8 @@ This is how we trust AI in finance, healthcare, education.
               <span className="text-cyan-400">LinkedIn</span>
             </a>
             <a 
-              href="/Nikita_Kharya_Resume.txt"
-              download="Nikita_Kharya_Resume.txt"
+              href="/Nikita_Kharya_Resume.docx"
+              download="/Nikita_Kharya_Resume.docx"
               className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-cyan-400/20 to-purple-400/20 border border-cyan-400/50 rounded-full hover:from-cyan-400/30 hover:to-purple-400/30 transition-all flex items-center justify-center gap-2 group"
               onMouseEnter={(e) => setMagnetTarget(e.currentTarget)}
               onMouseLeave={() => setMagnetTarget(null)}
