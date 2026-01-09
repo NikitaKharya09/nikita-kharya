@@ -9,7 +9,7 @@ const EXPERIENCE_KNOWLEDGE = {
   meta: {
     nodeName: "Experience & Skills",
     totalYears: 12,
-    currentTitle: "Vice President, UI Engineering & Architecture",
+    currentTitle: "Vice President, UI Engineering & Architecture | Principal Software Engineer",
     currentCompany: "Morgan Stanley"
   },
 
@@ -22,7 +22,7 @@ const EXPERIENCE_KNOWLEDGE = {
 
   currentRole: {
     company: "Morgan Stanley",
-    title: "Vice President, UI Engineering & Architecture",
+    title: "Vice President, UI Engineering & Architecture | Principal Software Engineer",
     period: "October 2023 - Present",
     teamSize: 8,
     
@@ -341,10 +341,10 @@ function MainPage() {
   // Portfolio Data
   const portfolioData = {
     name: "Nikita Kharya",
-    title: "VP Frontend Engineering",
+    title: "Principal Software Engineer | VP",
     company: "Morgan Stanley",
     tagline: "Designing the Interfaces of an Intelligent Future",
-    subtitle: "UI + AI | VP of Frontend | AI Squad Catalyst | Researcher | Systems Thinker",
+    subtitle: "UI + AI | Principal Software Engineer | AI Squad Catalyst | Researcher | Systems Thinker",
     
     neuralNodes: [
       { 
@@ -427,7 +427,7 @@ function MainPage() {
         phase: "VP Evolution — The AI-Augmented Architect",
         years: "2023-Present",
         company: "Morgan Stanley",
-        role: "Vice President",
+        role: "Vice President | Principal Software Engineer",
         story: "Leading enterprise transformation through AI-augmented development and unified platforms.\n\n• Selected as AI Squad Catalyst, guiding my squad into agent-native GenAI development\n• One UI Platform: 3 apps → 1 workflow = 33+ hours saved daily\n• AI Framework: Compressed 3-week cycles into 2 days (10x speedup)\n• The developed compliance platform is now a firm-wide standard\n• Managing 8 engineers across multiple high-impact projects\n\nKey Insight: AI amplifies great architecture, it doesn't replace it.",
         tech: ["React", "TypeScript", "GraphQL", "AI/LLM Integration", "Micro-Frontends", "Agent-Native Development"],
         icon: Zap,
@@ -1229,7 +1229,7 @@ This is how we trust AI in finance, healthcare, education.
       
       // Morgan Stanley
       if (q.includes('morgan') || q.includes('current') || q.includes('now')) {
-        return "**Morgan Stanley (2023-Present)**\n\nVice President, UI Engineering & Architecture\n\n**AI Squad Catalyst:**\n• Selected peer leader for agent-native GenAI development\n• Guiding squad into next frontier of AI-augmented engineering\n\n**One UI Platform:**\n• 3 apps → 1 unified workflow\n• 25 min → 15 min per account\n• 33+ hours saved daily (~200 accounts)\n\n**AI Framework:**\n• 10x speedup: 3 weeks → 2 days\n• Structured LLM prompts + workflows\n\n**Compliance Platform:**\n• Firm-wide standard eliminating compliance gaps\n\n**Team:** Leading 8 engineers (FTE + contractors)\n\n**Technologies:** React, TypeScript, GraphQL, AI/LLM Integration, Micro-Frontends";
+        return "**Morgan Stanley (2023-Present)**\n\nVice President, UI Engineering & Architecture | Principal Software Engineer\n\n**AI Squad Catalyst:**\n• Selected peer leader for agent-native GenAI development\n• Guiding squad into next frontier of AI-augmented engineering\n\n**One UI Platform:**\n• 3 apps → 1 unified workflow\n• 25 min → 15 min per account\n• 33+ hours saved daily (~200 accounts)\n\n**AI Framework:**\n• 10x speedup: 3 weeks → 2 days\n• Structured LLM prompts + workflows\n\n**Compliance Platform:**\n• Firm-wide standard eliminating compliance gaps\n\n**Team:** Leading 8 engineers (FTE + contractors)\n\n**Technologies:** React, TypeScript, GraphQL, AI/LLM Integration, Micro-Frontends";
       }
       
       // VMware
