@@ -73,7 +73,7 @@
   header.nav.scrolled{background:rgba(10,11,16,.6);backdrop-filter:blur(16px) saturate(140%);border-bottom:1px solid var(--line)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
   .brand{font-family:var(--disp);font-weight:600;font-size:21px;display:flex;align-items:center;gap:11px}
-  .brand .nk{display:inline-grid;place-items:center;width:33px;height:33px;border-radius:50%;font-family:var(--mono);font-weight:500;font-size:11px;color:#0A0B10;background:var(--seam);box-shadow:0 0 18px -4px var(--cyan-glow)}
+  .brand .nk{display:inline-grid;place-items:center;width:33px;height:33px;border-radius:50%;font-family:var(--mono);font-weight:500;font-size:11px;color:#0A0B10;background:var(--grad);box-shadow:0 0 18px -4px var(--cyan-glow)}
   .nav-links{display:flex;gap:30px;align-items:center}
   .nav-links a{font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--soft);position:relative;padding:6px 0}
   .nav-links a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--grad);transition:width .3s}
@@ -233,7 +233,8 @@
   .evo-metrics{margin-left:auto;display:flex;gap:7px;flex-wrap:wrap}
   .evo-metric{font-family:var(--mono);font-size:11.5px;color:var(--soft);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:999px;padding:5px 11px}
   .evo-metric b{color:var(--cyan);font-weight:500}
-  .evo-card h3{font-family:var(--disp);font-weight:500;font-size:clamp(20px,2.5vw,27px);letter-spacing:-.012em}
+  .evo-card h3{font-family:var(--disp);font-weight:500;font-size:clamp(20px,2.5vw,27px);letter-spacing:-.012em;line-height:1.2}
+  .evo-card h3 .evo-role{color:var(--soft);font-weight:400}
   .evo-card .role{color:var(--soft);font-size:14px;margin-top:5px}
   .evo-card .role b{color:var(--text);font-weight:600}
   .evo-bullets{list-style:none;margin-top:14px;display:grid;gap:7px}
@@ -417,7 +418,7 @@
       <a href="#work">Work</a>
       <a href="#demo">Demo</a>
       <a href="#writing">Writing</a>
-      <a href="#evolution">Evolution</a>
+      <a href="#evolution">Journey</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -632,7 +633,7 @@
   <section class="section" id="evolution">
     <div class="wrap">
       <div class="sec-head">
-        <span class="mono eyebrow reveal">The evolution</span>
+        <span class="mono eyebrow reveal">The journey</span>
         <h2 class="reveal">Twelve years of interface work — and where it's pointed now.</h2>
       </div>
       <div class="evo">
@@ -641,16 +642,14 @@
           <div class="evo-node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 13h5l-1 8 8-10h-5z"/></svg></div>
           <div class="evo-card">
             <div class="evo-top"><span class="evo-year">2023 — Now</span><span class="evo-kind">Current</span>
-              <div class="evo-metrics"><span class="evo-metric">team of <b>8</b></span><span class="evo-metric"><b>33h</b>/day saved</span><span class="evo-metric"><b>10×</b> faster</span></div>
+              <div class="evo-metrics"><span class="evo-metric">team of <b>8</b></span><span class="evo-metric"><b>33+</b> team-hrs/day saved</span><span class="evo-metric"><b>10×</b> faster</span></div>
             </div>
-            <h3>The AI-Augmented Architect</h3>
-            <div class="role">Morgan Stanley · <b>Vice President &amp; Principal Engineer</b></div>
+            <h3>Morgan Stanley <span class="evo-role">· Vice President &amp; Principal Engineer</span></h3>
             <ul class="evo-bullets">
-              <li><b>One UI Platform</b>: three applications folded into one workflow — 33+ hours saved a day.</li>
+              <li><b>One UI Platform</b>: three applications folded into one workflow — saving the team 33+ hours every day.</li>
               <li>As an <b>AI Squad Catalyst</b>, designed how the team builds with AI — spec-driven, agent-native.</li>
               <li>Architected an oversight framework now adopted as a firm-wide standard.</li>
             </ul>
-            <p class="evo-insight">AI amplifies great architecture; it doesn't replace it.</p>
             <div class="evo-tags"><span>Design systems</span><span>Micro-frontends</span><span>GraphQL</span><span>Agent-native dev</span></div>
           </div>
         </div>
@@ -661,13 +660,11 @@
             <div class="evo-top"><span class="evo-year">2024 — Now</span><span class="evo-kind">Research</span>
               <div class="evo-metrics"><span class="evo-metric"><b>ACM IUI 2026</b></span><span class="evo-metric">open source</span></div>
             </div>
-            <h3>The Interface Researcher</h3>
-            <div class="role">Independent Research · <b>Human–AI Interaction</b></div>
+            <h3>Independent Research <span class="evo-role">· Human–AI Interaction</span></h3>
             <ul class="evo-bullets">
               <li>Paper <em>"Improving Human Verification of LLM Reasoning through Interactive Explanation Interfaces"</em> — accepted at ACM IUI 2026.</li>
               <li>Built <b>agenttrace-ui</b> — an open-source UI for watching agents think and approving what they intend.</li>
             </ul>
-            <p class="evo-insight">The future isn't just smarter AI — it's AI we can see into, and trust.</p>
             <div class="evo-tags"><span>Human–AI interaction</span><span>Explainability</span><span>Agent UX</span></div>
           </div>
         </div>
@@ -678,13 +675,11 @@
             <div class="evo-top"><span class="evo-year">2022 — 2023</span>
               <div class="evo-metrics"><span class="evo-metric"><b>35%</b> faster</span><span class="evo-metric"><b>8+</b> teams</span></div>
             </div>
-            <h3>The Component Thinker</h3>
-            <div class="role">VMware · <b>Member of Technical Staff 3</b></div>
+            <h3>VMware <span class="evo-role">· Member of Technical Staff 3</span></h3>
             <ul class="evo-bullets">
               <li>Modernised the CloudHealth UI through a React migration for multi-cloud analysis.</li>
               <li>Built UI-as-a-Service components serving <b>8+ teams</b>.</li>
             </ul>
-            <p class="evo-insight">Build the system, not the screen — reusable parts compound.</p>
             <div class="evo-tags"><span>React</span><span>UIaaS</span><span>Multi-cloud</span><span>Design system</span></div>
           </div>
         </div>
@@ -695,13 +690,11 @@
             <div class="evo-top"><span class="evo-year">2019 — 2022</span>
               <div class="evo-metrics"><span class="evo-metric">team of <b>6</b></span><span class="evo-metric">schema-driven</span></div>
             </div>
-            <h3>The Systems Architect</h3>
-            <div class="role">Deutsche Bank · <b>Assistant Vice President</b></div>
+            <h3>Deutsche Bank <span class="evo-role">· Assistant Vice President</span></h3>
             <ul class="evo-bullets">
               <li>Built a framework where <b>JSON schemas generate entire UIs</b>.</li>
               <li>Led config-driven systems for transaction monitoring and compliance; mentored a team of 6.</li>
             </ul>
-            <p class="evo-insight">When the schema is right, the UI builds itself.</p>
             <div class="evo-tags"><span>Config-driven UI</span><span>Compliance tech</span><span>Architecture</span></div>
           </div>
         </div>
@@ -712,13 +705,11 @@
             <div class="evo-top"><span class="evo-year">2017 — 2019</span>
               <div class="evo-metrics"><span class="evo-metric"><b>0</b> defects</span><span class="evo-metric">telecom + banking</span></div>
             </div>
-            <h3>The Explorer</h3>
-            <div class="role">Accenture · <b>Senior Software Engineer</b></div>
+            <h3>Accenture <span class="evo-role">· Senior Software Engineer</span></h3>
             <ul class="evo-bullets">
               <li>Led enterprise migrations across telecom and banking; zero-defect AngularJS → Angular.</li>
               <li>Built a systematic approach to large-scale technical transformation.</li>
             </ul>
-            <p class="evo-insight">Zero defects isn't luck — it's a method.</p>
             <div class="evo-tags"><span>Angular</span><span>TypeScript</span><span>UX Design</span></div>
           </div>
         </div>
@@ -729,12 +720,10 @@
             <div class="evo-top"><span class="evo-year">2013 — 2017</span>
               <div class="evo-metrics"><span class="evo-metric">where it began</span></div>
             </div>
-            <h3>The Apprentice</h3>
-            <div class="role">Cognizant · <b>Associate</b></div>
+            <h3>Cognizant <span class="evo-role">· Associate</span></h3>
             <ul class="evo-bullets">
               <li>First chapter — building enterprise web applications and learning the foundations of frontend.</li>
             </ul>
-            <p class="evo-insight">Everything starts with learning to see the whole.</p>
             <div class="evo-tags"><span>JavaScript</span><span>HTML / CSS</span><span>UI foundations</span></div>
           </div>
         </div>
@@ -750,7 +739,6 @@
       <div>
         <span class="mono eyebrow">Let's talk</span>
         <h2>Let's build something<br><span class="grad">people can trust.</span></h2>
-        <p class="avail"><span class="status"><span class="dot"></span> Available for select work</span></p>
         <p class="ctline">Open to interface architecture, human-AI collaboration, research, speaking, and advisory.</p>
       </div>
       <div class="contact-chan">
